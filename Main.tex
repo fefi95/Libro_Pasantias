@@ -1,0 +1,126 @@
+\documentclass[onehalfspace]{USB}
+\usepackage{paralist}
+\usepackage{natbib}
+\usepackage[figuresright]{rotating}
+\usepackage{lscape}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{calc}
+\usepackage{slashbox}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{color}
+\usepackage{geometry}
+% \usepackage{layouts}
+\graphicspath{ {imagenes/} }
+%----------------------------------------------------------------------------------------%
+
+% Reseting margins
+\geometry{
+  reset,
+  letterpaper,
+  left=3cm,
+  right=2cm,
+  top=2cm, 
+  bottom=2cm
+}
+
+\begin{document}
+\pagenumbering{roman}
+%----------------------------------------------------------------------------------------%
+
+% \drawdimensionstrue
+% \printinunitsof{cm}
+% \pagevalues
+% \currentpage
+\include{01_Portada}
+
+%----------------------------------------------------------------------------------------%
+\addcontentsline{toc}{chapter}{\textbf{RESUMEN}}
+\include{03_Resumen}
+
+%----------------------------------------------------------------------------------------%
+% \addcontentsline{toc}{chapter}{\textbf{DEDICATORIA}}
+\include{04_Dedicatoria}
+
+%----------------------------------------------------------------------------------------%
+% \addcontentsline{toc}{chapter}{\textbf{RECONOCIMIENTOS Y AGRADECIMIENTOS}}
+\include{05_AgradecimientoReconocimientos}
+%----------------------------------------------------------------------------------------%
+%--- The following command is to remove the dots from the list of the tables, figures ---%
+%--- and the table of contents                                                        ---%
+% \makeatletter \renewcommand{\@dotsep}{10000} \makeatother
+
+%----------------------------------------------------------------------------------------%
+\addcontentsline{toc}{chapter}{\textbf{ÍNDICE}}
+\tableofcontents
+\listoftables
+\listoffigures
+\newpage
+\addcontentsline{toc}{chapter}{\textbf{LISTA DE SÍMBOLOS}}
+\include{09_ListaSimbolos}
+\newpage
+\addcontentsline{toc}{chapter}{\textbf{LISTA DE ABREVIACIONES}}
+\include{10_ListaAbreviaciones}
+
+%----------------------------------------------------------------------------------------%
+\mainmatter
+\addcontentsline{toc}{chapter}{\textbf{Introducción}}
+\include{11_Introduccion}
+%----------------------------------------------------------------------------------------%
+% The Command:                                                                           %
+% \addtocontents{toc}{\addvspace{.5cm}}                                                  %
+% must be added before each \include {chapter}                                           %
+%----------------------------------------------------------------------------------------%
+\addtocontents{toc}{\addvspace{.5cm}}
+\include{12_Capitulo1}  % Chpater 1: Title of the chapter                                    %
+\addtocontents{toc}{\addvspace{.5cm}}
+\include{12_Capitulo2}  % Chapter 2: Title of the chapter                                    %
+\addtocontents{toc}{\addvspace{.5cm}}
+\include{12_Capitulo3}  % Chapter 3: Title of the chapter                                    %
+\addtocontents{toc}{\addvspace{.5cm}}
+\include{12_Capitulo4}  % Chapter 4: Title of the chapter
+
+\addtocontents{toc}{\addvspace{.5cm}}
+\include{12_Capitulo5}  % Chapter 4: Title of the chapter
+
+\addtocontents{toc}{\addvspace{.5cm}}
+\include{12_Capitulo6}  % Chapter 4: Title of the chapter
+%----------------------------------------------------------------------------------------%
+
+\addtocontents{toc}{\addvspace{.5cm}}
+\include{13_ConclusionesRecomendaciones}
+
+%
+%----------------------------Additional chapters may be added ---------------------------%
+%                                                                                        %
+%----------------------------------------------------------------------------------------%
+% Bibliography on Chicago Thesis Style with modifications by Rand Alfaris.               %
+% Don't make any changes on the following, except for the name of the bibliography file. %
+% For example, we choose here a file named "bibli".                                      %
+%----------------------------------------------------------------------------------------%
+\addcontentsline{toc}{chapter}{\textbf{Referencias}}
+% \pagestyle{fancy}
+\begin{singlespace}
+\bibliographystyle{apalike}
+\bibliography{14_Referencias}
+\end{singlespace}
+%----------------------------------------------------------------------------------------%
+\newpage
+\addcontentsline{toc}{chapter}{\textbf{Apéndices}}
+\appendix
+\include{ApendiceA} % Appendix A: Title of the appendix
+\include{ApendiceB} % Appendix A: Title of the appendix           
+%
+%---------------------------Additional Appendices may be added---------------------------%
+%                                                                                        %
+%----------------------------------------------------------------------------------------%
+
+% \addcontentsline{toc}{chapter}{\textbf{BIODATA OF STUDENT}}
+% \include{biodata}   % Biodata of student                                                 %
+% \addcontentsline{toc}{chapter}{\textbf{LIST OF PUBLICATIONS}}
+% \include{listofpublications} % List of publications                                      %
+\end{document}
+%----------------------------------------------------------------------------------------%
