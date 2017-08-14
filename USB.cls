@@ -1,85 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Rand Alfaris's modifications to ccw_chithesis.cls 
-% (12th Jul 2008)
-% Send comments/changes/questions to <randalfaris@gmail.com>.
-% 
-% NOTE: Be sure to check your margins carefully on your hardcopy!
-%       The top/left/right margins specified in lines 481--488 are
-%       exactly what the Dissertation Office specifies, but your printer
-%       may print documents offset or stretched by a bit.  One tip is to
-%       increase the margins by a fudge factor of 0.05-0.1in; another is
-%       to redefine TeX's default \hoffset and \voffset to something
-%       other than 1in (e.g., \hoffset=0.95in).  If you do either of 
-%       these, PLEASE DON'T PROPAGATE YOUR CHANGES IN THIS FILE.  This
-%       class should remain as general-purpose as possible.
-%
-%       A more elegant solution for offset pages is to use the results
-%       of testpage.tex to specify the printer offsets, either in the
-%       config.ps in your TeX distribution, or in ~/.dvipsrc.  See the
-%       dvips man page for details.
-%
-% Changes:
-%   1) Moved Astronomy-specific modifications to their own package.
-%   2) Fixed the bug wherein multipage lists of tables and figures were
-%      listed in the TOC with the last page instead of the first.
-%   3) Added space between multiple footnotes on a page, as per
-%      requirements.  Also made footnote continuation separator the
-%      width of text.
-%   4) Merged some changes from Martin Pergler's modifications of
-%      easychithesis.cls, namely: respace title page a bit, make
-%      footnote numbers full size, resize math subscripts, add leader
-%      dots to TOC chapters.
-%   5) Tweaked margins just slightly to give footer more room. 
-%   6) Added "tocchapterhead" option.  This will insert the words 
-%      "CHAPTER" and "APPENDIX" as headings in the TOC, although the
-%      dissertation format doesn't *require* it.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%       Rand's modifications to Craig Wiegert's ccw_chithesis.cls and new hints
-%          for formatting the document file.(last updated 26-Jun-2006)
-%               1) The acknowledgment environment (as in aastex) has
-%                  been changed to invoke \topmatter.
-%               2) (moved to astroextras)
-%               3) If you want '\\' to force a new line in title then
-%                  comment out line 356 and uncomment line 355. Note
-%                  however, that this then requires entering the title
-%                  in all caps in the document file.
-%               4) (moved to astroextras)
-%               5) the approval sheet has been add to mutch with upm format
-%               6) new designe for the abstract has been add to mutch with upm format 
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  This is a modification of the 
-%
-%     easychithesis.cls   Version 1.5   April 5, 1999
-%  
-%  I (Brad Holden, bph herein) used this for my thesis.  I encountered a
-%  few problems when dealing with the Office of Academic
-%  Publications so I fixed those in this version.  In the future, 
-%  new policies will be enacted so this version will no doubt become
-%  obselete as well.
-%
-%     myeasychithesis.cls   March 13, 2000
-%
-%
-% I (L. Rebull) added a whole bunch of things from aastex.cls file to 
-% enable things like deluxetable to work. 
-%
-%      myeasychithesis2.cls   July, 2000   
-%
-%     ccw_chithesis.cls       Jun 26 2006
-%
-% the latest modification is this
-% 
-%     UPMthesis.cls           Feb 12 2008
-%
-% I (Rand Alfaris) modified the style of ccw_chithesis.cls and added new 
-% extra things to be included in the thesis to be work on
-% UPM requirements.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
 %     Original Instructions And Hints
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -223,6 +143,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[utf8]{inputenc} 
 \usepackage{indentfirst}
+\usepackage{fancyhdr}
 % \usepackage{showframe}
 
 \RequirePackage{setspace}[1998/04/8]
@@ -343,6 +264,14 @@
 %\renewenvironment{abstract}{\topmatter{Abstract}}{}
 %\newenvironment{acknowledgments}{\topmatter{Acknowledgments}}{}
 
+\newcommand{\frontmatter}{
+    \clearpage
+    \pagenumbering{roman}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \renewcommand\headrulewidth{0pt}
+    \rhead{\thepage}
+}
 
 % \mainmatter : Signals the start of the document's body.
 %    Usage:
@@ -351,8 +280,20 @@
 %       Use once before the first numbered \chapter.
 %
 \newcommand{\mainmatter}{
-        \clearpage
-        \pagenumbering{arabic}
+    \clearpage
+    \pagenumbering{arabic}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \renewcommand\headrulewidth{0pt}
+    \rhead{\thepage}
+}
+
+% Changing page style plain (Chapters)
+
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \renewcommand\headrulewidth{0pt}
+    \rhead{\thepage}
 }
 
 \renewcommand{\title}[1]{\gdef\@title{#1}}
@@ -464,23 +405,6 @@
 \renewcommand{\listtablename}{LISTA DE TABLAS}
 \renewcommand{\bibname}{REFERENCIAS}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                       %
-%                               MÁRGENES                                %
-%                                                                       %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \setlength{\topmargin}{0cm}
-% \setlength{\headheight}{0mm}
-% \setlength{\headsep}{0mm}
-% \setlength{\topskip}{0cm}
-% \setlength{\oddsidemargin}{0cm}
-% \setlength{\evensidemargin}{0cm}
-% \setlength{\marginparpush}{0cm}
-% \setlength{\marginparwidth}{0cm}
-% \setlength{\textwidth}{14.7cm}
-% \setlength{\textheight}{23.0cm}
-% \setlength{\footskip}{0.3in}
 
 % Changing where the page numbers go on pages that aren't the first
 % page of a chapter.

@@ -17,7 +17,12 @@
 \graphicspath{ {Imagenes/} }
 %----------------------------------------------------------------------------------------%
 
-% Reseting margins
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                               MÁRGENES                                %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \geometry{
   reset,
   letterpaper,
@@ -28,7 +33,7 @@
 }
 
 \begin{document}
-\pagenumbering{roman}
+\frontmatter
 %----------------------------------------------------------------------------------------%
 
 % \drawdimensionstrue
@@ -49,11 +54,14 @@
 % \addcontentsline{toc}{chapter}{\textbf{RECONOCIMIENTOS Y AGRADECIMIENTOS}}
 \include{05_AgradecimientoReconocimientos}
 %----------------------------------------------------------------------------------------%
-%--- The following command is to remove the dots from the list of the tables, figures ---%
-%--- and the table of contents                                                        ---%
-% \makeatletter \renewcommand{\@dotsep}{10000} \makeatother
 
-%----------------------------------------------------------------------------------------%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                               ÍNDICES                                 %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \addcontentsline{toc}{chapter}{\textbf{ÍNDICE}}
 \tableofcontents
 \listoftables
