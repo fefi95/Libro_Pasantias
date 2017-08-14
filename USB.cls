@@ -149,28 +149,49 @@
 \RequirePackage{setspace}[1998/04/8]
 \newcommand{\etptsize}{12pt}
 \DeclareOption{12pt}{\renewcommand{\etptsize}{12pt}}
-% \DeclareOption{12pt}{\renewcommand{\etptsize}{12pt}}
-% \DeclareOption{12pt}{\renewcommand{\etptsize}{12pt}}
-% \DeclareOption{12pt}{\renewcommand{\etptsize}{12pt}}
 \DeclareOption{letterpaper}{\PassOptionsToClass{letterpaper}{report}}
+\DeclareOption{plainchapterheads}{\renewcommand{\etchapterheadstyle}[1]{#1}}
 
-% the following is to organize and to add the word "Page" to the tables of contents (Rand)
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                                ÍNDICE                                 %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \addtocontents{toc}{\addvspace{0.5cm}}
-% \addtocontents{toc}{\hspace{14cm}\textbf{Page}}
 \addtocontents{toc}{\addvspace{0.2cm}}
 
-% this to organize and to add the words "Table" and "Page" to the list of tables (Rand)
+% This option puts "CHAPTER" and "APPENDIX" headings into the TOC.
+% LaTeX omits them by default.  (RAND)
+
+\let\iftocflag=\iffalse
+\DeclareOption{tocchapterhead}{\let\iftocflag=\iftrue}
+
+\newcommand{\topmatter}[1]{
+        \chapter*{#1}
+        \addcontentsline{toc}{chapter}{#1}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                             LISTA DE TABLAS                           %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \addtocontents{lot}{\addvspace{0.5cm}{}\par}
-% \addtocontents{lot}{{\hspace{.5cm}}\textbf{Table}{\hspace{12.3cm}}{\textbf{Page}}\par}
 
-% this to organize and to add the words "Figure" and "Page" to the list of figures (Rand)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                            LISTA DE FIGURAS                           %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \addtocontents{lof}{\addvspace{0.5cm}{}\par}
-% \addtocontents{lof}{{\hspace{.5cm}}\textbf{Figure}{\hspace{12.1cm}}{\textbf{Page}}\par}
 
-% The following options set the UPM of spacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                               ESPACIOS                                %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \renewcommand{\baselinestretch}{1.5}
 \newcommand{\etspacing}{\setstretch{2}}
@@ -185,19 +206,11 @@
 \DeclareOption{onehalfspace}{\renewcommand{\etspacing}{\onehalfspacing}}
 \DeclareOption{singlespace}{\renewcommand{\etspacing}{\singlespacing}}
 
-% Normally, the chapter heads are all uppercase, but sometimes
-% this causes problems.  The following option changes
-% the chapter heads to small caps instead.
-
-\renewcommand{\chaptername}{CAPÍTULO}
-\newcommand{\etchapterheadstyle}[1]{\MakeUppercase{#1}}
-\DeclareOption{plainchapterheads}{\renewcommand{\etchapterheadstyle}[1]{#1}}
-
-% This option puts "CHAPTER" and "APPENDIX" headings into the TOC.
-% LaTeX omits them by default.  (RAND)
-
-\let\iftocflag=\iffalse
-\DeclareOption{tocchapterhead}{\let\iftocflag=\iftrue}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                               OPCIONES                                %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Pass all other options to report.cls.
 \DeclareOption*{%
@@ -252,10 +265,6 @@
         \thispagestyle{empty}
 }
 
-\newcommand{\topmatter}[1]{
-        \chapter*{#1}
-        \addcontentsline{toc}{chapter}{#1}
-}
 
 %
 % redefinition of abstract environment
@@ -309,13 +318,18 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%     Internal Formatting Commands For This Thesis Style
-%
+%                                                                       %
+%                              CAPÍTULOS                                %
+%                                                                       %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Redo commands that make chapter & section headers
-%
+
+% Normally, the chapter heads are all uppercase, but sometimes
+% this causes problems.  The following option changes
+% the chapter heads to small caps instead.
+
+\renewcommand{\chaptername}{CAPÍTULO}
+\newcommand{\etchapterheadstyle}[1]{\MakeUppercase{#1}}
+
 % NUMBERED CHAPTERS
 
 \renewcommand{\@makechapterhead}[1]{{
@@ -335,6 +349,13 @@
   \bfseries #1\par\nobreak
   \vskip 10\p@
 }}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                              SECCIONES                                %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \renewcommand\section{\@startsection {section}{1}{\z@}%
                                 {-3.5ex \@plus -1ex \@minus -.2ex}%
                                 {2.3ex \@plus.2ex}%
@@ -355,6 +376,14 @@
                                 {3.25ex \@plus -1ex \@minus -.2ex}%
                                 {-1em}%
                                 {\normalfont\normalsize\itshape}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                                ÍNDICE                                 %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\contentsname}{ÍNDICE}
 
 % Change style of printing chapters in TOC to match chapter headings.
 
@@ -397,26 +426,21 @@
 %   \old@chapter[{#1}]{#2}}
 %   \fi
 
- 
-% Change names of table of contents and bibliography
+% \let\oldtableofcontents = \tableofcontents
+% \renewcommand{\tableofcontents}{
+%   \begin{onehalfspace}
+% %\normalspacing
+%     \oldtableofcontents
+%   \end{onehalfspace}
+% }
 
-\renewcommand{\contentsname}{ÍNDICE}
-\renewcommand{\listfigurename}{LISTA DE FIGURAS}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                             LISTA DE TABLAS                           %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \renewcommand{\listtablename}{LISTA DE TABLAS}
-\renewcommand{\bibname}{REFERENCIAS}
-
-
-% Changing where the page numbers go on pages that aren't the first
-% page of a chapter.
-
-\pagestyle{myheadings}
-\markright{}
-
-%Rand: located the page number in the bottom center of the page
-
-
-\def\@oddfoot{\hss\thepage\hss} \def\@evenfoot{\hss\thepage\hss}
-\let\@oddhead\@empty \let\@evenhead\@empty 
 
 % Make the table of contents, etc.,  single spaced
 %
@@ -424,51 +448,67 @@
 % CCW fixed bug where multipage LOT/LOF were listed in TOC with wrong
 % page number.
 
-\let\oldtableofcontents = \tableofcontents
-\renewcommand{\tableofcontents}{
-  \begin{singlespace}
-%\normalspacing
-    \oldtableofcontents
-  \end{singlespace}
-}
+% \let\oldlistoftables = \listoftables
+% \renewcommand{\listoftables}{
+%   \begin{onehalfspace}
+%     % This works b/c multiple \newpage's are treated as one
+%     \newpage
+    
+%     \let\oldcaption = \caption
+%     \renewcommand{\caption}{
+%       % \addtocontents{lot}{\protect\addvspace{10\p@}}%
+%         \oldcaption
+%     }
+%     \addcontentsline{toc}{chapter}{\textbf{Lista de Tablas}}
+%     \oldlistoftables 
+    
+%   \end{onehalfspace}
+% }
 
 \let\oldlistoftables = \listoftables
 \renewcommand{\listoftables}{
-  \begin{singlespace}
-    % This works b/c multiple \newpage's are treated as one
-    \newpage
-    
-    \let\oldcaption = \caption
-    \renewcommand{\caption}{
-      % \addtocontents{lot}{\protect\addvspace{10\p@}}%
-      
-  \oldcaption
-}
     \addcontentsline{toc}{chapter}{\textbf{Lista de Tablas}}
     \oldlistoftables 
-    
-  \end{singlespace}
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                            LISTA DE FIGURAS                           %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\listfigurename}{LISTA DE FIGURAS} 
 
 \let\oldlistoffigures = \listoffigures
 \renewcommand{\listoffigures}{
-  \begin{singlespace}
-    % This works b/c multiple \newpage's are treated as one
-    \newpage
-    \let\oldcaption = \caption
-\renewcommand{\caption}{
-%            \addtocontents{lof}{\addvspace{2cm}}
-\begin{singlespace}
-        \oldcaption
-          \end{singlespace}
-}
+%   \begin{singlespace}
+%     % This works b/c multiple \newpage's are treated as one
+%     \newpage
+%     \let\oldcaption = \caption
+% \renewcommand{\caption}{
+% %            \addtocontents{lof}{\addvspace{2cm}}
+% \begin{singlespace}
+%         \oldcaption
+%           \end{singlespace}
+% }
 
     \addcontentsline{toc}{chapter}{\textbf{Lista de Figuras}}
     \oldlistoffigures 
-  \end{singlespace}
+%   \end{singlespace}
 }
 
-\renewcommand\appendixname{Apéndice}
+
+ 
+% Change names of table of contents and bibliography
+\renewcommand{\bibname}{REFERENCIAS}
+\renewcommand\appendixname{APÉNDICE}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                       %
+%                                THEOREM                                %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{lemma}{Lemma}[chapter]
 \newtheorem{proposition}{Proposition}[chapter]
