@@ -1,28 +1,31 @@
 \documentclass[onehalfspace]{USB}
 \usepackage{paralist}
 \usepackage{natbib}
-\usepackage[figuresright]{rotating}
+% \usepackage[figuresright]{rotating}
 \usepackage{lscape}
 \usepackage{graphicx}
 \usepackage{longtable}
 \usepackage{calc}
-\usepackage{slashbox}
+% \usepackage{slashbox}
+\usepackage{adjustbox}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{setspace}
+% \usepackage{setspace}
 \usepackage{color}
 \usepackage{geometry}
+% \usepackage[none]{hyphenat}
 % \usepackage{layouts}
 \usepackage{blindtext}
 \graphicspath{ {Imagenes/} }
-%----------------------------------------------------------------------------------------%
+%------------------------------------------------------------------------------%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                       %
-%                               MÁRGENES                                %
-%                                                                       %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%------------------------------------------------------------------------------%
+%                                                                              %
+%                                    MÁRGENES                                  %
+%                                                                              %
+%------------------------------------------------------------------------------%
 
 \geometry{
   reset,
@@ -35,7 +38,7 @@
 
 \begin{document}
 \frontmatter
-%----------------------------------------------------------------------------------------%
+%------------------------------------------------------------------------------%
 
 % \drawdimensionstrue
 % \printinunitsof{cm}
@@ -43,18 +46,18 @@
 % \currentpage
 \include{01_Portada}
 
-%----------------------------------------------------------------------------------------%
+%------------------------------------------------------------------------------%
 \addcontentsline{toc}{chapter}{\textbf{RESUMEN}}
 \include{03_Resumen}
 
-%----------------------------------------------------------------------------------------%
+%------------------------------------------------------------------------------%
 % \addcontentsline{toc}{chapter}{\textbf{DEDICATORIA}}
 \include{04_Dedicatoria}
 
-%----------------------------------------------------------------------------------------%
+%------------------------------------------------------------------------------%
 % \addcontentsline{toc}{chapter}{\textbf{RECONOCIMIENTOS Y AGRADECIMIENTOS}}
 \include{05_AgradecimientoReconocimientos}
-%----------------------------------------------------------------------------------------%
+%------------------------------------------------------------------------------%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                       %
@@ -120,8 +123,8 @@
 \newpage
 \addcontentsline{toc}{chapter}{\textbf{Apéndices}}
 \appendix
-\include{ApendiceA} % Appendix A: Title of the appendix
-\include{ApendiceB} % Appendix A: Title of the appendix           
+% \include{ApendiceA} % Appendix A: Title of the appendix
+% \include{ApendiceB} % Appendix A: Title of the appendix           
 %
 %---------------------------Additional Appendices may be added---------------------------%
 %                                                                                        %
