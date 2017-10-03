@@ -1,111 +1,131 @@
-%  \refstepcounter{chapter}%
-\chapter{ALGORITHMS}
+\chapter{Manifiesto Ágil}
 
+Es un estatuto que promueve modelos organizacionales basados en la colaboración entre personas sin documentar de manera excesiva el proceso. Posee sistema que se adapta a las necesidades del cliente y lo incluyen de manera activa en el proceso de desarrollo. Se rige por los siguientes 12 principios.
+
+\begin{enumerate}
+    \item La mayor prioridad es satisfacer al cliente mediante la entrega temprana y continua de software con valor.
+    \item La mayor prioridad es satisfacer al cliente mediante la entrega temprana y continua de software con valor.
+    \item Aceptar que los requisitos cambien, incluso en etapas tardías del desarrollo. Los procesos Ágiles  aprovechan el cambio para proporcionar ventaja competitiva al cliente.
+    \item Entregar software funcional frecuentemente, entre dos semanas y dos meses, con preferencia al periodo de tiempo más corto posible.
+    \item Los responsables de negocio y los desarrolladores trabajan juntos de forma cotidiana durante todo el proyecto.
+    \item Los proyectos se desarrollan en torno a individuos motivados. Hay que darles el entorno y el apoyo que necesitan, y confiarles la ejecución del trabajo.
+    \item El método más eficiente y efectivo de comunicar información al equipo de desarrollo y entre sus miembros es la conversación cara a cara.
+    \item El software funcionando es la medida principal de progreso.
+    \item Los procesos Ágiles promueven el desarrollo sostenible. Los promotores, desarrolladores y usuarios debemos ser capaces de mantener un ritmo constante de forma indefinida.
+    \item La atención continua a la excelencia técnica y al buen diseño mejora la Agilidad.
+    \item La simplicidad, o el arte de maximizar la cantidad de trabajo no realizado, es esencial.
+    \item Las mejores arquitecturas, requisitos y diseños emergen de equipos auto-organizados.
+    \item A intervalos regulares el equipo reflexiona sobre cómo ser más efectivo para a continuación ajustar y perfeccionar su comportamiento en consecuencia.
+\end{enumerate}
+
+% %  \refstepcounter{chapter}%
+% \chapter{ALGORITHMS}
+
+% % \refstepcounter{section}
+% \section*{\thesection \quad Simulated Annealing}
+
+% \begin{figure}[h!]
+% \begin{center}
+% \begin{footnotesize}
+% \begin{tabular}{|llll|}\hline%
+%     &     &     & \\%
+% \multicolumn{4}{|l|}{\textbf{Random decimal numbers} $g$ to $a$ and $T$ to $T_{0}$} \\%
+% \multicolumn{4}{|l|}{\textbf{Loop} - {\slshape Cooling}} \\%
+%     & \multicolumn{3}{l|}{\hspace{0.3cm} \textbf{Loop} - {\slshape Local Search}} \\%
+%     &     & \multicolumn{2}{l|}{\hspace{0.7cm} Derive a neighbour, $j$ of $i$} \\%
+%     &     & \multicolumn{2}{l|}{\hspace{0.7cm}$\triangle E:=E(j)-E(i)$ } \\%
+%     &     & \multicolumn{2}{l|}{\hspace{0.7cm} \textbf{If} $\triangle E < 0$} \\%
+%     &     & \multicolumn{2}{l|}{\hspace{0.7cm} \textbf{Then} $i:=j$} \\%
+%     &     & \multicolumn{2}{l|}{\hspace{0.7cm} \textbf{Else} derive random number $r \in [0,1]$} \\%
+%     &     &     &  \hspace{1.2cm} \textbf{If} $r < e^{ - \frac{{\Delta E}}{T}}$\\%
+%     &     &     &  \hspace{1.2cm} \textbf{Then} $i:=j$\\%
+%     &     &     &  \hspace{1.2cm} \textbf{End If} \\%
+%     &     & \multicolumn{2}{l|}{\hspace{0.7cm} \textbf{End If}} \\%
+%     & \multicolumn{3}{l|}{\hspace{0.3cm} \textbf{End Loop} -- {\slshape Local Search}} \\%
+%     & \multicolumn{3}{l|}{\hspace{0.3cm} \textbf{Exit} (when goal is satisf\mbox{}ied or the stopping criterion is reached)} \\%
+%     & \multicolumn{3}{l|}{\hspace{0.3cm} $T = C(T)$ } \\%
+% \multicolumn{4}{|l|}{\textbf{End Loop} -{\slshape Cooling}} \\%
+%     &     &     & \\\hline%
+% \end{tabular}
+% \end{footnotesize}
+% {\bf{\caption{Algorithm of Simulated Annealing}}}\label{AlgSA}%
+% \end{center}
+% \addtocontents{lof}{\protect\addvspace{.5cm}}
+% \end{figure}
+
+% \newpage
 % \refstepcounter{section}
-\section*{\thesection \quad Simulated Annealing}
+% \section*{\thesection \quad Genetic Algorithm}
 
-\begin{figure}[h!]
-\begin{center}
-\begin{footnotesize}
-\begin{tabular}{|llll|}\hline%
-    &     &     & \\%
-\multicolumn{4}{|l|}{\textbf{Random decimal numbers} $g$ to $a$ and $T$ to $T_{0}$} \\%
-\multicolumn{4}{|l|}{\textbf{Loop} - {\slshape Cooling}} \\%
-    & \multicolumn{3}{l|}{\hspace{0.3cm} \textbf{Loop} - {\slshape Local Search}} \\%
-    &     & \multicolumn{2}{l|}{\hspace{0.7cm} Derive a neighbour, $j$ of $i$} \\%
-    &     & \multicolumn{2}{l|}{\hspace{0.7cm}$\triangle E:=E(j)-E(i)$ } \\%
-    &     & \multicolumn{2}{l|}{\hspace{0.7cm} \textbf{If} $\triangle E < 0$} \\%
-    &     & \multicolumn{2}{l|}{\hspace{0.7cm} \textbf{Then} $i:=j$} \\%
-    &     & \multicolumn{2}{l|}{\hspace{0.7cm} \textbf{Else} derive random number $r \in [0,1]$} \\%
-    &     &     &  \hspace{1.2cm} \textbf{If} $r < e^{ - \frac{{\Delta E}}{T}}$\\%
-    &     &     &  \hspace{1.2cm} \textbf{Then} $i:=j$\\%
-    &     &     &  \hspace{1.2cm} \textbf{End If} \\%
-    &     & \multicolumn{2}{l|}{\hspace{0.7cm} \textbf{End If}} \\%
-    & \multicolumn{3}{l|}{\hspace{0.3cm} \textbf{End Loop} -- {\slshape Local Search}} \\%
-    & \multicolumn{3}{l|}{\hspace{0.3cm} \textbf{Exit} (when goal is satisf\mbox{}ied or the stopping criterion is reached)} \\%
-    & \multicolumn{3}{l|}{\hspace{0.3cm} $T = C(T)$ } \\%
-\multicolumn{4}{|l|}{\textbf{End Loop} -{\slshape Cooling}} \\%
-    &     &     & \\\hline%
-\end{tabular}
-\end{footnotesize}
-{\bf{\caption{Algorithm of Simulated Annealing}}}\label{AlgSA}%
-\end{center}
-\addtocontents{lof}{\protect\addvspace{.5cm}}
-\end{figure}
+% \begin{figure}[h!]
+% \begin{center}
+% \begin{small}
+% \begin{tabular}{|ll|}\hline%
+% \multicolumn{2}{|l|}{{\bf S1:}  \textbf{[Start]} Generate an initial population $P_{pop}$, of $n$ chromosomes.}\\%
+% \multicolumn{2}{|l|}{{\bf S2:}  \textbf{[Fitness]} Evaluate the f\mbox{}itness $g(x)$ of each chromosome $x$ in the population.}\\%
+% \multicolumn{2}{|l|}{{\bf S3:}  \textbf{[New Population]} Create a new population by repeating the following}\\%
+%           & \hspace{3.7cm} steps until the new population is complete.\\%
+%           & \hspace{0.3cm} i.   \textbf{[Selection]} Select 2 parent chromosomes from a population according\\%
+%           & \hspace{2.9cm}to their f\mbox{}itness (the f\mbox{}itter, the better chance of being selected).\\%
+%           & \hspace{0.3cm} ii.   \textbf{[Crossover]} With a crossover probability $p_{c}$, cross over the parents to\\%
+%           & \hspace{3.2cm}form 2 new of\mbox{}fspring (children). If no crossover was\\%
+%           & \hspace{3.2cm}performed, the of\mbox{}fspring is an exact copy of parents.\\%
+%           & \hspace{0.3cm} iii.  \textbf{[Mutation]} With a mutation probability $p_{m}$, mutate new of\mbox{}fspring at\\%
+%           & \hspace{3.2cm}each locus (position in chromosome).\\%
+%           & \hspace{0.3cm} iv.  \textbf{[Replace]} Place new of\mbox{}fspring in the new population.\\%
+% \multicolumn{2}{|l|}{{\bf S4:}  \textbf{[Fitness]} Evaluate the f\mbox{}itness $g(x')$ of each chromosome $x'$ in the new}\\%
+%           & \hspace{1.9cm} population.\\%
+% \multicolumn{2}{|l|}{{\bf S5:}  \textbf{[Test]} If the end condition is satisf\mbox{}ied, {\bf STOP}, and return the f\mbox{}ittest solution}\\%
+%           & \hspace{1.4cm} found; otherwise, go to {\bf S3}.\\\hline%
+% \end{tabular}
+% \end{small}
+% {\bf{\caption{Algorithm of a Genetic Algorithm}\label{AlgGA}}}%
+% \end{center}
+% \addtocontents{lof}{\protect\addvspace{.5cm}}
+% \end{figure}
 
-\newpage
-\refstepcounter{section}
-\section*{\thesection \quad Genetic Algorithm}
+% \newpage
+% \refstepcounter{section}
+% \section*{\thesection \quad Tabu Search}
 
-\begin{figure}[h!]
-\begin{center}
-\begin{small}
-\begin{tabular}{|ll|}\hline%
-\multicolumn{2}{|l|}{{\bf S1:}  \textbf{[Start]} Generate an initial population $P_{pop}$, of $n$ chromosomes.}\\%
-\multicolumn{2}{|l|}{{\bf S2:}  \textbf{[Fitness]} Evaluate the f\mbox{}itness $g(x)$ of each chromosome $x$ in the population.}\\%
-\multicolumn{2}{|l|}{{\bf S3:}  \textbf{[New Population]} Create a new population by repeating the following}\\%
-           & \hspace{3.7cm} steps until the new population is complete.\\%
-           & \hspace{0.3cm} i.   \textbf{[Selection]} Select 2 parent chromosomes from a population according\\%
-           & \hspace{2.9cm}to their f\mbox{}itness (the f\mbox{}itter, the better chance of being selected).\\%
-           & \hspace{0.3cm} ii.   \textbf{[Crossover]} With a crossover probability $p_{c}$, cross over the parents to\\%
-           & \hspace{3.2cm}form 2 new of\mbox{}fspring (children). If no crossover was\\%
-           & \hspace{3.2cm}performed, the of\mbox{}fspring is an exact copy of parents.\\%
-           & \hspace{0.3cm} iii.  \textbf{[Mutation]} With a mutation probability $p_{m}$, mutate new of\mbox{}fspring at\\%
-           & \hspace{3.2cm}each locus (position in chromosome).\\%
-           & \hspace{0.3cm} iv.  \textbf{[Replace]} Place new of\mbox{}fspring in the new population.\\%
-\multicolumn{2}{|l|}{{\bf S4:}  \textbf{[Fitness]} Evaluate the f\mbox{}itness $g(x')$ of each chromosome $x'$ in the new}\\%
-           & \hspace{1.9cm} population.\\%
-\multicolumn{2}{|l|}{{\bf S5:}  \textbf{[Test]} If the end condition is satisf\mbox{}ied, {\bf STOP}, and return the f\mbox{}ittest solution}\\%
-           & \hspace{1.4cm} found; otherwise, go to {\bf S3}.\\\hline%
-\end{tabular}
-\end{small}
-{\bf{\caption{Algorithm of a Genetic Algorithm}\label{AlgGA}}}%
-\end{center}
-\addtocontents{lof}{\protect\addvspace{.5cm}}
-\end{figure}
-
-\newpage
-\refstepcounter{section}
-\section*{\thesection \quad Tabu Search}
-
-\begin{figure}[h!]
-\begin{center}
-\begin{scriptsize}
-\begin{tabular}{|lllllll|}\hline%
-   &    &    &    &    &    &\\%
-\multicolumn{7}{|l|}{{\bf procedure} SEARCH$(t,k,diversify,z)$:} \\%
-   & \multicolumn{6}{l|}{\hspace{0.3cm}$penalty^{*}:=+\infty$;} \\%
-   & \multicolumn{6}{l|}{\hspace{0.3cm}{\bf for each} $j\in S_{t}$ {\bf do}} \\%
-   &    & \multicolumn{5}{l|}{\hspace{0.6cm}{\bf for each} $k$-tuple $K$ of bins not including $t$ {\bf do}} \\%
-   &    &    & \multicolumn{4}{l|}{\hspace{0.9cm}$S:=\{j\}\cup(\bigcup_{i\in K}S_{i})$;} \\%
-   &    &    & \multicolumn{4}{l|}{\hspace{0.9cm}$penalty := +\infty$;} \\%
-   &    &    & \multicolumn{4}{l|}{\hspace{0.9cm}{\bf case}} \\%
-   &    &    &    & \multicolumn{3}{l|}{\hspace{1.2cm}$A(S) < k$:} \\%
-   &    &    &    &    & \multicolumn{2}{l|}{\hspace{1.5cm}execute the move and update the solution value $z$;} \\%
-   &    &    &    &    & \multicolumn{2}{l|}{\hspace{1.5cm}$k := \max\{1,k-1\}$;} \\%
-   &    &    &    &    & \multicolumn{2}{l|}{\hspace{1.5cm}{\bf return;}} \\%
-   &    &    &    & \multicolumn{3}{l|}{\hspace{1.2cm}$A(S) = k$:} \\%
-   &    &    &    &    & \multicolumn{2}{l|}{\hspace{1.5cm}{\bf if} the move is not tabu {\bf or} $S_{t}\equiv\{j\}$ {\bf then}} \\%
-   &    &    &    &    &    & \hspace{1.8cm}execute the move and update the solution value $z$; \\%
-   &    &    &    &    &    & \hspace{1.8cm}{\bf if}  $S_{t}\equiv\{j\}$ {\bf then} $k:= \max\{1,k-1\}$; \\%
-   &    &    &    &    &    & \hspace{1.8cm}{\bf return} \\%
-   &    &    &    &    & \multicolumn{2}{l|}{\hspace{1.5cm}{\bf end if;}} \\%
-   &    &    &    & \multicolumn{3}{l|}{\hspace{1.2cm}$A(S)=k+1$ {\bf and} $k>1$:} \\%
-   &    &    &    &    & \multicolumn{2}{l|}{\hspace{1.5cm}let $I$ be the set of $k+1$ bins used by $A$;} \\%
-   &    &    &    &    & \multicolumn{2}{l|}{\hspace{1.5cm}$\overline{t}:=\arg \min_{i\in I}\{\varphi(Si)\}$, $T:=(S_{t}\backslash\{j\})\cup S_{\overline{t}}$;} \\%
-   &    &    &    &    & \multicolumn{2}{l|}{\hspace{1.5cm}{\bf if} $A(T)=1$ {\bf and} the move is not tabu {\bf then}} \\%
-   &    &    &    &    &    & \hspace{1.8cm}$penalty:= \min\{\varphi(T),\min_{i\in I\backslash\{\overline{t}\}}\{\varphi(S_{i})\}\}$ \\%
-   &    &    & \multicolumn{4}{l|}{\hspace{0.9cm}{\bf end case;}} \\%
-   &    &    & \multicolumn{4}{l|}{\hspace{0.9cm}$penalty^{*} := \min\{penalty^{*},penalty\}$;} \\%
-   &    & \multicolumn{5}{l|}{\hspace{0.6cm}{\bf end for;}} \\%
-   & \multicolumn{6}{l|}{\hspace{0.3cm}{\bf end for;}} \\%
-   & \multicolumn{6}{l|}{\hspace{0.3cm}{\bf if} $penalty^{*}\neq +\infty$ {\bf then} execute the move corresponding to $penalty^{*}$} \\%
-   & \multicolumn{6}{l|}{\hspace{0.3cm}{\bf else if} $k=k_{\max}$ {\bf then} $diversify :=$ \texttt{true} {\bf else} $k := k+1$} \\%
-\multicolumn{7}{|l|}{{\bf return.}} \\\hline%
-\end{tabular}
-\end{scriptsize}
-{\bf{\caption{Unif\mbox{}ied Tabu Search: Procedure
-SEARCH}}}\label{AlgUTS_search}
-\addtocontents{lof}{\protect\addvspace{.5cm}}
-\end{center}
-\end{figure}
+% \begin{figure}[h!]
+% \begin{center}
+% \begin{scriptsize}
+% \begin{tabular}{|lllllll|}\hline%
+%   &    &    &    &    &    &\\%
+% \multicolumn{7}{|l|}{{\bf procedure} SEARCH$(t,k,diversify,z)$:} \\%
+%   & \multicolumn{6}{l|}{\hspace{0.3cm}$penalty^{*}:=+\infty$;} \\%
+%   & \multicolumn{6}{l|}{\hspace{0.3cm}{\bf for each} $j\in S_{t}$ {\bf do}} \\%
+%   &    & \multicolumn{5}{l|}{\hspace{0.6cm}{\bf for each} $k$-tuple $K$ of bins not including $t$ {\bf do}} \\%
+%   &    &    & \multicolumn{4}{l|}{\hspace{0.9cm}$S:=\{j\}\cup(\bigcup_{i\in K}S_{i})$;} \\%
+%   &    &    & \multicolumn{4}{l|}{\hspace{0.9cm}$penalty := +\infty$;} \\%
+%   &    &    & \multicolumn{4}{l|}{\hspace{0.9cm}{\bf case}} \\%
+%   &    &    &    & \multicolumn{3}{l|}{\hspace{1.2cm}$A(S) < k$:} \\%
+%   &    &    &    &    & \multicolumn{2}{l|}{\hspace{1.5cm}execute the move and update the solution value $z$;} \\%
+%   &    &    &    &    & \multicolumn{2}{l|}{\hspace{1.5cm}$k := \max\{1,k-1\}$;} \\%
+%   &    &    &    &    & \multicolumn{2}{l|}{\hspace{1.5cm}{\bf return;}} \\%
+%   &    &    &    & \multicolumn{3}{l|}{\hspace{1.2cm}$A(S) = k$:} \\%
+%   &    &    &    &    & \multicolumn{2}{l|}{\hspace{1.5cm}{\bf if} the move is not tabu {\bf or} $S_{t}\equiv\{j\}$ {\bf then}} \\%
+%   &    &    &    &    &    & \hspace{1.8cm}execute the move and update the solution value $z$; \\%
+%   &    &    &    &    &    & \hspace{1.8cm}{\bf if}  $S_{t}\equiv\{j\}$ {\bf then} $k:= \max\{1,k-1\}$; \\%
+%   &    &    &    &    &    & \hspace{1.8cm}{\bf return} \\%
+%   &    &    &    &    & \multicolumn{2}{l|}{\hspace{1.5cm}{\bf end if;}} \\%
+%   &    &    &    & \multicolumn{3}{l|}{\hspace{1.2cm}$A(S)=k+1$ {\bf and} $k>1$:} \\%
+%   &    &    &    &    & \multicolumn{2}{l|}{\hspace{1.5cm}let $I$ be the set of $k+1$ bins used by $A$;} \\%
+%   &    &    &    &    & \multicolumn{2}{l|}{\hspace{1.5cm}$\overline{t}:=\arg \min_{i\in I}\{\varphi(Si)\}$, $T:=(S_{t}\backslash\{j\})\cup S_{\overline{t}}$;} \\%
+%   &    &    &    &    & \multicolumn{2}{l|}{\hspace{1.5cm}{\bf if} $A(T)=1$ {\bf and} the move is not tabu {\bf then}} \\%
+%   &    &    &    &    &    & \hspace{1.8cm}$penalty:= \min\{\varphi(T),\min_{i\in I\backslash\{\overline{t}\}}\{\varphi(S_{i})\}\}$ \\%
+%   &    &    & \multicolumn{4}{l|}{\hspace{0.9cm}{\bf end case;}} \\%
+%   &    &    & \multicolumn{4}{l|}{\hspace{0.9cm}$penalty^{*} := \min\{penalty^{*},penalty\}$;} \\%
+%   &    & \multicolumn{5}{l|}{\hspace{0.6cm}{\bf end for;}} \\%
+%   & \multicolumn{6}{l|}{\hspace{0.3cm}{\bf end for;}} \\%
+%   & \multicolumn{6}{l|}{\hspace{0.3cm}{\bf if} $penalty^{*}\neq +\infty$ {\bf then} execute the move corresponding to $penalty^{*}$} \\%
+%   & \multicolumn{6}{l|}{\hspace{0.3cm}{\bf else if} $k=k_{\max}$ {\bf then} $diversify :=$ \texttt{true} {\bf else} $k := k+1$} \\%
+% \multicolumn{7}{|l|}{{\bf return.}} \\\hline%
+% \end{tabular}
+% \end{scriptsize}
+% {\bf{\caption{Unif\mbox{}ied Tabu Search: Procedure
+% SEARCH}}}\label{AlgUTS_search}
+% \addtocontents{lof}{\protect\addvspace{.5cm}}
+% \end{center}
+% \end{figure}

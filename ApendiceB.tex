@@ -1,104 +1,193 @@
-\refstepcounter{chapter}%
- \chapter*{APPENDIX \thechapter} \label{appendixB}
- \begin{center}
-\textbf{TABLES}
-\end{center}
-\refstepcounter{section}
-\section*{\thesection \quad Complex Tables}
+\chapter{Manual de metodología de Turpial (resumen)}
 
-Example of complex table \ldots e.g. Table \ref{TypoMSP}
+\section{Descripción de la metodología TAUP}
 
-\begin{table}[h!]
-\begin{center}
-{\textbf{\caption {Typology of Machine Scheduling Problems}\label{TypoMSP}}}%
-\addtocontents{lot}{\protect\addvspace{.5cm}}
-\begin{footnotesize}
-\vspace{0.5cm}
-\begin{tabular}{|c@{}|l@{ }|l@{ }|}\hline%
-\multicolumn{1}{|c|}{\bf Characteristic} & \multicolumn{1}{|c|}{\bf Symbol} & \multicolumn{1}{|c|}{\bf Description}\\ \hline%
-                 & $\alpha_{1}=\circ$      & a single machine \\%
-                 & $\alpha_{1}=P$          & identical parallel machines \\%
-                 & $\alpha_{1}=Q$          & uniform parallel machines \\%
-         Machine & $\alpha_{1}=R$          & unrelated parallel machines \\%
-     Environment & $\alpha_{1}=F$          & a f\mbox{}low shop \\%
-        $\alpha$ & $\alpha_{1}=O$          & an open shop \\%
-                 & $\alpha_{1}=J$          & a job shop \\\cline{2-3}%
-                 & $\alpha_{2}=\circ$      & the number of machines is arbitrary \\%
-                 & $\alpha_{2}=m$          & there are a f\mbox{}ixed number of machines $m$ \\\hline%
-                 & $\beta_{1}=\circ$       & no release dates are specif\mbox{}ied \\%
-                 & $\beta_{1}=r_{j}$       & jobs have release dates \\\cline{2-3}%
-                 & $\beta_{2}=\circ$       & no deadlines are specif\mbox{}ied \\%
-                 & $\beta_{2}=\bar{d}_{j}$ & jobs have deadlines \\\cline{2-3}%
-             Job & $\beta_{3}=\circ$       & there are no setup times \\%
- Characteristics & $\beta_{3}=s_{ifg}$     & there are general family setup times \\%
-         $\beta$ & $\beta_{3}=s_{fg}$      & there are machine independent family setup times \\%
-                 & $\beta_{3}=s_{if}$      & there are sequence independent family setup times \\%
-                 & $\beta_{3}=s_{f}$       & there are machine and sequence independent family setup times \\\cline{2-3}%
-                 & $\beta_{4}=\circ$       & no precedence constraints are specif\mbox{}ied \\%
-                 & $\beta_{4}=prec$        & jobs have precedence constraints \\%
-                 & $\beta_{4}=pmtn$        & preemption of jobs is allowed\\\hline%
-      Optimality & $C_{\max}$              & maximum completion time \\%
-       Criterion & $L_{\max}$              & maximum lateness \\%
-        $\gamma$ & $\mathop{\sum}\limits_j (w_{j})C_{j}$     & total (weighted) completion time \\%
-                 & $\mathop{\sum}\limits_j (w_{j})T_{j}$     & total (weighted) tardiness \\%
-   (involves the & $\mathop{\sum}\limits_j (w_{j})U_{j}$     & total (weighted) number of late jobs \\%
-minimisation of) & $\mathop{\sum}\limits_j (w_{j})E_{j}$     & total (weighted) earliness \\ \hline%
-\end{tabular}
-\end{footnotesize}
-\end{center}
-\end{table}
+TAUP o Turpial Agile Unified Process es una metodología ágil creada por la empresa Turpial Development basada en los principios del ”manifiesto ágil” que brinda a su equipo de trabajo una manera eficaz de llevar a cabo el desarrollo de software.
 
-Example of landscape (or sideway) table \ldots e.g. Table
-\ref{Lmax_Bin}
-\begin{sidewaystable}[h!]
-\begin{center}
-{\textbf{\caption{A Comparison of Dif\mbox{}ferent Local Search
-Algorithms}\label{Lmax_Bin}}}
-\addtocontents{lot}{\protect\addvspace{.5cm}}
-\begin{scriptsize}
-\vspace{0.5cm}
-\begin{tabular}{|c|c|c|c|r|c|c|r|c|c|r|c|c|r|}\hline%
-Due Date   &  Data & \multicolumn{3}{|c|}{\textbf{SGA}} & \multicolumn{3}{|c|}{\textbf{$\textrm{MXGA}_{F}$}} &%
-                    \multicolumn{3}{|c|}{\textbf{$\textrm{UTS}_{LGF}$}} & \multicolumn{3}{|c|}{\textbf{RDM}} \\\cline{3-14}%
-     Class & Class & Ratio &   OBU & \multicolumn{1}{|c|}{ARD} & Ratio &   OBU & \multicolumn{1}{|c|}{ARD} &
-                     Ratio &   OBU & \multicolumn{1}{|c|}{ARD} & Ratio &   OBU & \multicolumn{1}{|c|}{ARD} \\\hline%
-           &     I & 1.056 & 83.10 &   16.58 & 1.042 & 85.26 &   12.37 & 1.053 & 83.42 &   16.02 & 1.088 & 78.73 &   22.27 \\%
-           &    II & 1.033 & 63.69 &   17.38 & 1.020 & 66.19 &   11.15 & 1.025 & 64.92 &   13.17 & 1.025 & 65.36 &   12.00 \\%
-           &   III & 1.109 & 71.36 &   30.86 & 1.078 & 75.40 &   22.00 & 1.084 & 74.51 &   27.90 & 1.092 & 73.23 &   26.59 \\%
-           &    IV & 1.047 & 60.68 &   21.74 & 1.047 & 61.65 &   17.29 & 1.033 & 62.25 &   19.09 & 1.040 & 61.77 &   18.95 \\%
-\textbf{A} &     V & 1.087 & 72.45 &   24.24 & 1.070 & 74.46 &   18.00 & 1.077 & 73.61 &   21.97 & 1.076 & 73.53 &   21.73 \\%
-           &    VI & 1.110 & 54.51 &   23.23 & 1.093 & 56.01 &   16.66 & 1.110 & 54.41 &   21.49 & 1.103 & 55.34 &   19.34 \\%
-           &   VII & 1.120 & 74.45 &   33.48 & 1.090 & 78.54 &   23.52 & 1.107 & 76.70 &   29.67 & 1.099 & 77.10 &   29.46 \\%
-           &  VIII & 1.125 & 74.14 &   33.96 & 1.089 & 78.79 &   23.31 & 1.102 & 77.26 &   29.99 & 1.103 & 76.41 &   29.03 \\%
-           &    IX & 1.007 & 44.07 &    1.68 & 1.007 & 44.10 &    1.68 & 1.007 & 42.92 &    1.74 & 1.007 & 43.17 &    2.12 \\%
-           &     X & 1.099 & 74.96 &   27.90 & 1.080 & 77.27 &   23.89 & 1.089 & 76.59 &   32.05 & 1.093 & 74.93 &   27.54 \\\hline%
-\multicolumn{2}{|c|}{\textbf{Average}} & 1.079 & 67.34 & 23.10 & \textbf{1.062} & \textbf{69.77} & \textbf{16.99}%
-                                       & 1.069 & 68.66 & 21.31 & 1.073 & 67.96 & 20.90 \\\hline\hline%
-           &     I & 1.065 & 81.82 &   34.93 & 1.046 & 84.73 &   24.17 & 1.069 & 81.58 &   31.78 & 1.088 & 78.46 &   38.27 \\%
-           &    II & 1.033 & 63.61 &   47.72 & 1.027 & 65.52 &   33.98 & 1.038 & 64.05 &   39.68 & 1.032 & 63.68 &   33.46 \\%
-           &   III & 1.132 & 68.91 &   66.78 & 1.088 & 73.90 &   46.21 & 1.128 & 69.99 &   64.99 & 1.107 & 71.50 &   56.46 \\%
-           &    IV & 1.060 & 59.27 &   53.45 & 1.047 & 61.70 &   35.98 & 1.063 & 59.58 &   49.09 & 1.060 & 59.22 &   45.72 \\%
-\textbf{B} &     V & 1.113 & 69.66 &   48.58 & 1.080 & 73.43 &   35.51 & 1.104 & 70.91 &   48.33 & 1.094 & 71.59 &   40.41 \\%
-           &    VI & 1.110 & 54.34 &   48.85 & 1.110 & 54.93 &   37.73 & 1.090 & 55.34 &   46.41 & 1.097 & 55.00 &   42.01 \\%
-           &   VII & 1.133 & 72.88 &   71.94 & 1.102 & 76.80 &   52.17 & 1.135 & 73.47 &   65.82 & 1.122 & 74.28 &   58.16 \\%
-           &  VIII & 1.143 & 72.19 &   72.72 & 1.099 & 77.38 &   49.41 & 1.122 & 75.08 &   67.28 & 1.118 & 74.27 &   60.49 \\%
-           &    IX & 1.007 & 43.84 &    2.42 & 1.007 & 43.97 &    2.42 & 1.007 & 43.09 &    2.53 & 1.007 & 43.30 &    3.79 \\%
-           &     X & 1.113 & 73.38 &   67.45 & 1.087 & 76.31 &   53.48 & 1.125 & 72.90 &   81.02 & 1.110 & 73.23 &   64.39 \\\hline%
-\multicolumn{2}{|c|}{\textbf{Average}} & 1.091 & 65.99 & 51.48 & \textbf{1.069} & \textbf{68.87} & \textbf{37.11}%
-                                       & 1.088 & 66.60 & 49.69 & 1.084 & 66.45 & 44.32 \\\hline\hline%
-           &     I & 1.085 & 79.30 &  136.69 & 1.054 & 83.50 &   92.98 & 1.083 & 79.76 &  115.41 & 1.104 & 76.50 &  128.02 \\%
-           &    II & 1.050 & 61.80 &  232.20 & 1.040 & 64.02 &  149.48 & 1.048 & 62.60 &  165.41 & 1.040 & 62.44 &  179.75 \\%
-           &   III & 1.164 & 65.80 &  180.45 & 1.093 & 73.28 &  124.96 & 1.148 & 68.01 &  173.81 & 1.127 & 69.10 &  148.03 \\%
-           &    IV & 1.070 & 58.68 &  223.21 & 1.053 & 60.59 &  153.24 & 1.063 & 60.12 &  210.69 & 1.063 & 59.19 &  183.06 \\%
-\textbf{C} &     V & 1.134 & 67.32 &  149.25 & 1.088 & 72.38 &  105.04 & 1.134 & 68.20 &  142.07 & 1.106 & 69.88 &  121.12 \\%
-           &    VI & 1.110 & 54.34 &  274.92 & 1.110 & 54.43 &  241.31 & 1.110 & 54.42 &  264.36 & 1.117 & 53.73 &  251.38 \\%
-           &   VII & 1.161 & 70.18 &  296.58 & 1.106 & 76.20 &  209.59 & 1.164 & 70.42 &  261.95 & 1.134 & 71.77 &  227.27 \\%
-           &  VIII & 1.153 & 70.86 &  421.53 & 1.101 & 76.79 &  273.28 & 1.172 & 69.72 &  387.14 & 1.135 & 72.15 &  320.40 \\%
-           &    IX & 1.007 & 43.71 &    9.93 & 1.007 & 43.81 &    9.93 & 1.008 & 43.14 &   15.13 & 1.008 & 43.29 &   18.72 \\%
-           &     X & 1.131 & 71.33 &  396.65 & 1.100 & 75.24 &  318.50 & 1.148 & 70.83 &  412.62 & 1.134 & 70.87 &  345.31 \\\hline%
-\multicolumn{2}{|c|}{\textbf{Average}} & 1.107 & 64.33 & 232.14 & \textbf{1.075} & \textbf{68.02} & \textbf{167.83}%
-                                       & 1.108 & 64.72 & 214.86 & 1.097 & 64.89 & 192.31 \\\hline%
-\end{tabular}
-\end{scriptsize}
-\end{center}
-\end{sidewaystable}
+\section{Fase de Concepción}
+
+El objetivo de esta etapa es que el equipo de desarrollo profundice la comprensión de los requisitos del sistema y validación de la arquitectura propuesta. 
+
+\section{Historias de Usuario (HU)}
+
+Es una técnica para expresar requerimientos que se caracteriza por ser sencilla de escribir, leer y evaluar. El usuario final o cliente le dará valor a esta HU ya que describe una funcionalidad que él necesita.\\
+
+Las historias de usuarios se escriben en oraciones que poseen tres componentes: el rol del usuario que quiere realizar la acción, que desea hacer y por qué. Una buena HU está caracterizada por ser independiente, negociable, valiosa, estimable, pequeña y comprobable (INVEST).\\
+
+Adicionalmente, deben contar con criterios de aceptación bien definidos que brinden más detalle respecto a los aspectos de la Historia de Usuario que validan su completitud. Deben ser escritos en lenguaje natural y cada oración debe decir una funcionalidad que tendrá que ser ejecutada por la HU.\\
+
+Por último, una HU, debe contar con pruebas de aceptación ya que van a permitir que el producto cumpla con los estándares y que se satisfagan los requerimientos establecidos. Corresponden a una condición que se pueda verificar de los criterios de aceptación y una vez que han sido validadas, se puede dar por culminada la Historia de Usuario.
+
+\section{Priorizar Historias de Usuario}
+
+El cliente establecerá una prioridad para las Historias de usuario, la cual es uno de los factores que influyen en el orden de ejecución de las mismas. Se puede utilizar la siguiente escala de cinco valores: Alta, Media alta, Media, Media Baja y Baja.
+
+\section{Análisis de riesgo de Historias de Usuario}
+El equipo de desarrollo debe establecer un nivel de dificultad para cada HU, para esto, los desarrolladores deben tomar en cuenta diversos factores como: aprender nuevas tecnologías, manejar herramientas desconocidas o investigar un tema en particular. La escala cuenta con cinco valores: Alto, Medio Alto, Medio, Medio Bajo, Bajo.
+
+Para este proyecto se utilizó, al igual en la sección anterior, una escala reducida para puntuar el riesgo: Alto, Medio y Bajo
+
+\section{Análisis de Esfuerzo de Historias de Usuario}
+Representa una estimación de cuánto esfuerzo se requiere para culminar una Historia de Usuario, a esto se le denominará Story Points. Al momento de asignar los Story Points se deben considerar diversos factores como el riesgo, complejidad  y desconocimiento de la tarea a realizar, entre otros. La escala de ponderación viene dada por la secuencia de Fibonacci.
+
+Cuando una Historia de Usuario consigue un Story Point muy alto (usualmente un valor mayor a 8), deberá ser revisada nuevamente ya que podría dividirse en varias Historias de Usuario que puedan más manejables.  Cada Story Point corresponde a lo que se le denomina un Login Point que posee el valor de uno y corresponde a un módulo de autenticación de usuarios de un sistema.
+
+El equipo de desarrollo debe estimar de manera consensuada los Story Point a través de una dinámica denominada Planning Poker; cada miembro puntuará las Historias de Usuario, se eliminarán el valor más alto y el más bajo, el resto se promedian.
+
+\section{Backlog}
+A la lista de todas las Historias de Historia de Usuarios construidas a partir de toda la información suministrada en los puntos anteriores se le denominará Backlog, al construirla  se determina el orden se van a ejecutar tomando en cuenta la prioridad y el riesgo de la tarea, sin embargo, puede cambiar. 
+
+\section{Release Plan}
+Es un calendario en el cual se agregarán los Sprint que sean necesarios para que todas las Historias de Usuarios sean cumplidas a cabalidad.
+
+Definición de Listo “DoR”
+DoR (Definition Of Ready) definido así por sus siglas en inglés, es un acuerdo que se establece
+en el equipo de desarrollo para cada Historia de Usuario que responde a la pregunta ‘¿Qué tiene que estar listo antes de empezar a trabajar en una Historia de Usuario y la misma pueda ser ejecutada en el próximo Sprint?’.
+
+Se debe tener en cuenta los siguientes aspectos: 
+Que sea independiente o de lo contrario que la(s) Historia de Usuario que lo preceden ya están implementadas o van a desarrollarse en el mismo Sprint.
+Que la Historia de Usuario tiene que ser desarrollada en un solo Sprint.
+Que los criterios de aceptación para la Historia de Usuario sean detallados
+Que las pruebas de aceptación puedan realizarse en el Sprint.
+Que la Historia de Usuario tenga asignado su Story Point.
+Tomar en cuenta si existe alguna dependencia externa para la Historia de Usuario.
+
+Definición de Terminado “DoD”
+DoD (Definition of Done) definido así por sus siglas en inglés, responde a la pregunta “¿Qué tiene que cumplir una Historia de Usuario para que se considere finalizada?”, también puede incluir otros aspectos que sean considerados por el equipo de desarrollo como primordiales para que una HU sea considerada terminada. Este acuerdo explica con detalle los criterios para que toda HU sea considerada terminada.
+
+La Historia de Usuario ya ha sido analizada.
+El código tiene que estar escrito.
+El código tiene que estar documentado o comentado.
+El código se ha integrado a todo lo desarrollado con anterioridad.
+La Historia de Usuario ha pasado por todas sus pruebas de aceptación con éxito.
+Haberle mostrado la Historia de Usuario al cliente y que este la acepte.
+
+Fase de Construcción
+El enfoque de está fase es desarrollar todo lo planteado en la Concepción, validando así, la arquitectura planteada. La metodología se basa en Sprints o iteraciones.
+
+Sprints
+El desarrollo del software se tiene que ejecutar por bloques de duración corta y fija, de 5 días (semana laboral) hasta 1 mes. Cada Sprint tiene que proporcionar un resultado concreto, un incremento de producto que sea potencialmente entregable, de tal manera que pueda estar disponible para ser utilizado por el cliente y así, proporcionar observaciones de lo que se le está mostrando.
+
+El primer día de cada Sprint se lleva a cabo la Reunión de Planificación, en la que todos los miembros del equipo revisan lo que se tiene planteado en el Release Plan para ese Sprint, verifican que cada una de esas Historias de Usuario estén en estado DoR para que sean divididas en tareas y se aclare cualquier duda acerca de lo que se va a realizar. Luego de que se conozcan cuáles son las tareas a desarrollar, se distribuyen a cada miembro del equipo y se colocan en un Kanban Board para saber cuáles están por hacer (To Do), cuales se están haciendo (Doing) y cuales están finalizadas (Done).
+
+Durante el Sprint se debe realizar todos los días el Daily Stand Ups Meeting cuyos integrantes son el equipo desarrollador y su líder de proyecto. Tienen un horario (no debería de durar más quince minutos) y lugar fijo y los participantes tendrán tiempo para hablar y responder tres preguntas: qué ha realizado desde el último Daily, qué se está haciendo y qué bloquea su progreso.
+
+El último día de cada Sprint, los miembros del equipo se deben reunir para realizar una Revisión de Iteración, en la cual estará presente el cliente para mostrarle todos los avances y que dé su opinión para que el equipo realice las correcciones pertinentes lo más pronto posible. Luego, se realiza la Reunión de Retrospectiva, en donde se discute que hizo bien, que se puede mejorar y a que se compromete.
+
+Para cada Sprint es necesario ver qué cantidades de Story Points se van a realizar y cuáles se están trabajando y cuales están ya en DoD. Para esto se crea una gráfica que sirve para saber si se puede o no terminar lo planteado para el Sprint, llamada Burndown Chart, en la cual se coloca en el eje X el tiempo que dura el Sprint y en el eje Y la cantidad de Story Points. Esta práctica también sirve para referirse al avance de todo el proyecto, haciendo el mismo procedimiento antes explicado, pero cambiando los ejes de manera que en ellos se encuentre el total de Story Point del desarrollo del proyecto y todos los Sprint del mismo.
+
+Fase de Transición
+En esta fase se probará todo lo desarrollado en la fase de construcción. Estas pruebas funcionales y no funcionales verifican que el proyecto pueda ser utilizado en un ambiente de producción, además se creará un manual para el usuario, el cual le dará la capacitación necesaria al cliente para poder utilizar sin problemas el sistema.
+
+Pruebas
+Se realiza la validación del sistema a través de pruebas de integración, despliegue y comportamiento y que el mismo pueda ser desplegado en un ambiente de preproducción. También se validará la documentación, en donde se verificará que todo el código esté correctamente documentado para que pueda ser entendido con facilidad en caso de que sea necesario realizar cambios. Se crea el Manual de Usuario, en el que se especifica todas las funcionalidades del sistema para que el cliente pueda consultar si tiene alguna duda con respecto a la funcionalidad.
+
+Por último, se verifica que todo lo anterior se haya cumplido, de no ser así se tendrá que hacer pruebas de regresión y modificaciones a la validación de la documentación hasta que el cliente esté  satisfecho con el trabajo realizado.
+
+Puesta en Producción
+Luego de que el sistema esté completado, se tendrá que desplegar en el ambiente de producción, al terminar este proceso se otorgará un tiempo prudencial al cliente para efectuar pruebas. El reporte de estos defectos será más formal ya que llevarán un registro, junto con sus detalles para que los desarrolladores puedan corregirlos.
+
+% \refstepcounter{chapter}%
+%  \chapter*{APPENDIX \thechapter} \label{appendixB}
+%  \begin{center}
+% \textbf{TABLES}
+% \end{center}
+% \refstepcounter{section}
+% \section*{\thesection \quad Complex Tables}
+
+% Example of complex table \ldots e.g. Table \ref{TypoMSP}
+
+% \begin{table}[h!]
+% \begin{center}
+% {\textbf{\caption {Typology of Machine Scheduling Problems}\label{TypoMSP}}}%
+% \addtocontents{lot}{\protect\addvspace{.5cm}}
+% \begin{footnotesize}
+% \vspace{0.5cm}
+% \begin{tabular}{|c@{}|l@{ }|l@{ }|}\hline%
+% \multicolumn{1}{|c|}{\bf Characteristic} & \multicolumn{1}{|c|}{\bf Symbol} & \multicolumn{1}{|c|}{\bf Description}\\ \hline%
+%                  & $\alpha_{1}=\circ$      & a single machine \\%
+%                  & $\alpha_{1}=P$          & identical parallel machines \\%
+%                  & $\alpha_{1}=Q$          & uniform parallel machines \\%
+%          Machine & $\alpha_{1}=R$          & unrelated parallel machines \\%
+%      Environment & $\alpha_{1}=F$          & a f\mbox{}low shop \\%
+%         $\alpha$ & $\alpha_{1}=O$          & an open shop \\%
+%                  & $\alpha_{1}=J$          & a job shop \\\cline{2-3}%
+%                  & $\alpha_{2}=\circ$      & the number of machines is arbitrary \\%
+%                  & $\alpha_{2}=m$          & there are a f\mbox{}ixed number of machines $m$ \\\hline%
+%                  & $\beta_{1}=\circ$       & no release dates are specif\mbox{}ied \\%
+%                  & $\beta_{1}=r_{j}$       & jobs have release dates \\\cline{2-3}%
+%                  & $\beta_{2}=\circ$       & no deadlines are specif\mbox{}ied \\%
+%                  & $\beta_{2}=\bar{d}_{j}$ & jobs have deadlines \\\cline{2-3}%
+%              Job & $\beta_{3}=\circ$       & there are no setup times \\%
+%  Characteristics & $\beta_{3}=s_{ifg}$     & there are general family setup times \\%
+%          $\beta$ & $\beta_{3}=s_{fg}$      & there are machine independent family setup times \\%
+%                  & $\beta_{3}=s_{if}$      & there are sequence independent family setup times \\%
+%                  & $\beta_{3}=s_{f}$       & there are machine and sequence independent family setup times \\\cline{2-3}%
+%                  & $\beta_{4}=\circ$       & no precedence constraints are specif\mbox{}ied \\%
+%                  & $\beta_{4}=prec$        & jobs have precedence constraints \\%
+%                  & $\beta_{4}=pmtn$        & preemption of jobs is allowed\\\hline%
+%       Optimality & $C_{\max}$              & maximum completion time \\%
+%       Criterion & $L_{\max}$              & maximum lateness \\%
+%         $\gamma$ & $\mathop{\sum}\limits_j (w_{j})C_{j}$     & total (weighted) completion time \\%
+%                  & $\mathop{\sum}\limits_j (w_{j})T_{j}$     & total (weighted) tardiness \\%
+%   (involves the & $\mathop{\sum}\limits_j (w_{j})U_{j}$     & total (weighted) number of late jobs \\%
+% minimisation of) & $\mathop{\sum}\limits_j (w_{j})E_{j}$     & total (weighted) earliness \\ \hline%
+% \end{tabular}
+% \end{footnotesize}
+% \end{center}
+% \end{table}
+
+% Example of landscape (or sideway) table \ldots e.g. Table
+% \ref{Lmax_Bin}
+% \begin{sidewaystable}[h!]
+% \begin{center}
+% {\textbf{\caption{A Comparison of Dif\mbox{}ferent Local Search
+% Algorithms}\label{Lmax_Bin}}}
+% \addtocontents{lot}{\protect\addvspace{.5cm}}
+% \begin{scriptsize}
+% \vspace{0.5cm}
+% \begin{tabular}{|c|c|c|c|r|c|c|r|c|c|r|c|c|r|}\hline%
+% Due Date   &  Data & \multicolumn{3}{|c|}{\textbf{SGA}} & \multicolumn{3}{|c|}{\textbf{$\textrm{MXGA}_{F}$}} &%
+%                     \multicolumn{3}{|c|}{\textbf{$\textrm{UTS}_{LGF}$}} & \multicolumn{3}{|c|}{\textbf{RDM}} \\\cline{3-14}%
+%      Class & Class & Ratio &   OBU & \multicolumn{1}{|c|}{ARD} & Ratio &   OBU & \multicolumn{1}{|c|}{ARD} &
+%                      Ratio &   OBU & \multicolumn{1}{|c|}{ARD} & Ratio &   OBU & \multicolumn{1}{|c|}{ARD} \\\hline%
+%           &     I & 1.056 & 83.10 &   16.58 & 1.042 & 85.26 &   12.37 & 1.053 & 83.42 &   16.02 & 1.088 & 78.73 &   22.27 \\%
+%           &    II & 1.033 & 63.69 &   17.38 & 1.020 & 66.19 &   11.15 & 1.025 & 64.92 &   13.17 & 1.025 & 65.36 &   12.00 \\%
+%           &   III & 1.109 & 71.36 &   30.86 & 1.078 & 75.40 &   22.00 & 1.084 & 74.51 &   27.90 & 1.092 & 73.23 &   26.59 \\%
+%           &    IV & 1.047 & 60.68 &   21.74 & 1.047 & 61.65 &   17.29 & 1.033 & 62.25 &   19.09 & 1.040 & 61.77 &   18.95 \\%
+% \textbf{A} &     V & 1.087 & 72.45 &   24.24 & 1.070 & 74.46 &   18.00 & 1.077 & 73.61 &   21.97 & 1.076 & 73.53 &   21.73 \\%
+%           &    VI & 1.110 & 54.51 &   23.23 & 1.093 & 56.01 &   16.66 & 1.110 & 54.41 &   21.49 & 1.103 & 55.34 &   19.34 \\%
+%           &   VII & 1.120 & 74.45 &   33.48 & 1.090 & 78.54 &   23.52 & 1.107 & 76.70 &   29.67 & 1.099 & 77.10 &   29.46 \\%
+%           &  VIII & 1.125 & 74.14 &   33.96 & 1.089 & 78.79 &   23.31 & 1.102 & 77.26 &   29.99 & 1.103 & 76.41 &   29.03 \\%
+%           &    IX & 1.007 & 44.07 &    1.68 & 1.007 & 44.10 &    1.68 & 1.007 & 42.92 &    1.74 & 1.007 & 43.17 &    2.12 \\%
+%           &     X & 1.099 & 74.96 &   27.90 & 1.080 & 77.27 &   23.89 & 1.089 & 76.59 &   32.05 & 1.093 & 74.93 &   27.54 \\\hline%
+% \multicolumn{2}{|c|}{\textbf{Average}} & 1.079 & 67.34 & 23.10 & \textbf{1.062} & \textbf{69.77} & \textbf{16.99}%
+%                                       & 1.069 & 68.66 & 21.31 & 1.073 & 67.96 & 20.90 \\\hline\hline%
+%           &     I & 1.065 & 81.82 &   34.93 & 1.046 & 84.73 &   24.17 & 1.069 & 81.58 &   31.78 & 1.088 & 78.46 &   38.27 \\%
+%           &    II & 1.033 & 63.61 &   47.72 & 1.027 & 65.52 &   33.98 & 1.038 & 64.05 &   39.68 & 1.032 & 63.68 &   33.46 \\%
+%           &   III & 1.132 & 68.91 &   66.78 & 1.088 & 73.90 &   46.21 & 1.128 & 69.99 &   64.99 & 1.107 & 71.50 &   56.46 \\%
+%           &    IV & 1.060 & 59.27 &   53.45 & 1.047 & 61.70 &   35.98 & 1.063 & 59.58 &   49.09 & 1.060 & 59.22 &   45.72 \\%
+% \textbf{B} &     V & 1.113 & 69.66 &   48.58 & 1.080 & 73.43 &   35.51 & 1.104 & 70.91 &   48.33 & 1.094 & 71.59 &   40.41 \\%
+%           &    VI & 1.110 & 54.34 &   48.85 & 1.110 & 54.93 &   37.73 & 1.090 & 55.34 &   46.41 & 1.097 & 55.00 &   42.01 \\%
+%           &   VII & 1.133 & 72.88 &   71.94 & 1.102 & 76.80 &   52.17 & 1.135 & 73.47 &   65.82 & 1.122 & 74.28 &   58.16 \\%
+%           &  VIII & 1.143 & 72.19 &   72.72 & 1.099 & 77.38 &   49.41 & 1.122 & 75.08 &   67.28 & 1.118 & 74.27 &   60.49 \\%
+%           &    IX & 1.007 & 43.84 &    2.42 & 1.007 & 43.97 &    2.42 & 1.007 & 43.09 &    2.53 & 1.007 & 43.30 &    3.79 \\%
+%           &     X & 1.113 & 73.38 &   67.45 & 1.087 & 76.31 &   53.48 & 1.125 & 72.90 &   81.02 & 1.110 & 73.23 &   64.39 \\\hline%
+% \multicolumn{2}{|c|}{\textbf{Average}} & 1.091 & 65.99 & 51.48 & \textbf{1.069} & \textbf{68.87} & \textbf{37.11}%
+%                                       & 1.088 & 66.60 & 49.69 & 1.084 & 66.45 & 44.32 \\\hline\hline%
+%           &     I & 1.085 & 79.30 &  136.69 & 1.054 & 83.50 &   92.98 & 1.083 & 79.76 &  115.41 & 1.104 & 76.50 &  128.02 \\%
+%           &    II & 1.050 & 61.80 &  232.20 & 1.040 & 64.02 &  149.48 & 1.048 & 62.60 &  165.41 & 1.040 & 62.44 &  179.75 \\%
+%           &   III & 1.164 & 65.80 &  180.45 & 1.093 & 73.28 &  124.96 & 1.148 & 68.01 &  173.81 & 1.127 & 69.10 &  148.03 \\%
+%           &    IV & 1.070 & 58.68 &  223.21 & 1.053 & 60.59 &  153.24 & 1.063 & 60.12 &  210.69 & 1.063 & 59.19 &  183.06 \\%
+% \textbf{C} &     V & 1.134 & 67.32 &  149.25 & 1.088 & 72.38 &  105.04 & 1.134 & 68.20 &  142.07 & 1.106 & 69.88 &  121.12 \\%
+%           &    VI & 1.110 & 54.34 &  274.92 & 1.110 & 54.43 &  241.31 & 1.110 & 54.42 &  264.36 & 1.117 & 53.73 &  251.38 \\%
+%           &   VII & 1.161 & 70.18 &  296.58 & 1.106 & 76.20 &  209.59 & 1.164 & 70.42 &  261.95 & 1.134 & 71.77 &  227.27 \\%
+%           &  VIII & 1.153 & 70.86 &  421.53 & 1.101 & 76.79 &  273.28 & 1.172 & 69.72 &  387.14 & 1.135 & 72.15 &  320.40 \\%
+%           &    IX & 1.007 & 43.71 &    9.93 & 1.007 & 43.81 &    9.93 & 1.008 & 43.14 &   15.13 & 1.008 & 43.29 &   18.72 \\%
+%           &     X & 1.131 & 71.33 &  396.65 & 1.100 & 75.24 &  318.50 & 1.148 & 70.83 &  412.62 & 1.134 & 70.87 &  345.31 \\\hline%
+% \multicolumn{2}{|c|}{\textbf{Average}} & 1.107 & 64.33 & 232.14 & \textbf{1.075} & \textbf{68.02} & \textbf{167.83}%
+%                                       & 1.108 & 64.72 & 214.86 & 1.097 & 64.89 & 192.31 \\\hline%
+% \end{tabular}
+% \end{scriptsize}
+% \end{center}
+% \end{sidewaystable}

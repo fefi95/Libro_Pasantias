@@ -4,23 +4,64 @@
 
 \section{Descripción de la metodología TAUP}
 
-TAUP o Turpial Agile Unified Process es una metodología ágil creada por la empresa Turpial Development basada en los principios del "manifiesto ágil" que brinda a su equipo de trabajo una manera eficaz de llevar a cabo el desarrollo de \textit{software}. 
+TAUP es una metodología ágil creada por la empresa Turpial Development basada en los principios del ”manifiesto ágil” y brinda a su equipo de trabajo una manera eficaz de llevar a cabo el desarrollo de software. En el apéndice A, se encuentra mayor detalle sobre el manifiesto ágil.\\
 
-TAUP considera que la prioridad es la satisfacción del cliente mediante entregas continuas las cuales deben realizarse de manera frecuente, entre 2 semanas y 2 meses. Está conformada por tres fases de desarrollo: creación, construcción y transición.
+TAUP considera que la prioridad es la satisfacción del cliente mediante entregas continuas, las cuales deben realizarse en lapsos entre 1 semana y 1 mes. Está conformada por tres fases: concepción , construcción y transición. En el apéndice B se especifica los diferentes aspectos relacionados a la metodología.
 
-\section{Fase de Concepción}
 
-El objetivo de esta etapa es que el equipo de desarrollo profundice la
-comprensión de los requisitos del sistema y validación de la arquitectura propuesta. 
+\subsection{Fase de Concepción}
 
-\subsection{Historias de Usuario (HU)}
+El objetivo de esta etapa es que el equipo de desarrollo profundice la comprensión de los requerimientos del sistema. Para ello, se escriben las Historias de Usuario (HU) con su respectiva prioridad y nivel de dificultad. Estas son establecidas por el cliente y el equipo, respectivamente, haciendo uso de la siguiente escala: Alta, Media alta, Media, Media baja y Baja. También, el equipo, asigna Story Points (puntos) a cada HU que ponderan el esfuerzo que se requiere para culminarla.\\
 
-Es una técnica para expresar requerimientos que se caracteriza por ser sencilla de escribir, leer y evaluar. El usuario final o cliente le dará valor a esta HU ya que describe una funcionalidad que él necesita.\\
+Las HU cuentan con criterios de aceptación bien definidos que brindan más detalle respecto a los aspectos que validan su completitud y poseen pruebas de aceptación para asegurar que el producto cumpla con los estándares establecidos. Adicionalmente, deben cumplir con ciertos requisitos para que se comience a desarrollar (Definition of Ready o DoR) y otros para que sea considerada como culminada (Definition of Done o DoD).\\
 
-Las historias de usuarios se escriben en oraciones que poseen tres componentes indispensables: el rol del usuario que quiere realizar la acción, qué desea hacer y por qué. Ejemplo: *ejemplo*. Una buena HU está caracterizada por ser independiente, negociable, valiosa, estimable, pequeña y verificable (INVEST).\\
+Por último, se construye la lista de todas las Historias de Usuarios (Backlog) en el orden que se van a ejecutar tomando en cuenta la prioridad y el riesgo de la tarea y se elabora un calendario en el cual se agregarán los Sprints que sean necesarios para que todas las Historias de Usuarios sean cumplidas a cabalidad, llamado Release Plan (Apéndice D).
 
-Adicionalmente, deben contar con criterios de aceptación bien definidos que brinden más detalle respecto a los aspectos de la Historia de Usuario que validan que se ha logrado completar. 
 
-\section{Fase de Construcción}
+\subsection{Fase de Construcción}
 
-\section{Fase de Transición}
+El enfoque de está fase es desarrollar todo lo planteado en la Concepción, validando así, la arquitectura planteada. La metodología se basa en Sprints o iteraciones que son bloques de tiempo de duración corta y fija en los que al final, se puede obtener un producto potencialmente entregable. \\
+
+El primer día de cada Sprint se lleva a cabo la Reunión de Planificación, en la que todos los miembros del equipo revisan lo que se tiene planteado en el Release Plan, se verifica que cada una de esas Historias de Usuario estén en estado DoR para que sean divididas en tareas y se aclare cualquier duda acerca de lo que se va a realizar. \\
+
+Durante el Sprint, diariamente, se lleva a cabo una reunión corta llamada Daily Stand Ups Meeting, en la cual se discute el estado de las tareas para el momento, que se va a hacer y cuáles obstáculos se han presentado en el desarrollo de alguna HU.\\
+
+El último día de cada Sprint, los miembros del equipo deben reunirse para realizar la Revisión de Iteración, en la cual estará presente el cliente para mostrarle todos los avances. Luego, se realiza la Reunión de Retrospectiva, en donde se discute que hizo bien, que se puede mejorar y a que se compromete.
+
+\subsection{Fase de Transición}
+
+En esta fase se probará todo lo desarrollado en la fase de Construcción. Estas pruebas funcionales y no funcionales, verifican que el proyecto pueda ser utilizado en un ambiente de producción, además se creará un manual para el usuario, el cual le dará la capacitación necesaria al cliente para poder utilizar sin problemas el sistema. También se validará la documentación, comprobando que todo el código esté correctamente explicado para que pueda ser entendido con facilidad en caso de que sea necesario realizar cambios.\\
+
+Luego de que el sistema esté completo, se tendrá que desplegar en el ambiente de producción, al terminar este proceso se otorgará un tiempo prudencial al cliente para efectuar pruebas y se llevan a cabo las correcciones pertinentes.
+
+\section{Adaptación de la metodología a la pasantía}
+
+En la sección anterior se explicó la metodología TAUP, sin embargo, dependiendo del proyecto que se desea desarrollar, se puede realizar algunas modificaciones que mejoren la dinámica y la velocidad del equipo o porque el cliente así lo requiera. A continuación se presentan los cambios realizados en cada fase para ajustarlos a la pasantía en cuestión. 
+
+\subsection{Fase de Concepción}
+
+En cuanto a las Historias de Usuario, se ideó un código compuesto por una letra y un número que facilita referenciarla. La letra representa el módulo a la que pertenece, Core (Principal) o Estadísticas, y el número denota el orden que fue concebida. Adicionalmente, se utilizó una modificación  para las escalas de prioridad y riesgo, que está conformada por tres valores: Alta, Media y Baja. Para más información sobre las HU desarrolladas, leer el Apéndice C\\
+
+Con respecto a la Definition of Ready se tiene que debe cumplir con los siguientes criterios:
+
+\begin{itemize}
+    \item Debe ubicarse dentro de uno de los módulos del proyecto.
+    \item Debe de tener asignado una prioridad por el cliente.
+    \item Debe de tener asignado un riesgo por el equipo de desarrollo.
+    \item Debe de tener asignado su respectivo puntaje.
+    \item (Opcional pero deseado) Debe de tener una breve descripción, aclaratoria o criterio adicional según sea el caso.
+\end{itemize}
+
+Mientras que para la Definition of Done posee los siguientes estatutos:
+
+\begin{itemize}
+    \item Debe realizarse la codificación respectiva
+    \item El código generado debe estar debidamente documentado para facilidad de programador
+    \item Debe de realizarse la documentación respectiva (de ser necesaria) de todos los aspectos de configuración asociados al desarrollo y buen funcionamiento de la historia de usuario.
+    \item Deben realizarse pruebas automatizadas a la codificación generada.
+    \item Debe presentarse la nueva funcionalidad al cliente.
+    \item Debe estar disponible en el servidor.
+\end{itemize}
+
+\subsection{Fase de Construcción}
+\subsection{Fase de Transición}
