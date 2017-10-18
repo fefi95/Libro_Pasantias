@@ -12,9 +12,9 @@ Se considera una acción auditable todo flujo del sistema que cree, edite o borr
 
 \section{Microservicio}
 
-Es un proceso autónomo, cohesivo e independiente que suele interactuar con otros componentes a través de mensajes \cite{Microservices1}. Se enfocan en resolver un único problema y funcionan de manera aislada; si se presentan una falla no se propaga y puede ser atendido más rápidamente. \cite{Microservices2} \\
+Es un un tipo de arquitectura que consiste en desarrollar una aplicación como un conjunto de pequeños servicios. Dichos servicios son procesos autónomos, cohesivos e independientes que suelen interactuar con otros componentes a través de mensajes \cite{Microservices1}. Se enfocan en resolver un único problema y funcionan de manera aislada; si se presentan una falla no se propaga y puede ser atendido más rápidamente. \cite{Microservices2} \\
 
-Estos servicios se manejan de manera descentralizada y hacen uso de un despliegue completamente automatizado. Cada uno de ellos pueden ser escritos en diferentes lenguajes y tecnologías para almacenar información y aún así, interactuar y compartir información. \cite{Microservices3}
+Estos servicios se manejan de manera descentralizada y hacen uso de un despliegue completamente automatizado. Cada uno de ellos pueden ser escritos en diferentes lenguajes y tecnologías para almacenar información y aún así, interactuar y compartir información. \cite{Microservices2}
 
 \section{Integración Contínua}
 
@@ -24,7 +24,7 @@ Es una práctica de desarrollo de software en la que los miembros del equipo com
 
 Las pruebas tienen como objetivo ejercitar el código para detectar errores y verificar que el software satisface los requerimientos especificados para asegurar su calidad. Estas son realizadas desde el punto de vista del usuario y las funcionalidades son probadas ingresando información y examinando la salida. \cite{Pruebas_Automatizadas}\\ 
 
-Esta labor puede ser larga y repetitiva, por lo que es conveniente contar con herramientas que provean métodos que faciliten el proceso de escribir y  ejecutar casos de prueba y así, reducir significativamente el esfuerzo y tiempo invertido por los desarrolladores. \cite{Pruebas_Automatizadas} A esto se le conoce como automatización de pruebas. 
+Esta labor puede ser larga y repetitiva, por lo que es conveniente contar con herramientas que provean métodos que faciliten el proceso de escribir y  ejecutar casos de prueba y así, reducir significativamente el esfuerzo y tiempo invertido por los desarrolladores. \cite{Pruebas_Automatizadas} A este conjunto de casos de pruebas se le conoce como prueba automatizada.
 
 \section{Patrón Modelo-Vista-Controlador}
 
@@ -33,9 +33,9 @@ Este patrón de diseño asigna objetos en una aplicación a uno de tres roles: m
 \begin{itemize}
     \item Modelo: controla el comportamiento y la data de la aplicación, responde las solicitudes de información (usualmente desde la vista) y las instrucciones de cambio de estado (usualmente desde el controlador).
     \item Vista: maneja la presentación de la información.
-    \item Controlador: interpreta las entradas del usuario y le informa al modelo y/o vista para cambiar lo que sea apropiado.
+    \item Controlador: interpreta las entradas del usuario y le informa al modelo y/o vista para cambiar lo que sea apropiado.\cite{MVC1}
 \end{itemize}
-\cite{MVC1}
+
 
 
 Figura 1. Diagrama del patrón MVC\\
@@ -44,7 +44,7 @@ Es importante notar que la vista y el controlador dependen del modelo, sin embar
 
 \section{Patrón Modelo-Vista-Plantilla}
 
-Es una modificación del patrón MVC en el cual la “vista” es la función de callback para pedir una URL en particular, porque esta define cual dato es presentado y su comportamiento, no como se ve. La vista delega a la “plantilla”  la presentación de la información.
+Es una adaptación del patrón MVC, en el cual la “vista” define cual dato es presentado y su comportamiento, no como se muestra. El dato es obtenido a través de la función de callback para pedir una URL en particular. Por otro lado, la “vista” delega a la “plantilla”  la presentación de la información.\\
 
 En el caso de Django, el controlador es el \textit{framework} en sí: “la maquinaría que envía una petición a la vista apropiada, de acuerdo a la configuración de URL de Django” \cite{MVT}
 

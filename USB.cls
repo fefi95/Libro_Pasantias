@@ -405,7 +405,7 @@
       \leaders\hbox{$\m@th
         \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
         mu$}\hfill
-      \hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+       \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
       \penalty\@highpenalty
     \endgroup
   \fi}
@@ -433,6 +433,14 @@
 %     \oldtableofcontents
 %   \end{onehalfspace}
 % }
+
+\let\oldappendix = \appendix
+\renewcommand{\appendix}{
+    % \clearpage
+    \addcontentsline{toc}{chapter}{\textbf{\appendixname s}}
+    \oldappendix
+}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                       %
@@ -499,8 +507,7 @@
 
 
  
-% Change names of table of contents and bibliography
-\renewcommand{\bibname}{REFERENCIAS}
+% Change names of appendix
 \renewcommand\appendixname{APÉNDICE}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,14 +1,14 @@
 \chapter{Manual de metodología de Turpial (resumen)}
 
-\section{Descripción de la metodología TAUP}
+\section*{Descripción de la metodología TAUP}
 
 TAUP o Turpial Agile Unified Process es una metodología ágil creada por la empresa Turpial Development basada en los principios del ”manifiesto ágil” que brinda a su equipo de trabajo una manera eficaz de llevar a cabo el desarrollo de software.
 
-\section{Fase de Concepción}
+\section*{Fase de Concepción}
 
 El objetivo de esta etapa es que el equipo de desarrollo profundice la comprensión de los requisitos del sistema y validación de la arquitectura propuesta. 
 
-\section{Historias de Usuario (HU)}
+\section*{Historias de Usuario (HU)}
 
 Es una técnica para expresar requerimientos que se caracteriza por ser sencilla de escribir, leer y evaluar. El usuario final o cliente le dará valor a esta HU ya que describe una funcionalidad que él necesita.\\
 
@@ -18,74 +18,91 @@ Adicionalmente, deben contar con criterios de aceptación bien definidos que bri
 
 Por último, una HU, debe contar con pruebas de aceptación ya que van a permitir que el producto cumpla con los estándares y que se satisfagan los requerimientos establecidos. Corresponden a una condición que se pueda verificar de los criterios de aceptación y una vez que han sido validadas, se puede dar por culminada la Historia de Usuario.
 
-\section{Priorizar Historias de Usuario}
+\section*{Priorizar Historias de Usuario}
 
 El cliente establecerá una prioridad para las Historias de usuario, la cual es uno de los factores que influyen en el orden de ejecución de las mismas. Se puede utilizar la siguiente escala de cinco valores: Alta, Media alta, Media, Media Baja y Baja.
 
-\section{Análisis de riesgo de Historias de Usuario}
-El equipo de desarrollo debe establecer un nivel de dificultad para cada HU, para esto, los desarrolladores deben tomar en cuenta diversos factores como: aprender nuevas tecnologías, manejar herramientas desconocidas o investigar un tema en particular. La escala cuenta con cinco valores: Alto, Medio Alto, Medio, Medio Bajo, Bajo.
+\section*{Análisis de riesgo de Historias de Usuario}
 
-Para este proyecto se utilizó, al igual en la sección anterior, una escala reducida para puntuar el riesgo: Alto, Medio y Bajo
+El equipo de desarrollo debe establecer un nivel de dificultad para cada HU, para esto, los desarrolladores deben tomar en cuenta diversos factores como: aprender nuevas tecnologías, manejar herramientas desconocidas o investigar un tema en particular. La escala cuenta con cinco valores: Alto, Medio Alto, Medio, Medio Bajo, Bajo.\\
 
-\section{Análisis de Esfuerzo de Historias de Usuario}
-Representa una estimación de cuánto esfuerzo se requiere para culminar una Historia de Usuario, a esto se le denominará Story Points. Al momento de asignar los Story Points se deben considerar diversos factores como el riesgo, complejidad  y desconocimiento de la tarea a realizar, entre otros. La escala de ponderación viene dada por la secuencia de Fibonacci.
+Para este proyecto se utilizó, al igual en la sección anterior, una escala reducida para puntuar el riesgo: Alto, Medio y Bajo.
 
-Cuando una Historia de Usuario consigue un Story Point muy alto (usualmente un valor mayor a 8), deberá ser revisada nuevamente ya que podría dividirse en varias Historias de Usuario que puedan más manejables.  Cada Story Point corresponde a lo que se le denomina un Login Point que posee el valor de uno y corresponde a un módulo de autenticación de usuarios de un sistema.
+\section*{Análisis de Esfuerzo de Historias de Usuario}
+
+Representa una estimación de cuánto esfuerzo se requiere para culminar una Historia de Usuario, a esto se le denominará Story Points. Al momento de asignar los Story Points se deben considerar diversos factores como el riesgo, complejidad  y desconocimiento de la tarea a realizar, entre otros. La escala de ponderación viene dada por la secuencia de Fibonacci.\\
+
+Cuando una Historia de Usuario consigue un Story Point muy alto (usualmente un valor mayor a 8), deberá ser revisada nuevamente ya que podría dividirse en varias Historias de Usuario que puedan más manejables.  Cada Story Point corresponde a lo que se le denomina un Login Point que posee el valor de uno y corresponde a un módulo de autenticación de usuarios de un\\ sistema.
 
 El equipo de desarrollo debe estimar de manera consensuada los Story Point a través de una dinámica denominada Planning Poker; cada miembro puntuará las Historias de Usuario, se eliminarán el valor más alto y el más bajo, el resto se promedian.
 
-\section{Backlog}
+\section*{Backlog}
+
 A la lista de todas las Historias de Historia de Usuarios construidas a partir de toda la información suministrada en los puntos anteriores se le denominará Backlog, al construirla  se determina el orden se van a ejecutar tomando en cuenta la prioridad y el riesgo de la tarea, sin embargo, puede cambiar. 
 
-\section{Release Plan}
+\section*{Release Plan}
+
 Es un calendario en el cual se agregarán los Sprint que sean necesarios para que todas las Historias de Usuarios sean cumplidas a cabalidad.
 
-Definición de Listo “DoR”
+\section*{Definición de Listo “DoR”}
+
 DoR (Definition Of Ready) definido así por sus siglas en inglés, es un acuerdo que se establece
-en el equipo de desarrollo para cada Historia de Usuario que responde a la pregunta ‘¿Qué tiene que estar listo antes de empezar a trabajar en una Historia de Usuario y la misma pueda ser ejecutada en el próximo Sprint?’.
+en el equipo de desarrollo para cada Historia de Usuario que responde a la pregunta ‘¿Qué tiene que estar listo antes de empezar a trabajar en una Historia de Usuario y la misma pueda ser ejecutada en el próximo Sprint?’.\\
 
 Se debe tener en cuenta los siguientes aspectos: 
-Que sea independiente o de lo contrario que la(s) Historia de Usuario que lo preceden ya están implementadas o van a desarrollarse en el mismo Sprint.
-Que la Historia de Usuario tiene que ser desarrollada en un solo Sprint.
-Que los criterios de aceptación para la Historia de Usuario sean detallados
-Que las pruebas de aceptación puedan realizarse en el Sprint.
-Que la Historia de Usuario tenga asignado su Story Point.
-Tomar en cuenta si existe alguna dependencia externa para la Historia de Usuario.
 
-Definición de Terminado “DoD”
+\begin{itemize}
+    \item Que sea independiente o de lo contrario que la(s) Historia de Usuario que lo preceden ya están implementadas o van a desarrollarse en el mismo Sprint.
+    \item Que la Historia de Usuario tiene que ser desarrollada en un solo Sprint.
+    \item Que los criterios de aceptación para la Historia de Usuario sean detallados
+    \item Que las pruebas de aceptación puedan realizarse en el Sprint.
+    \item Que la Historia de Usuario tenga asignado su Story Point.
+    \item Tomar en cuenta si existe alguna dependencia externa para la Historia de Usuario.
+\end{itemize}
+
+\section*{Definición de Terminado “DoD”}
+
 DoD (Definition of Done) definido así por sus siglas en inglés, responde a la pregunta “¿Qué tiene que cumplir una Historia de Usuario para que se considere finalizada?”, también puede incluir otros aspectos que sean considerados por el equipo de desarrollo como primordiales para que una HU sea considerada terminada. Este acuerdo explica con detalle los criterios para que toda HU sea considerada terminada.
 
-La Historia de Usuario ya ha sido analizada.
-El código tiene que estar escrito.
-El código tiene que estar documentado o comentado.
-El código se ha integrado a todo lo desarrollado con anterioridad.
-La Historia de Usuario ha pasado por todas sus pruebas de aceptación con éxito.
-Haberle mostrado la Historia de Usuario al cliente y que este la acepte.
+\begin{itemize}
+    \item La Historia de Usuario ya ha sido analizada.
+    \item El código tiene que estar escrito.
+    \item El código tiene que estar documentado o comentado.
+    \item El código se ha integrado a todo lo desarrollado con anterioridad.
+    \item La Historia de Usuario ha pasado por todas sus pruebas de aceptación con éxito.
+    \item Haberle mostrado la Historia de Usuario al cliente y que este la acepte.
+\end{itemize}
 
-Fase de Construcción
+
+\section*{Fase de Construcción}
+
 El enfoque de está fase es desarrollar todo lo planteado en la Concepción, validando así, la arquitectura planteada. La metodología se basa en Sprints o iteraciones.
 
-Sprints
-El desarrollo del software se tiene que ejecutar por bloques de duración corta y fija, de 5 días (semana laboral) hasta 1 mes. Cada Sprint tiene que proporcionar un resultado concreto, un incremento de producto que sea potencialmente entregable, de tal manera que pueda estar disponible para ser utilizado por el cliente y así, proporcionar observaciones de lo que se le está mostrando.
+\subsection*{Sprints}
 
-El primer día de cada Sprint se lleva a cabo la Reunión de Planificación, en la que todos los miembros del equipo revisan lo que se tiene planteado en el Release Plan para ese Sprint, verifican que cada una de esas Historias de Usuario estén en estado DoR para que sean divididas en tareas y se aclare cualquier duda acerca de lo que se va a realizar. Luego de que se conozcan cuáles son las tareas a desarrollar, se distribuyen a cada miembro del equipo y se colocan en un Kanban Board para saber cuáles están por hacer (To Do), cuales se están haciendo (Doing) y cuales están finalizadas (Done).
+El desarrollo del software se tiene que ejecutar por bloques de duración corta y fija, de 5 días (semana laboral) hasta 1 mes. Cada Sprint tiene que proporcionar un resultado concreto, un incremento de producto que sea potencialmente entregable, de tal manera que pueda estar disponible para ser utilizado por el cliente y así, proporcionar observaciones de lo que se le está mostrando. \\
 
-Durante el Sprint se debe realizar todos los días el Daily Stand Ups Meeting cuyos integrantes son el equipo desarrollador y su líder de proyecto. Tienen un horario (no debería de durar más quince minutos) y lugar fijo y los participantes tendrán tiempo para hablar y responder tres preguntas: qué ha realizado desde el último Daily, qué se está haciendo y qué bloquea su progreso.
+El primer día de cada Sprint se lleva a cabo la Reunión de Planificación, en la que todos los miembros del equipo revisan lo que se tiene planteado en el Release Plan para ese Sprint, verifican que cada una de esas Historias de Usuario estén en estado DoR para que sean divididas en tareas y se aclare cualquier duda acerca de lo que se va a realizar. Luego de que se conozcan cuáles son las tareas a desarrollar, se distribuyen a cada miembro del equipo y se colocan en un Kanban Board para saber cuáles están por hacer (To Do), cuales se están haciendo (Doing) y cuales están finalizadas (Done).\\
 
-El último día de cada Sprint, los miembros del equipo se deben reunir para realizar una Revisión de Iteración, en la cual estará presente el cliente para mostrarle todos los avances y que dé su opinión para que el equipo realice las correcciones pertinentes lo más pronto posible. Luego, se realiza la Reunión de Retrospectiva, en donde se discute que hizo bien, que se puede mejorar y a que se compromete.
+Durante el Sprint se debe realizar todos los días el Daily Stand Ups Meeting cuyos integrantes son el equipo desarrollador y su líder de proyecto. Tienen un horario (no debería de durar más quince minutos) y lugar fijo y los participantes tendrán tiempo para hablar y responder tres preguntas: qué ha realizado desde el último Daily, qué se está haciendo y qué bloquea su progreso.\\
+
+El último día de cada Sprint, los miembros del equipo se deben reunir para realizar una Revisión de Iteración, en la cual estará presente el cliente para mostrarle todos los avances y que dé su opinión para que el equipo realice las correcciones pertinentes lo más pronto posible. Luego, se realiza la Reunión de Retrospectiva, en donde se discute que hizo bien, que se puede mejorar y a que se compromete\\
 
 Para cada Sprint es necesario ver qué cantidades de Story Points se van a realizar y cuáles se están trabajando y cuales están ya en DoD. Para esto se crea una gráfica que sirve para saber si se puede o no terminar lo planteado para el Sprint, llamada Burndown Chart, en la cual se coloca en el eje X el tiempo que dura el Sprint y en el eje Y la cantidad de Story Points. Esta práctica también sirve para referirse al avance de todo el proyecto, haciendo el mismo procedimiento antes explicado, pero cambiando los ejes de manera que en ellos se encuentre el total de Story Point del desarrollo del proyecto y todos los Sprint del mismo.
 
-Fase de Transición
+\section*{Fase de Transición}
+
 En esta fase se probará todo lo desarrollado en la fase de construcción. Estas pruebas funcionales y no funcionales verifican que el proyecto pueda ser utilizado en un ambiente de producción, además se creará un manual para el usuario, el cual le dará la capacitación necesaria al cliente para poder utilizar sin problemas el sistema.
 
-Pruebas
-Se realiza la validación del sistema a través de pruebas de integración, despliegue y comportamiento y que el mismo pueda ser desplegado en un ambiente de preproducción. También se validará la documentación, en donde se verificará que todo el código esté correctamente documentado para que pueda ser entendido con facilidad en caso de que sea necesario realizar cambios. Se crea el Manual de Usuario, en el que se especifica todas las funcionalidades del sistema para que el cliente pueda consultar si tiene alguna duda con respecto a la funcionalidad.
+\subsection*{Pruebas}
+
+Se realiza la validación del sistema a través de pruebas de integración, despliegue y comportamiento y que el mismo pueda ser desplegado en un ambiente de preproducción. También se validará la documentación, en donde se verificará que todo el código esté correctamente documentado para que pueda ser entendido con facilidad en caso de que sea necesario realizar cambios. Se crea el Manual de Usuario, en el que se especifica todas las funcionalidades del sistema para que el cliente pueda consultar si tiene alguna duda con respecto a la funcionalidad.\\
 
 Por último, se verifica que todo lo anterior se haya cumplido, de no ser así se tendrá que hacer pruebas de regresión y modificaciones a la validación de la documentación hasta que el cliente esté  satisfecho con el trabajo realizado.
 
-Puesta en Producción
-Luego de que el sistema esté completado, se tendrá que desplegar en el ambiente de producción, al terminar este proceso se otorgará un tiempo prudencial al cliente para efectuar pruebas. El reporte de estos defectos será más formal ya que llevarán un registro, junto con sus detalles para que los desarrolladores puedan corregirlos.
+\subsection*{Puesta en Producción}
+
+Luego de que el sistema esté completo, se tendrá que desplegar en el ambiente de producción, al terminar este proceso se otorgará un tiempo prudencial al cliente para efectuar pruebas. El reporte de estos defectos será más formal ya que llevarán un registro, junto con sus detalles para que los desarrolladores puedan corregirlos.
 
 % \refstepcounter{chapter}%
 %  \chapter*{APPENDIX \thechapter} \label{appendixB}
