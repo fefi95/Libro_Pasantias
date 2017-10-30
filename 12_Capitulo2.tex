@@ -3,8 +3,22 @@
 \thispagestyle{empty}
 
 \section{Antecedentes}
+
+En ocasiones, las aplicaciones necesitan un sistema que registre la creación, eliminación y actualización de los datos manejados, bien sea para cumplir estatutos gubernamentales o para observar el comportamiento de la información considerada sensible. La empresa Turpial Development desea contar con una librería confiable y de fácil instalación que provea estas funcionalidades, de manera que puedan ser ofrecidas como un servicio a sus clientes.\\
+
+Existen algunas librería disponibles que son capaces de realizar estos procedimientos. Una de las más populares es django-reversions, una extensión de Django que provee control de versiones para los modelos del \textit{framework} y la posibilidad de restaurar la base de datos a una versión anterior. La empresa utilizó dicha librería en algunos proyectos, sin embargo, su integración delega demasiada responsabilidad al programador por lo que es susceptible a errores humanos.\\
+
+Por otro lado, ninguna de la librerías disponibles cuentan con un módulo que permita visualizar los datos obtenidos a través de estadísticas, el desarrollador debe realizar esta labor por el mismo; Analizando la información recaudada y ajustando la estructura de datos para hacer uso de otras librerías que dispongan de la capacidad de realizar gráficas. 
+
 \section{Planteamiento del problema}
+
+Con el auge del desarrollo de \textit{software}, surgieron entes que controlan y supervisan el uso de la información y garantizan la confiabilidad de los mismos, por lo que algunas aplicaciones requieren mecanismos para registrar las operaciones ejecutadas. También se pueden utilizar estas trazas para caracterizar el comportamiento de alguna característica en particular del programa a desarrollar.\\
+
+Aunque existen aplicaciones capaces de realizar estas funcionalidades, ninguna de ellas se adecúa a las necesidades de Turpial Development, ya que delegan demasiada responsabilidad a la capa lógica de la aplicación, son difíciles de entender o no registran toda la información que requieren los clientes. Es por esta razón que la empresa se vió en la necesidad de crear su propia librería que mantener un historial de acciones efectuadas sobre algunas tablas en la base de datos.
+
 \section{Justificación}
+
+La empresa Turpial Development decidió invertir en el desarrollo de una librería de auditorías que se ajuste tanto a las necesidades de sus programadores, como a la de sus cliente; y que agilice el desarrollo de cualquier proyecto que requiera registrar las operaciones y posea una base de datos relacional. La solución planteada es realizar dicha librería bajo la estructura de microservicio, para el \textit{framework} Django y utilizar alguna herramienta automatizada para integrar el trabajo de manera continua, empaquetar, probar y desplegar la librería de manera que se actualice con rapidez y esté disponible en todo momento.
 
 \section{Objetivo general}
 
