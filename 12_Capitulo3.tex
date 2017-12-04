@@ -2,6 +2,8 @@
 
 \thispagestyle{empty}
 
+En este capítulo se presentan los aspectos teóricos que sustentan y respaldan el desarrollo del proyecto de pasantía. A continuación se describen los conceptos que permiten explicar el problema planteado.
+
 \section{Auditoría}
 
 Es una revisión sistemática para determinar si la calidad de las actividades cumplen con los acuerdos planificados y si estos están implementados efectivamente y son adecuados para alcanzar sus objetivos. Ofrecen una oportunidad de mejora al sistema y pueden ser llevadas a cabo para cumplir con normas regulatorias. Las auditorías se pueden aplicar a sistemas, procesos, programas o servicios y pueden ser internas (realizadas por la misma empresa) o externas (realizadas por proveedores). \cite{weinstein1997total}
@@ -12,7 +14,7 @@ Se considera una acción auditable todo flujo del sistema que cree, edite o borr
 
 \section{Microservicio}
 
-Es un un tipo de arquitectura que consiste en desarrollar una aplicación como un conjunto de pequeños servicios. Dichos servicios son procesos autónomos, cohesivos e independientes que suelen interactuar con otros componentes a través de mensajes \cite{Microservices1}. Se enfocan en resolver un único problema y funcionan de manera aislada; si se presentan una falla no se propaga y puede ser atendido más rápidamente. \cite{Microservices2} \\
+Es un tipo de arquitectura que consiste en desarrollar una aplicación como un conjunto de pequeños servicios. Dichos servicios son procesos autónomos, cohesivos e independientes que suelen interactuar con otros componentes a través de mensajes \cite{Microservices1}. Se enfocan en resolver un único problema y funcionan de manera aislada; si se presentan una falla no se propaga y puede ser atendido más rápidamente. \cite{Microservices2} \\
 
 Estos servicios se manejan de manera descentralizada y hacen uso de un despliegue completamente automatizado. Cada uno de ellos pueden ser escritos en diferentes lenguajes y tecnologías para almacenar información y aún así, interactuar y compartir información. \cite{Microservices2}
 
@@ -44,123 +46,18 @@ Es importante notar que la vista y el controlador dependen del modelo, sin embar
 
 \section{Patrón Modelo-Vista-Plantilla}
 
-Es una adaptación del patrón MVC, en el cual la “vista” define cual dato es presentado y su comportamiento, no como se muestra. El dato es obtenido a través de la función de callback para pedir una URL en particular. Por otro lado, la “vista” delega a la “plantilla”  la presentación de la información.\\
+Es una adaptación del patrón MVC, en el cual la “vista” define cuál dato es presentado y su comportamiento, no como se muestra. El dato es obtenido a través de la función de \textit{callback} para pedir una URL en particular. Por otro lado, la “vista” delega a la “plantilla”  la presentación de la información.\\
 
-En el caso de Django, el controlador es el \textit{framework} en sí: “la maquinaría que envía una petición a la vista apropiada, de acuerdo a la configuración de URL de Django” \cite{MVT}
+En el caso de Django, el “controlador” es el \textit{framework} en sí: “la maquinaria que envía una petición a la vista apropiada, de acuerdo a la configuración de URL de Django”. \cite{MVT}
 
 \section{Señales}
 
-Permiten a las aplicaciones ser notificadas cuando ocurra una acción en algún otro lugar, es decir, las señales permiten a ciertos emisores notificar a un conjunto de receptores que alguna acción está siendo ejecutada. \cite{Signals} En términos de software, son el análogo a interrupciones de hardware. \cite{Senales}
+Permiten a las aplicaciones ser notificadas cuando ocurra una acción en algún otro lugar, es decir, las señales permiten a ciertos emisores notificar a un conjunto de receptores que alguna acción está siendo ejecutada. \cite{Signals} En términos de \textit{software}, son el análogo a interrupciones de \textit{hardware}. \cite{Senales}
 
 \section{Mixins}
 
 Es un estilo de programación en el cual las unidades de funcionalidad son creadas en una clase y se incorporan en otras \cite{Mixins}. Pueden entenderse como “un subclase abstracta que puede ser usada para especializar el comportamiento de una variedad de padres”.  \cite{Mixins2} \\
 
-Usualmente, los Mixins, definen nuevos métodos que realizan alguna acción y luego llaman a los métodos del padre correspondiente; pueden utilizarse en varias clases de la jerarquía y sin importar en qué clases sean usadas. \\
+Usualmente, los \textit{Mixins}, definen nuevos métodos que realizan alguna acción y luego llaman a los métodos del padre correspondiente; pueden utilizarse en varias clases de la jerarquía y sin importar en qué clases sean usadas. \\
 
-Hay varias razones para usar Mixins: extienden las clases existentes sin tener que editar, mantener o combinar el código fuente; mantienen el proyecto en componentes separados; facilitan la creación de nuevas clases con funcionalidades pre-fabricadas y que se puede combinar según sea la necesidad.\cite{Mixins}
-
-
-% IMPORTANT NOTE: For the tables and the figures, The label should be inside the caption but %
-%                 outside the text. The label should be meaningful to the figure or table.   %
-
-% \section{Figures}
-
-% Some examples of displaying the figures in {\LaTeX} \ldots\\
-% One single figure \ldots e.g. Figure \ref{digsig}: % cross referencing for figure 1 %
-% \begin{figure}[h!]
-% \begin{center}
-% \includegraphics[angle=0,width=3in]{daigramforthedigitalsignature.eps}
-% \end{center}
-% \vspace{-1cm}{\textbf{\caption{Block Diagram for the Digital
-% Signature in Decimal Cryptosystem}\label{digsig}}}
-% \addtocontents{lof}{\protect\addvspace{.5cm}}
-% \end{figure}
-
-% Two-in-One figure \ldots e.g. Figure \ref{2in1}: % cross referencing for figure 2 %
-% \begin{figure}
-% \begin{center}
-% (a)\includegraphics[angle=0,width=2.5in]{klnexact1.eps}
-% (b)\includegraphics[angle=0,width=2.5in]{klnVIM1.eps}
-% \end{center}
-% \vspace{-1cm}{\textbf{\caption{(a) The Exact Solution (b) The
-% Numerical Results for $u(x,t)$ by means of 2-iterate VIM
-% solution.}\label{2in1}}}
-% \addtocontents{lof}{\protect\addvspace{.5cm}}
-% \end{figure}
-
-% \section{Tables}
-
-% Some examples of creating tables in {\LaTeX} \ldots\\
-% Simple table \ldots e.g. Table \ref{crypto}: % cross referencing for table 1 %
-% \begin{table}[h!]
-% \begin{center}
-% {\textbf{\caption {Time for Encryption/Decryption of different
-% length of Plaintexts}\label{crypto}}}
-% \addtocontents{lot}{\protect\addvspace{.5cm}}
-% \begin{footnotesize}
-% \vspace{0.5cm}
-% \begin{tabular}{|c|c|c|c|c|}                                                           \hline%
-% \textbf{Decimal}     & \multicolumn{4}{|c|}{\textbf{Public key}}                     \\%
-% \textbf{cryptosystem}& \multicolumn{4}{|c|}{\textbf{0.4921}}                         \\\hline%
-%                      & \multicolumn{2}{|c|}{encryption}    & decryption       & time \\\hline%
-% text                 & $c_1$       & $c_2$                 & text             & ms   \\\hline%
-% 130519               & 0.6511      & 919.03                & 130519           & 15   \\%
-% 133519               & 0.5511      & 998.04                & 133519           & 0    \\%
-% 987654               & 0.7249      & 310.75                & 987654           & 15   \\\hline%
-% \end{tabular}
-% \end{footnotesize}
-% \end{center}
-% \end{table}
-
-% Slightly more complex table \ldots e.g. Table \ref{BLFvLGFvFCvTP}: % cross referencing for table 2 %
-
-% \begin{table}[h!]
-% \begin{center}
-% {\bf{\caption{Comparison of LGF with BLF, FC, and TP}\label{BLFvLGFvFCvTP}}}%
-% \addtocontents{lot}{\protect\addvspace{.5cm}}
-% \begin{scriptsize}
-% \vspace{0.5cm}
-% \begin{tabular}{|cc|c|c|c|c||cc|c|c|c|c|}\hline%
-%      Class & \textit{n} & \textbf{BLF} & \textbf{LGF} & \textbf{FC} & \textbf{TP} &
-%      Class & \textit{n} & \textbf{BLF} & \textbf{LGF} & \textbf{FC} & \textbf{TP} \\\hline%
-%           &  20 & 1.09 & 1.03 & 1.06 & 1.05 &       &  20 & 1.00 & 1.00 & 1.00 & 1.00 \\%
-%           &  40 & 1.12 & 1.04 & 1.08 & 1.06 &       &  40 & 1.40 & 1.40 & 1.40 & 1.40 \\%
-%          I &  60 & 1.13 & 1.05 & 1.09 & 1.05 &    VI &  60 & 1.10 & 1.05 & 1.05 & 1.05 \\%
-%           &  80 & 1.15 & 1.06 & 1.09 & 1.06 &       &  80 & 1.00 & 1.00 & 1.00 & 1.00 \\%
-%           & 100 & 1.12 & 1.04 & 1.07 & 1.03 &       & 100 & 1.13 & 1.07 & 1.07 & 1.07 \\\cline{3-6} \cline{9-12}%
-% \multicolumn{2}{|c|}{Average} & 1.122 & {\bf 1.044} & 1.078 & 1.050 &%
-% \multicolumn{2}{|c|}{Average} & 1.127 & {\bf 1.103} & 1.104 & 1.104 \\\hline%
-%           &  20 & 1.00 & 1.00 & 1.00 & 1.00 &       &  20 & 1.22 & 1.19 & 1.19 & 1.13 \\%
-%           &  40 & 1.10 & 1.10 & 1.10 & 1.10 &       &  40 & 1.20 & 1.12 & 1.17 & 1.10 \\%
-%         II &  60 & 1.10 & 1.05 & 1.05 & 1.00 &   VII &  60 & 1.20 & 1.10 & 1.18 & 1.12 \\%
-%           &  80 & 1.07 & 1.07 & 1.03 & 1.07 &       &  80 & 1.20 & 1.10 & 1.17 & 1.11 \\%
-%           & 100 & 1.06 & 1.03 & 1.03 & 1.00 &       & 100 & 1.19 & 1.09 & 1.17 & 1.11 \\\cline{3-6} \cline{9-12}%
-% \multicolumn{2}{|c|}{Average} & 1.065 & 1.050 & 1.042 & {\bf 1.034} &%
-% \multicolumn{2}{|c|}{Average} & 1.202 & 1.119 & 1.176 & {\bf 1.114} \\\hline%
-%           &  20 & 1.20 & 1.06 & 1.18 & 1.06 &       &  20 & 1.23 & 1.15 & 1.16 & 1.16 \\%
-%           &  40 & 1.22 & 1.13 & 1.16 & 1.11 &       &  40 & 1.22 & 1.16 & 1.19 & 1.16 \\%
-%       III &  60 & 1.26 & 1.10 & 1.19 & 1.11 &  VIII &  60 & 1.19 & 1.09 & 1.18 & 1.11 \\%
-%           &  80 & 1.27 & 1.10 & 1.15 & 1.10 &       &  80 & 1.19 & 1.10 & 1.16 & 1.11 \\%
-%           & 100 & 1.23 & 1.08 & 1.13 & 1.08 &       & 100 & 1.19 & 1.09 & 1.17 & 1.12 \\\cline{3-6} \cline{9-12}%
-% \multicolumn{2}{|c|}{Average} & 1.239 & 1.093 & 1.162 & {\bf 1.092} &%
-% \multicolumn{2}{|c|}{Average} & 1.204 & {\bf 1.116} & 1.172 & 1.132 \\\hline%
-%           &  20 & 1.00 & 1.00 & 1.00 & 1.00 &       &  20 & 1.01 & 1.01 & 1.00 & 1.01 \\%
-%           &  40 & 1.00 & 1.00 & 1.00 & 1.00 &       &  40 & 1.02 & 1.02 & 1.01 & 1.02 \\%
-%         IV &  60 & 1.10 & 1.15 & 1.10 & 1.10 &    IX &  60 & 1.01 & 1.01 & 1.01 & 1.01 \\%
-%           &  80 & 1.10 & 1.10 & 1.10 & 1.07 &       &  80 & 1.01 & 1.01 & 1.01 & 1.01 \\%
-%           & 100 & 1.13 & 1.07 & 1.07 & 1.03 &       & 100 & 1.01 & 1.01 & 1.01 & 1.01 \\\cline{3-6} \cline{9-12}%
-% \multicolumn{2}{|c|}{Average} & 1.065 & 1.063 & 1.054 & {\bf 1.040} &%
-% \multicolumn{2}{|c|}{Average} & 1.011 & 1.011 & {\bf 1.008} & 1.012 \\\hline%
-%           &  20 & 1.15 & 1.09 & 1.08 & 1.06 &       &  20 & 1.15 & 1.20 & 1.15 & 1.20 \\%
-%           &  40 & 1.18 & 1.10 & 1.10 & 1.11 &       &  40 & 1.13 & 1.07 & 1.09 & 1.08 \\%
-%          V &  60 & 1.16 & 1.09 & 1.11 & 1.08 &     X &  60 & 1.14 & 1.08 & 1.09 & 1.09 \\%
-%           &  80 & 1.17 & 1.09 & 1.11 & 1.08 &       &  80 & 1.14 & 1.06 & 1.06 & 1.06 \\%
-%           & 100 & 1.16 & 1.08 & 1.10 & 1.08 &       & 100 & 1.11 & 1.07 & 1.07 & 1.06 \\\cline{3-6} \cline{9-12}%
-% \multicolumn{2}{|c|}{Average} & 1.165 & 1.092 & 1.100 & {\bf 1.082} &%
-% \multicolumn{2}{|c|}{Average} & 1.135 & 1.098 & {\bf 1.092} & 1.098 \\\hline\hline%
-% & & & & & & \multicolumn{2}{|c|}{\bf AVERAGE} & 1.133 & 1.079 & 1.099 & {\bf 1.076} \\\hline%
-% \end{tabular}
-% \end{scriptsize}
-% \end{center}
-% \end{table}
+Hay varias razones para usar \textit{Mixins}: extienden las clases existentes sin tener que editar, mantener o combinar el código fuente; mantienen el proyecto en componentes separados; facilitan la creación de nuevas clases con funcionalidades pre-fabricadas y que se puede combinar según sea la necesidad.\cite{Mixins}

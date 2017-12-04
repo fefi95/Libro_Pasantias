@@ -504,8 +504,7 @@
     \oldlistoffigures 
 %   \end{singlespace}
 }
-
-
+\renewcommand{\figurename}{Figura}
  
 % Change names of appendix
 \renewcommand\appendixname{APÉNDICE}

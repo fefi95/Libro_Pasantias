@@ -2,7 +2,111 @@
 
 \thispagestyle{empty}
 
+En el presente capítulo se detalla la planificación siguiendo la metodología Turpial Agile Unified Process (TAUP). Adicionalmente, se describe la evolución del proyecto y sus dificultades, así como las actividades realizadas que llevaron a cumplir los objetivos planteados y logros adicionales. 
+
 \section{Fase de concepción}
+
+En esta sección se detallan las funcionalidades de los módulos Principal (Core) y Estadísticas de la librería Auditorías Turpial según los requerimientos del cliente; y se muestra el diseño de la solución y  planteamiento de la arquitectura. También, se elaboran los documentos según TAUP y se definen las tecnologías necesarias para el desarrollo del proyecto. Este proceso abarcó las primeras cuatro semanas de la pasantía.
+
+\subsection{Análisis de requerimientos}
+
+Antes de tomar alguna decisión de implementación, fue necesario establecer cuál es la tecnología a la que va dirigida el producto final y cuáles son las funcionalidades mínimas que debe poseer. En primer lugar, se decidió que se desarrollaría una librería en Django, para Django, ya que la empresa suele utilizar este herramienta en sus aplicaciones; y utilizaría una base de datos relacional, en particular PostgreSQL, MySQL o SQLite porque se integran fácilmente al \textit{framework} . \\
+
+En segundo lugar, se determinaron las Historias de Usuario (HU). La librería consta de tres módulos: \textit{Core}, Estadísticas y Reportes. El líder del proyecto se encargó de las HU correspondientes al módulo Principal y el pasante realizó el levantamiento de requerimientos del módulo de Estadísticas (ver apéndice C) según las necesidades del cliente. Adicionalmente, elaboró los documentos correspondientes, Documento de Requerimientos y Release Plan siguiendo las plantillas de la empresa. \\
+
+En este caso en particular, el rol del cliente lo interpretó la empresa misma, puesto que el producto será ofrecido como un servicio a clientes externos. El rol de \textit{product owner} lo desempeñó el tutor industrial para gestionar el desarrollo de la pasantía. \\
+
+Para escribir las HU, es indispensable contar con el actor que ejecuta alguna acción específica, por lo que se distinguieron dos tipos de usuarios:
+
+\begin{itemize}
+    \item El programador, quien descargará la librería y la incluirá en la aplicación de Django que está desarrollando.
+    \item Los “usuarios” finales, quienes utilizarán la aplicación en donde se instale la librería y la interfaz gráfica provista.
+\end{itemize}
+
+En líneas generales, el módulo \textit{Core} debe contar con las siguientes características:
+
+\begin{itemize}
+    \item Seleccionar cuál modelo (tabla) es auditable.
+    \item Registrar el autor, acción, fecha, estado anterior y estado actual de una instancia particular en formato JSON. Las acciones auditables son: Crear, Actualizar y Eliminar.
+    \item Listar todas las operaciones, filtrarlas y ordenarlas.
+    \item Restringir el acceso del personal no autorizado a los listados.
+    \item Proveer etiquetas personalizadas para las plantillas de los listados que faciliten la inclusión de los mismos. 
+\end{itemize}
+
+El módulo de Estadísticas debe proveer el cálculo del total de auditorías, cantidad de modelos auditables, porcentaje de cobertura, porcentaje de crecimiento de los datos, promedio por día, mínimo y máximo. Dichos resultados pueden estar filtrados por un rango de tiempo, por acción, por autor y por modelo. Asimismo, debe contar con facilidades para incluir los gráficos que representen los cálculos mencionados anteriormente. \\
+
+El módulo de Reportes ofrece la posibilidad de generar archivos sobre los listados en diversos formatos (CSV y PDF) y personalizar su apariencia con opciones como modificar los márgenes, espacios, incluir el nombre y logo del sistema, entre otros. Adicionalmente, la librería debe ser mantenible, eficiente, simple, confiable, escalable y fácil de integrar y configurar.\\
+
+Por otro lado, es indispensable que se instalen automáticamente las dependencias de la librería en el sistema que la utilice para facilitar su uso y evitar errores. También, se requiere que la librería se actualice mediante el uso de una herramienta de integración contínua. \\
+
+En esta pasantía se abarcarán las funcionalidades correspondientes a la selección del modelo auditable, registro de traza de auditoría y listados (sin filtros ni ordenamiento) del módulo \textit{Core} y completamente el módulo de Estadísticas con sus respectivas pruebas automatizadas. También se incluye la instalación y configuración del sistema de integración contínua. El módulo de Reportes está fuera del alcance.
+
+\subsection{Adaptación de la metodología a la pasantía}
+
+En el capítulo anterior se explicó la metodología TAUP, sin embargo, dependiendo del proyecto que se desea desarrollar, se pueden realizar algunas modificaciones que mejoren la dinámica y la velocidad del equipo o porque el cliente así lo requiera.
+
+Se ideó un código compuesto por una letra y un número que facilita referenciar las HU. La letra representa el módulo a la que pertenece, \textit{Core} o Estadísticas, y el número denota el orden en que fue concebida. Adicionalmente, se utilizó una modificación  para las escalas de prioridad y riesgo, que está conformada por tres valores: Alta, Media y Baja. Para más información sobre las HU desarrolladas, leer el Apéndice C.
+
+Por otro lado, se agregaron nuevos criterios a la \textit{Definition of Ready}, con lo que se tiene lo siguiente:
+
+\begin{itemize}
+    \item Debe ubicarse dentro de uno de los módulos del proyecto.
+    \item Debe de tener asignado una prioridad por el cliente.
+    \item Debe de tener asignado un riesgo por el equipo de desarrollo.
+    \item Debe de tener asignado su respectivo puntaje.
+    \item (Opcional pero deseado) Debe de tener una breve descripción, aclaratoria o criterio adicional según sea el caso.
+\end{itemize}
+
+
+Asimismo, se amplió la \textit{Definition of Done} para agregar las pruebas automatizadas de cada HU. Posee los siguientes estatutos:
+
+\begin{itemize}
+    \item Debe realizarse la codificación respectiva
+    \item El código generado debe estar debidamente documentado para facilidad de programador
+    \item Debe de realizarse la documentación respectiva (de ser necesaria) de todos los aspectos de configuración asociados al desarrollo y buen funcionamiento de la historia de usuario.
+    \item Deben realizarse pruebas automatizadas a la codificación generada.
+    \item Debe presentarse la nueva funcionalidad al cliente.
+    \item Debe estar disponible en el repositorio.
+\end{itemize}
+
+\subsection{Arquitectura propuesta del sistema}
+
+El planteamiento inicial (Figura 6.1) consistía en desarrollar cada módulo de la librería en una aplicación de Django distinta, las cuales se instalarían por separado en el sistema, el cual será referido como “Host” para simplificar la notación. Los módulos de Estadística y Reportes serían ofrecidos como microservicios dependientes del módulo principal pero independientes entre ellos, de manera que si alguno falla, el otro no sea afectado.\\
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{Diagrama_Arquitectura.png}
+\caption{Arquitectura de la librería Auditorías Turpial}
+\label{fig:figure6.1}
+\end{figure}
+
+Se decidió que el módulo Principal agregaría una nueva tabla en la base de datos ya existente del “Host” en la que mantendrá la información acerca de las auditorías y los otros módulos podrían leerla para procesarla y mostrarla como sea  pertinente.\\
+
+No obstante, la arquitectura mostrada en la Figura 2 sufrió modificaciones durante el desarrollo  el proyecto para simplificarla; en la sección que explica la fase de construcción se ofrecerán mayores detalles de estos cambios y sus razones.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{Diagrama_Tecnologias.png}
+\caption{Arquitectura de tecnologías a utilizar}
+\label{fig:figure6.2}
+\end{figure}
+
+En la figura 6.1 se muestran las tecnologías a utilizar en el proyecto. Como se mencionó anteriormente, se utilizará Django para el desarrollo. Como herramienta de control de versiones se utilizará Git y para automatizar la integración contínua se usará Jenkins. El sistema “Host” será un proyecto de la empresa que utilizará como servidor Web, Apache y una base de datos relacional.
+
+\section{Diseño del módulo principal}
+
+Uno de los problemas más significativos que la empresa encuentra en otras extensiones de Django disponibles, es el hecho de que el registro de auditoría se guarda a nivel de la vista y es responsabilidad del programador colocar el código para esta funcionalidad. Esto da cabida a que se olvide colocar en alguna de las vistas correspondientes a algún modelo, por lo que podría no guardarse todos los tipos de operaciones. \\
+
+La librería Auditorías Turpial pretende evitar este problema guardando el registro de auditoría cada vez que ocurre alguna operación sobre el modelo a través del uso de las señales (\textit{signals}) que ofrece el \textit{framework} . Estas señales, necesariamente deben distinguir entre un modelo auditable y uno que no lo es. Para esto, se contempló el uso de un \textit{mixin} que pueda ser heredado por cualquier modelo y así proveer todas las funcionalidades mencionadas. \\
+
+Por otro lado, se desea incluir en las auditorías el usuario que realizó la acción. La solución mencionada anteriormente no es suficiente para lograr esto, puesto que a nivel de modelos no se posee información sobre el \textit{request} y no se puede saber qué usuario está en sesión. Por esta razón, se consideró agregar otro \textit{mixin} para las vistas que completara la información antes de guardarla en la base de datos. Sería responsabilidad del programador heredarlo en todas las vistas cuyos modelos mantienen un historial de transacciones, no obstante, si lo olvida, el registro seguirá existiendo y el autor aparecerá como “Anonymous”. \\
+
+Django posee mecanismos para traducir los modelos a otro formato con una estructura bien definida, más conocidos como \textit{serializers} (serializadores), y viceversa. En particular, posee maneras de convertirlos a JSON, por lo que se decidió utilizar dicha funcionalidad para cumplir con el requisito de mostrar los cambios en los valores de los campos del modelo auditable en este formato.\\
+
+En cuanto a los listados, se acordó utilizar Datatables para mostrarlos como una tabla que se pueda ordenar y filtrar fácilmente. Este \textit{plugin} puede manejar aproximadamente 10000 filas en sus tablas procesándolas del lado del cliente, sin embargo, las auditorías serán potencialmente millones de registros, es por esta razón se debe realizar el procesamiento del lado del servidor. \\
+
+Para la autenticación se planteó utilizar un tabla de usuarios propia con su respectiva permisología, con la intención de que no interfiriera con la del sistema “Host”, sin embargo, esto no fue posible. Se ahondará en la explicación de esta decisión en la fase de desarrollo del presente capítulo. 
+
 \section{Fase de construcción del núcleo}
 \section{Fase de construcción del módulo de estadísticas}
 \section{Fase de transición}

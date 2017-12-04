@@ -1,9 +1,13 @@
 \chapter{\textbf{Marco tecnológico}}
+
 \thispagestyle{empty}
+
+En este capítulo se describen los aspectos tecnológicos relevantes para la comprensión del proyecto, así como las herramientas utilizadas durante la pasantía.
+
 
 \section{Python}
 
-Es un lenguaje de programación interpretado y fácil de entender. Posee estructuras de datos de alto nivel y una aproximación sencilla al paradigma de programación orientado a objetos. Cuenta con una amplia variedad de librerías que fomentan la reutilización de código; también posee tipos de datos dinámicos y una sintaxis simple para facilitar el rápido desarrollo de aplicaciones.
+Es un lenguaje de programación interpretado y fácil de entender. Posee estructuras de datos de alto nivel y una aproximación sencilla al paradigma de programación orientado a objetos. Cuenta con una amplia variedad de librerías que fomentan la reutilización de código; también posee tipos de datos dinámicos y una sintaxis simple para facilitar el rápido desarrollo de aplicaciones 
  \cite{Python_tutorial}
 
 \section{Django}
@@ -14,28 +18,29 @@ Existe comportamiento que es comúnmente utilizado en las aplicaciones (i.e crea
 
 También incluye un despachador de señales que ayuda a las aplicaciones desacopladas a recibir notificaciones cuando alguna acción ocurra en algún otro lugar en el \textit{framework}. Algunos de los  eventos sobre los que notifica Django son la inserción, actualización y eliminación de elementos de la base de datos y migración de la misma.
 
-\section{HyperText Markup Language (HTML)}
-
-El lenguaje de marcado de hipertexto es un formato de datos simple, usado para crear documentos portables de una plataforma a otra y ha sido utilizada ampliamente en la World Wide Web desde 1990. \cite{RFC1866}
-
-\section{Javascript}
-
-Es un lenguaje interpretado, multi-paradigma y dinámico que soporta estilos de programación funcional,  orientado a objetos e imperativa, así como funciones de primera clase. Es comúnmente utilizado como el lenguaje de \textit{script} para páginas Web. \cite{javascript}
-
 \section{Pytest}
 
-Es un \textit{framework} escrito en Python, que facilita la escritura de complejas pruebas de funcionalidad para aplicaciones y librerías y así, asegurar la calidad del software que será entregado. Permite controlar la ejecución de pruebas automatizadas y comparar los resultados obtenidos con los esperados \cite{pytest}
-
-\section{PostgreSQL}
-
-Es un poderoso sistema de base de datos relacional de código abierto. Su arquitectura goza de buena reputación gracias a su confiabilidad, integridad de los datos y correctitud. Puede ser implantada en la mayoría de los sistemas operativos y soporta claves foráneas, conjunciones, vistas, triggers, procedimientos y la mayoría de los tipos de datos. 
-
-\section{MySQL}
-\section{SQLite}
+Es un \textit{framework} escrito en Python, que facilita la escritura de complejas pruebas de funcionalidad para aplicaciones y librerías y así, asegurar la calidad del software que será entregado. Permite controlar la ejecución de pruebas automatizadas y comparar los resultados obtenidos con los esperados. \cite{pytest}
 
 \section{JavaScript Object Notation (JSON)}
 
 Es un formato para intercambiar datos, ligero, independiente del lenguaje y está basado en textos. Define un pequeño conjunto de reglas para la representación de datos estructurados que sean portables. JSON puede representar cuatro tipos primitivos (cadenas de caracteres, números, booleanos y null) y dos tipos estructurados (objetos y arreglos). \cite{JSON}
+
+\section{PostgreSQL}
+
+Es un poderoso sistema de base de datos relacional de código abierto. Su arquitectura goza de buena reputación gracias a su confiabilidad, integridad de los datos y correctitud. Puede ser implantada en la mayoría de los sistemas operativos y soporta claves foráneas, conjunciones, vistas, \textit{triggers}, procedimientos y la mayoría de los tipos de datos. \\
+
+Posee una tamaño de base de datos ilimitado (depende del hardware), con un máximo de 32 TB por tabla, 1 GB por campo, entre 250 y 1600 columnas por tabla y sin límites en la cantidad de índices por tablas. \cite{PostgreSQL}
+
+\section{MySQL}
+
+Es sistema de base de datos relacional de código abierto que soporta múltiples plataformas y las todas la operaciones de SQL. Es muy rápido, confiable, escalable y fácil de usar. Soporta grandes volúmenes de datos, más de 50 millones de registros; puede manejar 200.000 tablas y hasta 64 índices por tablas. \cite{MySQL}
+
+\section{SQLite}
+
+Es una ligera librería \textit{in-process} que implementa un motor de base de datos SQL transaccional, de código abierto, que es autocontenido, no necesita configuración y no utiliza servidores puesto que escribe directamente a los archivos de disco. Posee todas las funcionalidades de una base de datos SQL completa: múltiples tablas, índices, \textit{triggers} y vistas.  Es multi-plataformas, se puede copiar libremente los archivos entre sistemas con diferentes arquitecturas. \\
+
+Poseen un tamaño máximo de base de datos de 140 TB y por filas de 1 GB,  máximo 32767 columnas por tabla dependiendo del tipo de columna. La cantidad máxima de índices y tablas está estrechamente relacionada con la cantidad máxima de páginas (un poco más de 2 billones) ya que estos ocupan al menos una página del archivo de la base de datos. \cite{SQLite}
 
 \section{Git}
 
@@ -45,152 +50,25 @@ Es un sistema de control de versiones de código abierto, diseñado para adminis
 
 Es un servidor de automatización de código abierto y de fácil instalación que puede ser utilizado para automatizar tareas relacionadas con el empaquetado, pruebas y despliegue de un software. Puede ser utilizado como un servidor de Integración Contínua en donde la versión más reciente del proyecto sea descargada, se ejecuten las tareas descritas anteriormente y si ocurre algún fallo se le notifique a los programadores. Adicionalmente, Jenkins dispone de un gran número de \textit{plugins}, por lo que se adapta a casi cualquier proyecto sin importar qué tecnología se estén usando. \cite{Jenkins}
 
+\section{HyperText Markup Language (HTML)}
+
+El lenguaje de marcado de hipertexto es un formato de datos simple, usado para crear documentos portables de una plataforma a otra y ha sido utilizada ampliamente en la World Wide Web desde 1990. \cite{RFC1866}
+
+\section{Javascript}
+
+Es un lenguaje interpretado, multi-paradigma y dinámico que soporta estilos de programación funcional,  orientado a objetos e imperativa, así como funciones de primera clase. Es comúnmente utilizado como el lenguaje de \textit{script} para páginas Web. \cite{javascript}
+
+\section{jQuery} 
+
+Es una librería de JavaScript pequeña y rápida que simplifica la manipulación de documentos HTML, manejo de eventos, animaciones y AJAX. Cuenta con una API fácil de usar que funciona en una gran cantidad de navegadores. 
+
 \section{Amcharts}
 
-Es una librería de JavaScript que permite añadir fácilmente gráficos interactivos a los sitios Web y aplicaciones. Es compatible con todos los navegadores modernos y la mayoría de los antiguos. Posee facilidades para crear gráficos de Torta, Barras, Línea, Caja, Scatter entre otros, y cualquier combinación de ellos, exportar e importar los datos. También cuenta con plugins para extender su funcionalidad, es responsive, fácil de personalizar y soporta múltiples lenguajes. \cite{Amcharts}
+Es una librería de JavaScript que permite añadir fácilmente gráficos interactivos a los sitios Web y aplicaciones. Es compatible con todos los navegadores modernos y la mayoría de los antiguos. Posee facilidades para crear gráficos de Torta, Barras, Línea, Caja, \textit{Scatter} entre otros, y cualquier combinación de ellos, exportar e importar los datos. También cuenta con \textit{plugins} para extender su funcionalidad, es \textit{responsive}, fácil de personalizar y soporta múltiples lenguajes. \cite{Amcharts}
 
-% \section{Defining Theorem, Lemma, Corollary, and \ldots}\label{introchpter4}
-% \framebox[\textwidth][c]{Command for \bf{Definition}:}
-% \begin{verbatim}
-% \begin{definition}{\bf:}
-% ...
-% \end{definition}
-% \end{verbatim}
-% \framebox[1.1\width][l]{\bf{For example:}}
-% \begin{definition}{\bf:}
-% Let \ldots and \ldots then \ldots
-% \begin{equation}
-% R(0.j_1 j_2  \cdots j_{k - 1} j_k  \cdots ) = \left\{
-% \begin{array}{l}
-%  0,~{\rm when} ~j_1 < 4,                                                  \\
-%  1,~{\rm when} ~j_1 \ge 5 ~{\rm or~when}~ j_1 \ge 4 ~{\rm and} ~j_2 \ge 5 \\
-% \end{array} \right.
-% \end{equation}
-% $ \forall~ 0.j_1 j_2  \cdots j_{k - 1} j_k  \cdots  \in (0,1)$
-% {\rm where} $ j_i  \in Z,~i = 1,2, \cdots $.  {\rm We call} $R$
-% {\rm the} {\bf rounding of\mbox{}f function}.
-% \end{definition}
+\section{Datatables}
 
-% \vspace{1cm}%
-% \framebox[\textwidth][c]{Command for \bf{Proposition}:}
-% \begin{verbatim}
-% \begin{proposition}{\bf:}
-% ...
-% \end{proposition}
-% \end{verbatim}
-% \framebox[1.1\width][l]{\bf{For example:}}
-% \begin{proposition}{\bf:}\\
-% Given \ldots Thus \ldots
-% \end{proposition}
+Es un \textit{plugin} para la librería jQuery de JavaScript. Añade interacción a cualquier tabla en HTML, dispone de funciones de búsqueda, paginación, ordenamiento, filtros, entre otras. Provee facilidades para exportar a diferentes tipos de archivo como CSV, PDF, XLS e incluso imprimir el contenido de la tabla. 
 
-% \framebox[\textwidth][c]{Command for \bf{Theorem}:}
-% \begin{verbatim}
-% \begin{theorem}{\bf:}
-% ...
-% \end{theorem}
-% \end{verbatim}
-% \framebox[1.1\width][l]{\bf{For example:}}
-% \begin{theorem}{\bf:}{\rm \bf (name of the theorem if needed)}\\
-% Let...
-% \begin{equation} \label{eq2.1}
-%  {\rm Round}\left[ {m \cdot (x/x)} \right] = m
-% \end{equation}
-% if and only if the number $\left[m \cdot (x/x)\right]$ takes the
-% form of either
-% \begin{compactenum}[i.]
-%     \item \label{i} $m + 0.j_1 j_2  \cdots j_{r - 1} j_r  \cdots $, where $R(0.j_1 j_2  \cdots j_{r - 1} j_r  \cdots ) =
-%     0$ or,
-%     \item \label{ii} $(m - 1) + 0.h_1 h_2  \cdots h_r  \cdots$, where $R(0.h_1 h_2  \cdots h_r  \cdots ) =
-%     1.$
-% \end{compactenum}
-% \end{theorem}
-
-% \vspace{1cm}
-% \framebox[\textwidth][c]{Command for \bf{Proof}:}
-% \begin{verbatim}
-% \begin{proof}
-% ...
-% \end{proof}
-% \end{verbatim}
-% \framebox[1.1\width][l]{\bf{For example:}}\\
-% \begin{proof}
-% We \ldots
-% \begin{enumerate}
-%     \item In condition ({\em\ref{i}}),...
-%     \item In condition ({\em\ref{ii}}), ...
-% \end{enumerate}
-% In chapter \ref{literature}, section \ref{citation} we proved that
-% \ldots
-% \end{proof}
-
-% \clearpage
-% \framebox[\textwidth][c]{Command for \bf{Remark}:}
-% \begin{verbatim}
-% \begin{remark}{\bf:}
-% ...
-% \end{remark}
-% \end{verbatim}
-% \framebox[1.1\width][l]{\bf{For example:}}
-% \begin{remark}{\bf:}
-% A square is a rectangle.
-% \end{remark}
-
-% \vspace{1cm}
-% \framebox[\textwidth][c]{Command for \bf{Note}:}
-% \begin{verbatim}
-% \begin{note}{\bf:}
-% ...
-% \end{note}
-% \end{verbatim}
-% \framebox[1.1\width][l]{\bf{For example:}}
-% \begin{note}{\bf:}
-% Value for $b$ is always equal to 1.
-% \end{note}
-
-% \vspace{1cm}
-% \framebox[\textwidth][c]{Command for \bf{Example}:}
-% \begin{verbatim}
-% \begin{example}{\bf:}
-% ...
-% \end{example}
-% \end{verbatim}
-% \framebox[1.1\width][l]{\bf{For example:}}
-% \begin{example}{\bf:}
-% $2\times2$ is a square.
-% \end{example}
-
-% \clearpage
-% \framebox[\textwidth][c]{Command for \bf{Lemma}:}
-% \begin{verbatim}
-% \begin{lemma}{\bf:}
-% ...
-% \end{lemma}
-% \end{verbatim}
-% \framebox[1.1\width][l]{\bf{For example:}}
-% \begin{lemma}{\bf:}
-% Suppose \ldots then \ldots
-% \end{lemma}
-
-% \vspace{1cm}
-% \framebox[\textwidth][c]{Command for \bf{Corollary}:}
-% \begin{verbatim}
-% \begin{corollary}{\bf:}
-% ...
-% \end{corollary}
-% \end{verbatim}
-% \framebox[1.1\width][l]{\bf{For example:}}
-% \begin{corollary}{\bf:}
-% Assume \ldots hence \ldots
-% \end{corollary}
-
-% \vspace{1cm}%
-% \framebox[\textwidth][c]{Command for \bf{Conjecture}:}
-% \begin{verbatim}
-% \begin{conjecture}{\bf:}
-% ...
-% \end{conjecture}
-% \end{verbatim}
-% \framebox[1.1\width][l]{\bf{For example:}}
-% \begin{conjecture}{\bf:}
-% If \ldots then \ldots else \ldots
-% \end{conjecture}
+\section{Bootstrap}
+Es un framework de código abierto para desarrollar rápidamente aplicaciones, tanto Web como móviles, utilizando HTML, CSS y JavaScript. También usa variables y mixins de Sass, tiene un sistema de cuadrícula (grid) responsive, gran cantidad de componentes pre-fabricados y poderosos plugins construidos con  jQuery.
