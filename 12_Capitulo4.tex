@@ -1,4 +1,4 @@
-\chapter{\textbf{Marco tecnológico}}
+\textit{mixins}\chapter{\textbf{Marco tecnológico}}
 
 \thispagestyle{empty}
 
@@ -7,20 +7,20 @@ En este capítulo se describen los aspectos tecnológicos relevantes para la com
 
 \section{Python}
 
-Es un lenguaje de programación interpretado y fácil de entender. Posee estructuras de datos de alto nivel y una aproximación sencilla al paradigma de programación orientado a objetos. Cuenta con una amplia variedad de librerías que fomentan la reutilización de código; también posee tipos de datos dinámicos y una sintaxis simple para facilitar el rápido desarrollo de aplicaciones 
+Es un lenguaje de programación interpretado y fácil de entender. Posee estructuras de datos de alto nivel y una aproximación sencilla al paradigma de programación orientado a objetos. Cuenta con una amplia variedad de librerías que fomentan la reutilización de código; también posee tipos de datos dinámicos y una sintaxis simple para facilitar el rápido desarrollo de aplicaciones
  \cite{Python_tutorial}
 
 \section{Django}
 
 Es un \textit{framework} de código abierto, escrito en Python y está basado en el patrón Modelo-Plantilla-Vista. Proporciona diversas funcionalidades reutilizables para desarrollar, rápidamente, aplicaciones Web escalables. \cite{MVT}\\ % agregar referencia si es necesario
 
-Existe comportamiento que es comúnmente utilizado en las aplicaciones (i.e crear un elemento), por esto, Django está equipado con un conjunto de Clases y Mixins que pueden ser heredados y proveen el comportamiento estándar de alguna acción. Adicionalmente, el programador puede crear otros nuevos para extender estas funcionalidades.\\
+Django está equipado con un conjunto de Clases y \textit{Mixins} que pueden ser heredados y proveen el comportamiento estándar de alguna acción particular(i.e crear un elemento). Adicionalmente, el programador puede crear otros nuevos para extender estas funcionalidades. \\
 
 También incluye un despachador de señales que ayuda a las aplicaciones desacopladas a recibir notificaciones cuando alguna acción ocurra en algún otro lugar en el \textit{framework}. Algunos de los  eventos sobre los que notifica Django son la inserción, actualización y eliminación de elementos de la base de datos y migración de la misma.
 
 \section{Pytest}
 
-Es un \textit{framework} escrito en Python, que facilita la escritura de complejas pruebas de funcionalidad para aplicaciones y librerías y así, asegurar la calidad del software que será entregado. Permite controlar la ejecución de pruebas automatizadas y comparar los resultados obtenidos con los esperados. \cite{pytest}
+Es un \textit{framework} escrito en Python, que facilita la escritura de complejas pruebas de funcionalidad para aplicaciones y librerías y así, asegurar la calidad del \textit{software} que será entregado. Permite controlar la ejecución de pruebas automatizadas y comparar los resultados obtenidos con los esperados. \cite{pytest}
 
 \section{JavaScript Object Notation (JSON)}
 
@@ -30,7 +30,10 @@ Es un formato para intercambiar datos, ligero, independiente del lenguaje y est�
 
 Es un poderoso sistema de base de datos relacional de código abierto. Su arquitectura goza de buena reputación gracias a su confiabilidad, integridad de los datos y correctitud. Puede ser implantada en la mayoría de los sistemas operativos y soporta claves foráneas, conjunciones, vistas, \textit{triggers}, procedimientos y la mayoría de los tipos de datos. \\
 
-Posee una tamaño de base de datos ilimitado (depende del hardware), con un máximo de 32 TB por tabla, 1 GB por campo, entre 250 y 1600 columnas por tabla y sin límites en la cantidad de índices por tablas. \cite{PostgreSQL}
+Este manejador de base de datos posee un tamaño ilimitado (depende del
+hardware), con un máximo de 32 TB por tabla, 1 GB por campo, entre 250 y 1600
+columnas por tabla y sin límites en la cantidad de índices por tablas
+\cite{PostgreSQL}.
 
 \section{MySQL}
 
@@ -48,7 +51,7 @@ Es un sistema de control de versiones de código abierto, diseñado para adminis
 
 \section{Jenkins}
 
-Es un servidor de automatización de código abierto y de fácil instalación que puede ser utilizado para automatizar tareas relacionadas con el empaquetado, pruebas y despliegue de un software. Puede ser utilizado como un servidor de Integración Contínua en donde la versión más reciente del proyecto sea descargada, se ejecuten las tareas descritas anteriormente y si ocurre algún fallo se le notifique a los programadores. Adicionalmente, Jenkins dispone de un gran número de \textit{plugins}, por lo que se adapta a casi cualquier proyecto sin importar qué tecnología se estén usando. \cite{Jenkins}
+Es un servidor de automatización de código abierto y de fácil instalación que puede ser utilizado para automatizar tareas relacionadas con el empaquetado, pruebas y despliegue de un \textit{software}. Puede ser utilizado como un servidor de Integración Continua en donde la versión más reciente del proyecto sea descargada, se ejecuten las tareas descritas anteriormente y si ocurre algún fallo se le notifique a los programadores. Adicionalmente, Jenkins dispone de un gran número de \textit{plugins}, por lo que se adapta a casi cualquier proyecto sin importar qué tecnología se estén usando. \cite{Jenkins}
 
 \section{HyperText Markup Language (HTML)}
 
@@ -58,17 +61,29 @@ El lenguaje de marcado de hipertexto es un formato de datos simple, usado para c
 
 Es un lenguaje interpretado, multi-paradigma y dinámico que soporta estilos de programación funcional,  orientado a objetos e imperativa, así como funciones de primera clase. Es comúnmente utilizado como el lenguaje de \textit{script} para páginas Web. \cite{javascript}
 
-\section{jQuery} 
+\section{jQuery}
 
-Es una librería de JavaScript pequeña y rápida que simplifica la manipulación de documentos HTML, manejo de eventos, animaciones y AJAX. Cuenta con una API fácil de usar que funciona en una gran cantidad de navegadores. 
+Es una librería de JavaScript pequeña y rápida que simplifica la manipulación de documentos HTML, manejo de eventos, animaciones y AJAX. Cuenta con una API fácil de usar que funciona en una gran cantidad de navegadores.
 
 \section{Amcharts}
 
-Es una librería de JavaScript que permite añadir fácilmente gráficos interactivos a los sitios Web y aplicaciones. Es compatible con todos los navegadores modernos y la mayoría de los antiguos. Posee facilidades para crear gráficos de Torta, Barras, Línea, Caja, \textit{Scatter} entre otros, y cualquier combinación de ellos, exportar e importar los datos. También cuenta con \textit{plugins} para extender su funcionalidad, es \textit{responsive}, fácil de personalizar y soporta múltiples lenguajes. \cite{Amcharts}
+Es una librería de JavaScript que permite añadir fácilmente gráficos
+interactivos a los sitios Web y aplicaciones. Es compatible con todos los
+navegadores modernos y la mayoría de los antiguos. Posee facilidades para crear
+gráficos de Torta, Barras, Línea, Caja, \textit{Scatter} entre otros, y
+cualquier combinación de ellos, exportar e importar los datos. También cuenta
+con \textit{plugins} para extender su funcionalidad, es \textit{responsive},
+fácil de personalizar y soporta múltiples lenguajes. \cite{Amcharts}
 
 \section{Datatables}
 
-Es un \textit{plugin} para la librería jQuery de JavaScript. Añade interacción a cualquier tabla en HTML, dispone de funciones de búsqueda, paginación, ordenamiento, filtros, entre otras. Provee facilidades para exportar a diferentes tipos de archivo como CSV, PDF, XLS e incluso imprimir el contenido de la tabla. 
+Es un \textit{plugin} para la librería jQuery de JavaScript. Añade interacción
+a cualquier tabla en HTML, dispone de funciones de búsqueda, paginación,
+ordenamiento, filtros, entre otras. Provee facilidades para exportar a
+diferentes tipos de archivo como CSV, PDF, XLS e incluso imprimir el contenido de la tabla.
 
 \section{Bootstrap}
-Es un framework de código abierto para desarrollar rápidamente aplicaciones, tanto Web como móviles, utilizando HTML, CSS y JavaScript. También usa variables y mixins de Sass, tiene un sistema de cuadrícula (grid) responsive, gran cantidad de componentes pre-fabricados y poderosos plugins construidos con  jQuery.
+Es un \textit{framework} de código abierto para desarrollar rápidamente
+aplicaciones, tanto Web como móviles, utilizando HTML, CSS y JavaScript.
+También usa variables y \textit{mixins} de Sass, tiene un sistema de cuadrícula
+(\textit{grid}) \textit{responsive}, gran cantidad de componentes pre-fabricados y poderosos plugins construidos con  jQuery.

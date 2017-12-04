@@ -2,36 +2,86 @@
 
 \thispagestyle{empty}
 
-En este capítulo se explica la motivación de la empresa para desarrollar el proyecto y la justificación del mismo. Además, se establecen los objetivos que se esperan alcanzar durante la pasantía.
+En este capítulo se explica la motivación de la empresa para desarrollar el
+proyecto y la justificación del mismo. Además, se establecen los objetivos que
+se esperan alcanzar durante la pasantía.
 
 \section{Antecedentes}
 
-En ocasiones, las aplicaciones necesitan un sistema que registre la creación, eliminación y actualización de los datos manejados, bien sea para cumplir estatutos gubernamentales o para observar el comportamiento de la información considerada sensible para el negocio. Turpial Development desea contar con una librería confiable y de fácil instalación que provea estas funcionalidades, de manera que puedan ser ofrecidas como un servicio a sus clientes. Esta librería debe poder instalarse en el \textit{framework} escrito en Python, Django, puesto que la empresa suele desarrollar sus aplicaciones utilizando estas tecnologías. \\
+En ocasiones, las aplicaciones necesitan un sistema que controle y supervise el
+uso de la información, bien sea para cumplir estatutos gubernamentales o para
+observar el comportamiento de la información considerada sensible para el
+negocio. Turpial Development desea contar con una librería confiable y de fácil
+instalación que provea estas funcionalidades, de manera que puedan ser
+ofrecidas como un servicio a sus clientes. Esta librería debe poder instalarse
+en el \textit{framework} escrito en Python, Django, puesto que la empresa suele
+desarrollar sus aplicaciones utilizando estas tecnologías. \\
 
-Existen algunas librería disponibles que son capaces de realizar estos procedimientos. Una de las más populares es django-reversions, una extensión de Django que provee control de versiones para los modelos y la posibilidad de restaurar la base de datos a una versión anterior. La empresa utilizó dicha librería en algunos proyectos, sin embargo, su integración delega demasiada responsabilidad al programador por lo que es susceptible a errores humanos y agrega una complejidad, que en muchos casos, es innecesaria para el comportamiento que se desea lograr. \\
+Existen algunas librería disponibles que son capaces de realizar estos
+procedimientos. Una de las más populares es django-reversions, una extensión de
+Django que provee control de versiones para los modelos y la posibilidad de
+restaurar la base de datos a una versión anterior. La empresa utilizó esta
+librería en algunos proyectos, sin embargo, su integración delega demasiada
+responsabilidad al programador por lo que es susceptible a errores humanos y
+agrega una complejidad, que en muchos casos, es innecesaria para el
+comportamiento que se desea lograr. \\
 
-Además, de esta extensión, hay otras que no han sido utilizadas por Turpial Development que ofrecen estas características, utilizando otras funciones que provee el \textit{framework}, sin embargo los problemas explicados anteriormente se mantienen.
-
+Además, de esta extensión, hay otras que no han sido utilizadas por Turpial
+Development (Apéndice D) que ofrecen estas características, utilizando otras
+funciones que provee el \textit{framework}, sin embargo los problemas explicados
+anteriormente se mantienen.
 
 \section{Planteamiento del problema}
 
-Con el auge del desarrollo de \textit{software}, surgieron entes que controlan y supervisan el uso de la información y garantizan la confiabilidad de los mismos, debido a esto algunas aplicaciones requieren mecanismos para registrar las operaciones ejecutadas. También se pueden utilizar estas trazas para caracterizar el comportamiento de alguna característica en particular del programa a desarrollar.\\
+Motivados por la cantidad de clientes que requieren un sistema de auditorías y
+porque la extensiones de Django no son fáciles de implementar, Turpial
+Development, se vio en la necesidad de crear su propia librería. Esta permitirá
+llevar la trazabilidad de la información sensible del negocio a través de
+auditorías de manera sencilla.
 
-Se desea una aplicación que sea fácil de integrar en otro proyecto, que disponga de facilidades para identificar y definir cuáles acciones del sistema deben ser auditables, almacenar y gestionar las auditorías en una base de datos, crear listados y personalizar su apariencia sin necesidad de que el desarrollador deba crear las plantillas desde cero.\\ 
+La empresa requiere que la librería sea fácil de integrar en otro proyecto,
+disponga de facilidades para identificar cuáles acciones del sistema deben ser
+auditables y almacenar las auditorías en una base de datos. Asimismo, debe
+crear listados y personalizar su apariencia sin necesidad de que el
+desarrollador cree las plantillas desde cero.
 
-Como se mencionó anteriormente, existen extensiones de Django capaces de realizar algunas de estas funcionalidades, pero ninguna de ellas cumple con todos los requisitos de Turpial Development. Es por esta razón que la empresa se vió en la necesidad de crear su propia librería que permita llevar la trazabilidad de la información sensible del negocio a través de auditorías de manera sencilla. \\
-
-Adicionalmente, ninguna de estas librerías disponibles cuentan con un módulo que permita visualizar los datos obtenidos a través de estadísticas o reportes, el desarrollador debe realizar esta labor por el mismo; Analizando la información recaudada y ajustando la estructura de datos para hacer uso de otras librerías que dispongan de la capacidad de realizar gráficas o generar PDF. En este sentido, se desea que el producto a desarrollar proporcione un módulo capaz de realizar los cálculos necesarios para mostrar estadísticas referentes a la información recaudada por las auditorías y sus respectivas gráficas; y un módulo que genere reportes CVS o PDF de los diferentes listados y que sean personalizables.
-
+Adicionalmente, ninguna de las librerías disponibles cuentan con un módulo que
+permita visualizar los datos obtenidos a través de estadísticas o reportes. El
+desarrollador debe realizar esta labor por él mismo; analizando la información
+recaudada y ajustando la estructura de datos para hacer uso de otras librerías
+que dispongan de la capacidad de realizar gráficas o generar PDF. En este
+sentido, se desea que el producto a desarrollar proporcione un módulo capaz de
+realizar los cálculos necesarios para mostrar estadísticas referentes a la
+información recaudada por las auditorías y sus respectivas gráficas; y un
+módulo que genere reportes CVS o PDF de los diferentes listados y que sean
+personalizables.
 
 \section{Justificación}
 
-La empresa Turpial Development decidió invertir en el desarrollo de una librería para la gestión de auditorías que se ajuste tanto a las necesidades de sus programadores, como a la de sus clientes; que agilice el desarrollo de cualquier proyecto que requiera un historial de las operaciones y posea una base de datos relacional. La arquitectura planteada por la empresa consiste en realizar dicha librería bajo la estructura de microservicio, es decir, que pueda incluirse fácil y rápido dentro de las aplicaciones, a través de configuraciones y ajustes menores que no interfieran con su correcto funcionamiento. Se desarrollará como una aplicación en Django que se agregará como un módulo más al sistema que lo instale. \\
+La empresa Turpial Development decidió invertir en el desarrollo de una
+librería para la gestión de auditorías que se ajuste tanto a las necesidades de
+sus programadores, como a la de sus clientes; que agilice el desarrollo de
+cualquier proyecto que requiera un historial de las operaciones y posea una
+base de datos relacional. La arquitectura planteada por la empresa consiste en
+realizar dicha librería bajo la estructura de microservicio. De esta manera,
+podrá incluirse fácil y rápido dentro de las aplicaciones, a través de
+configuraciones y ajustes menores que no interfieran con su correcto
+funcionamiento. Se desarrollará como una aplicación en Django que se agregará
+como un módulo más al sistema que lo instale.
 
-Adicionalmente, se desea utilizar alguna herramienta automatizada para integrar el trabajo de manera continua, empaquetar, probar y desplegar la librería de manera que se actualice con rapidez y esté disponible en todo momento. Asimismo, la empresa considera que es de vital importancia realizar pruebas automatizadas que aseguren la calidad de sistema que se desea entregar y que las pruebas finales se realicen sobre un proyecto de uso interno denominado Turpial Team.
+Adicionalmente, se desea utilizar alguna herramienta automatizada para integrar
+el trabajo de manera continua, empaquetar, probar y desplegar la librería de
+manera que se actualice con rapidez y esté disponible en todo momento.
+Asimismo, la empresa considera que es de vital importancia realizar pruebas
+automatizadas que aseguren la calidad de sistema que se desea entregar y que
+las pruebas finales se realicen sobre un proyecto de uso interno denominado
+Turpial Team.
 
 \section{Objetivo general}
 
-Implementar, probar y presentar las funcionalidades de selección, gestión y listados de auditorías y todas las funcionalidades del módulo Estadísticas de la librería de Auditorías Turpial e implantar un sistema de integración continua con el repositorio.  
+Implementar, probar y presentar las funcionalidades de selección, gestión y
+listados de auditorías y todas las funcionalidades del módulo Estadísticas de
+la librería de Auditorías Turpial e implantar un sistema de integración
+continua con el repositorio.
 
 \section{Objetivos específicos}
