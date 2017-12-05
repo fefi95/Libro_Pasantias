@@ -38,9 +38,12 @@ Este patrón de diseño asigna objetos en una aplicación a uno de tres roles: m
     \item Controlador: interpreta las entradas del usuario y le informa al modelo y/o vista para cambiar lo que sea apropiado \cite{MVC1}.
 \end{itemize}
 
-
-
-Figura 1. Diagrama del patrón MVC\\
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{MVC.png}
+\caption{Diagrama del patrón MVC (creación propia).}
+\label{fig:figura3.1}
+\end{figure}
 
 Es importante notar que la vista y el controlador dependen del modelo, sin embargo el modelo es independiente. Esta separación permite probar el modelo aparte de la presentación visual.
 
@@ -49,6 +52,13 @@ Es importante notar que la vista y el controlador dependen del modelo, sin embar
 Es una adaptación del patrón MVC, en el cual la “vista” define cuál dato es presentado y su comportamiento, no como se muestra. El dato es obtenido a través de la función de \textit{callback} para pedir una URL en particular. Por otro lado, la “vista” delega a la “plantilla”  la presentación de la información.\\
 
 En el caso de Django, el “controlador” es el \textit{framework} en sí: “la maquinaria que envía una petición a la vista apropiada, de acuerdo a la configuración de URL de Django” \cite{MVT}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{MVT.png}
+\caption{Diagrama del patrón MVT (creación propia).}
+\label{fig:figura3.2}
+\end{figure}
 
 \section{Señales}
 
@@ -62,7 +72,7 @@ Usualmente, los \textit{Mixins}, definen nuevos métodos que realizan alguna acc
 
 Hay varias razones para usar \textit{Mixins}: extienden las clases existentes sin tener que editar, mantener o combinar el código fuente; mantienen el proyecto en componentes separados; facilitan la creación de nuevas clases con funcionalidades pre-fabricadas y que se puede combinar según sea la necesidad \cite{Mixins}.
 
-\section{Serializadores \textit{(Serializers)}}
+\section{Serializadores}}
 
 La \textit{Serialization} es un proceso que consiste en convertir un objeto en
 un formato que sea fácilmente transmitido a través de la red o que pueda

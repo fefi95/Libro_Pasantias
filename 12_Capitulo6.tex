@@ -110,7 +110,7 @@ Para la autenticación se consideró utilizar un tabla de usuarios propia con su
 
 Uno de los requisitos mínimos con el que debe contar el módulo de Estadísticas es exponer un conjunto de gráficas que permitan visualizar e interpretar fácilmente los resultados de los cálculos de las auditorías. Para esto, se investigaron dos librerías de JavaScript: Amcharts y Charts.js. En la siguiente tabla se muestran las características principales:
 
-%%%%% tabla%%%%
+\input{Tablas/amcharts_vs_chartjs}
 
 Como los desarrolladores de Turpial Development son los principales usuarios de este proyecto, el pasante investigó si existía alguna librería que utilicen usualmente. En la empresa han utilizado varias, incluyendo las dos presentadas anteriormente, por lo que no tienen una preferencia en este sentido. \\
 
@@ -131,7 +131,7 @@ investigara las opciones en profundidad, sus fortalezas, limitaciones y
 recomendaciones de la comunidad. A continuación se muestra una comparación
 entre ellas: \\
 
-%%% tabla%%%%
+\input{Tablas/jenkins_vs_fabric}
 
 Considerando las características que posee cada herramienta, se decidió
 utilizar Jenkins puesto que se pueden ejecutar \textit{scripts} de manera
@@ -171,9 +171,7 @@ En esta sección se describe el proceso para desarrollar cada HU relacionada con
 
 \subsubsection{Estructura de la tabla de auditorías}
 
-Antes de iniciar con la implementación de la librería, se instalaron y configuraron todas las herramientas necesarias para esto. En primer lugar, se instaló Python 2.7 y luego PIP. Se instaló el plugin de Python, Virtualenv, el cual permitió configurar el ambiente virtual. Este, se utilizó para instalar los requerimientos de la librería, en particular, Django y Pytest. Estos plugins se registraron en el archivo “requirements.txt” para facilitar futuras instalaciones y determinar las dependencias de la librería.\\
-
-Luego, se procedió a crear la aplicación de Django y la estructura del módulo \textit{Core}. Para ello, se utilizaron los comandos que posee el \textit{framework}, “startproject” y “startapp” respectivamente.
+Antes de iniciar con la implementación de la librería, se instalaron y configuraron todas las herramientas necesarias para esto. En primer lugar, se instaló Python 2.7 y luego PIP. Se instaló el \textit{plugin} de Python, Virtualenv, el cual permitió configurar el ambiente virtual. Este, se utilizó para instalar los requerimientos de la librería, en particular, Django y Pytest. Estos \textit{plugins} se registraron en el archivo “requirements.txt” para facilitar futuras instalaciones y determinar las dependencias de la librería.Luego, se procedió a crear la aplicación de Django y la estructura del módulo \textit{Core}. \\
 
 \section{Fase de construcción del módulo de Estadísticas}
 \section{Fase de transición}
