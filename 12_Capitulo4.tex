@@ -21,10 +21,10 @@ y una sintaxis simple para facilitar el rápido desarrollo de aplicaciones
 \textit{Framework} de código abierto, escrito en Python y está basado en
 el patrón Modelo-Plantilla-Vista. Proporciona diversas funcionalidades
 reutilizables para desarrollar, rápidamente, aplicaciones web escalables
-\cite{MVT}.
+\cite{MVT}.\\
 
 Django está equipado con un conjunto de Clases y \textit{Mixins} que pueden ser
-heredados y proveen el comportamiento estándar de alguna acción particular(i.e
+heredados y proveen el comportamiento estándar de alguna acción particular (i.e
 crear un elemento). Adicionalmente, el programador puede crear otros nuevos
 para extender estas funcionalidades. \\
 
@@ -38,78 +38,66 @@ datos y migración de la misma.
 
 \textit{Framework} escrito en Python, que facilita la escritura de
 complejas pruebas de funcionalidad para aplicaciones y librerías y así,
-asegurar la calidad del \textit{software} que será entregado. Permite controlar
-la ejecución de pruebas automatizadas y comparar los resultados obtenidos con los esperados \cite{pytest}.
+asegurar la calidad del \textit{software} que será entregado \cite{pytest}. Permite controlar la ejecución de pruebas automatizadas y comparar los resultados obtenidos con los esperados \cite{pytest}.
 
 \section{JavaScript Object Notation (JSON)}
 
-Formato para intercambiar datos, ligero, independiente del lenguaje y está basado en textos. Define un pequeño conjunto de reglas para la representación de datos estructurados que sean portables. JSON puede representar cuatro tipos primitivos (cadenas de caracteres, números, booleanos y null) y dos tipos estructurados (objetos y arreglos) \cite{JSON}.
+Formato para intercambiar datos, ligero, independiente del lenguaje y está basado en textos. Define un pequeño conjunto de reglas para la representación de datos estructurados que sean portables \cite{JSON}. JSON puede representar cuatro tipos primitivos (cadenas de caracteres, números, booleanos y null) y dos tipos estructurados (objetos y arreglos) \cite{JSON}.
 
 \section{PostgreSQL}
 
-Sistema de base de datos relacional de código abierto. Su arquitectura goza de buena reputación gracias a su confiabilidad e integridad de los datos. Puede ser implantada en la mayoría de los sistemas operativos y soporta claves foráneas, conjunciones, vistas, \textit{triggers}, procedimientos y la mayoría de los tipos de datos \cite{PostgreSQL}. \\
+Sistema de base de datos relacional de código abierto, con una arquitectura que goza de buena reputación gracias a su confiabilidad e integridad de los datos \cite{PostgreSQL}. Puede ser implantada en la mayoría de los sistemas operativos y soporta claves foráneas, conjunciones, vistas, \textit{triggers}, procedimientos y la mayoría de los tipos de datos \cite{PostgreSQL}. \\
 
 Este manejador de base de datos posee un tamaño ilimitado (depende del \textit{hardware}), con un máximo de 32 TB por tabla, 1 GB por campo, entre 250 y 1600 columnas por tabla y sin límites en la cantidad de índices por tablas \cite{PostgreSQL}.
 
 \section{MySQL}
 
-Sistema de base de datos relacional de código abierto que soporta múltiples plataformas y las todas la operaciones de SQL. Soporta grandes volúmenes de datos, más de 50 millones de registros; puede manejar 200.000 tablas y hasta 64 índices por tablas\cite{MySQL}.
+Sistema de base de datos relacional de código abierto que soporta múltiples plataformas y las todas la operaciones de SQL \cite{MySQL}. Soporta grandes volúmenes de datos, más de 50 millones de registros; puede manejar 200.000 tablas y hasta 64 índices por tablas\cite{MySQL}.
 
 \section{SQLite}
 
-Librería \textit{in-process} que implementa un motor de base de datos SQL transaccional, de código abierto, que es autocontenido, no necesita configuración y no utiliza servidores puesto que escribe directamente a los archivos de disco. Posee todas las funcionalidades de una base de datos SQL completa: múltiples tablas, índices, \textit{triggers} y vistas.  Es multi-plataformas, se puede copiar libremente los archivos entre sistemas con diferentes arquitecturas \cite{SQLite}.
+Librería \textit{in-process} que implementa un motor de base de datos SQL transaccional, de código abierto, que es autocontenido, no necesita configuración y no utiliza servidores puesto que escribe directamente a los archivos de disco \cite{SQLite}. Posee todas las funcionalidades de una base de datos SQL completa: múltiples tablas, índices, \textit{triggers} y vistas \cite{SQLite}.  Es multi-plataformas, se puede copiar libremente los archivos entre sistemas con diferentes arquitecturas \cite{SQLite}. \\
 
-El tamaño máximo de base de datos es de 140 TB y 1 GB por fila, máximo 32767 columnas por tabla dependiendo del tipo de columna. La cantidad máxima de índices y tablas está estrechamente relacionada con la cantidad máxima de páginas (un poco más de 2 billones) ya que estos ocupan al menos una página del archivo de la base de datos \cite{SQLite}.
-
-
-Es una ligera librería \textit{in-process} que implementa un motor de base de datos SQL transaccional, de código abierto, que es autocontenido, no necesita configuración y no utiliza servidores puesto que escribe directamente a los archivos de disco. Posee todas las funcionalidades de una base de datos SQL completa: múltiples tablas, índices, \textit{triggers} y vistas.  Es multi-plataformas, se puede copiar libremente los archivos entre sistemas con diferentes arquitecturas \cite{SQLite}. \\
-
+El tamaño máximo de base de datos es de 140 TB y 1 GB por fila, máximo 32767 columnas por tabla dependiendo del tipo de columna \cite{SQLite}. La cantidad máxima de índices y tablas está estrechamente relacionada con la cantidad máxima de páginas (un poco más de 2 billones) ya que estos ocupan al menos una página del archivo de la base de datos \cite{SQLite}.
 
 \section{Jsonfield}
 
-\textit{Plugin} que crea un campo en Django que permite almacenar JSON en los modelos. Este, se ocupa de la serialization y la validación del campo en cuestión. Aunque PostgreSQL tiene soporte nativo de los campos tipo JSON, Jsonfield, utiliza una abstracción para asegurar la compatibilidad con el resto de los manejadores de base de datos relacionales, con los que Django tiene integración. Esto es de suma importancia si se desea crear una librería. El campos se traduce a uno de tipo texto \cite{jsonfield}.
+\textit{Plugin} que crea un campo en Django que permite almacenar JSON en los modelos. Este, se ocupa de la serialización y la validación del campo en cuestión \cite{jsonfield}. Aunque PostgreSQL tiene soporte nativo de los campos tipo JSON, Jsonfield, utiliza una abstracción para asegurar la compatibilidad con el resto de los manejadores de base de datos relacionales, con los que Django tiene integración \cite{jsonfield}. Esto es de suma importancia si se desea crear una librería. El campo se traduce a uno de tipo texto.
 
 \section{Git}
 
-Sistema de control de versiones de código abierto, diseñado para administrar cualquier tipo de proyecto con rapidez y eficiencia. Dispone de facilidades para llevar el seguimiento de los cambios realizados, soportar el desarrollo no-lineal, cambiar fácilmente de contexto y realizar experimentos sin afectar las versiones entregables del proyecto \cite{Git}.
+Sistema de control de versiones de código abierto, diseñado para administrar cualquier tipo de proyecto con rapidez y eficiencia \cite{Git}. Git, dispone de facilidades para llevar el seguimiento de los cambios realizados, soportar el desarrollo no-lineal, cambiar fácilmente de contexto y realizar experimentos sin afectar las versiones entregables del proyecto \cite{Git}.
 
 \section{Jenkins}
 
-Servidor de automatización de código abierto y de fácil instalación que puede ser utilizado para automatizar tareas relacionadas con el empaquetado, pruebas y despliegue de un \textit{software}. Puede ser utilizado como un servidor de Integración Continua en donde la versión más reciente del proyecto sea descargada, se ejecuten las tareas descritas anteriormente y si ocurre algún fallo se le notifique a los programadores. Adicionalmente, Jenkins dispone de un gran número de \textit{plugins}, por lo que se adapta a casi cualquier proyecto sin importar qué tecnología se estén usando \cite{Jenkins}.
+Servidor de automatización de código abierto y de fácil instalación que puede ser utilizado para automatizar tareas relacionadas con el empaquetado, pruebas y despliegue de un \textit{software} \cite{Jenkins}. Puede ser utilizado como un servidor de integración continua en donde la versión más reciente del proyecto sea descargada, se ejecuten las tareas descritas anteriormente y si ocurre algún fallo se le notifique a los programadores \cite{Jenkins}. Adicionalmente, Jenkins dispone de un gran número de \textit{plugins}, por lo que se adapta a casi cualquier proyecto sin importar qué tecnología se estén usando \cite{Jenkins}.
 
 \section{ Lenguaje de marcado de hipertexto}
 
-Por sus siglas en inglés, \textit{HiperText Markup Language} (HTML), es un formato de datos simple, usado para crear documentos portables de una plataforma a otra y ha sido utilizado ampliamente en la World Wide Web desde 1990 \cite{RFC1866}. Describen la manera en la que la información es presentada en las plantillas, usualmente una página web.
+Por sus siglas en inglés, \textit{HiperText Markup Language} (HTML), es un formato de datos simple, usado para crear documentos portables de una plataforma a otra y ha sido utilizado ampliamente en la World Wide Web desde 1990 \cite{RFC1866}. HTML, describe la manera en la que la información es presentada en las plantillas, usualmente una página web.
 
 \section{Javascript}
 
-Lenguaje interpretado, multi-paradigma y dinámico que soporta estilos de programación funcional,  orientado a objetos e imperativa, así como funciones de primera clase. Es comúnmente utilizado como el lenguaje de \textit{script} para páginas web \cite{javascript}.
+Lenguaje interpretado, multi-paradigma y dinámico que soporta estilos de programación funcional,  orientado a objetos e imperativa, así como funciones de primera clase \cite{javascript}. Es comúnmente utilizado como el lenguaje de \textit{script} para páginas web.
 
 \section{jQuery}
 
-Librería de JavaScript que simplifica la manipulación de documentos HTML, manejo de eventos, animaciones y AJAX. Cuenta con una API fácil de usar que funciona en una gran cantidad de navegadores \cite{jquery}.
+Librería de JavaScript que simplifica la manipulación de documentos HTML, manejo de eventos, animaciones y AJAX \cite{jquery}. Cuenta con una API fácil de usar que funciona en una gran cantidad de navegadores \cite{jquery}.
 
 \section{Amcharts}
 
 Librería de JavaScript que permite añadir fácilmente gráficos
-interactivos a los sitios web y aplicaciones. Es compatible con todos los
-navegadores modernos y la mayoría de los antiguos. Posee facilidades para crear
-gráficos de torta, barras, línea, \textit{candlestick}, \textit{Scatter} entre otros, y
-cualquier combinación de ellos, exportar e importar los datos. También cuenta
-con \textit{plugins} para extender su funcionalidad, es \textit{responsive},
-fácil de personalizar y soporta múltiples lenguajes \cite{Amcharts}.
+interactivos a los sitios web y aplicaciones \cite{Amcharts}. Es compatible con todos los navegadores modernos y la mayoría de los antiguos. Posee facilidades para crear gráficos de torta, barras, línea, \textit{candlestick}, \textit{scatter} entre otros, y cualquier combinación de ellos, exportar e importar los datos \cite{Amcharts}. También cuenta con \textit{plugins} para extender su funcionalidad, es \textit{responsive}, fácil de personalizar y soporta múltiples lenguajes \cite{Amcharts}.
 
 \section{Datatables}
 
 \textit{Plugin} para la librería jQuery de JavaScript. Añade interacción
 a cualquier tabla en HTML, dispone de funciones de búsqueda, paginación,
-ordenamiento, filtros, entre otras. Provee facilidades para exportar a
-diferentes tipos de archivo como CSV, PDF, XLS e incluso imprimir el contenido
-de la tabla \cite{Datatables}.
+ordenamiento, filtros, entre otras \cite{Datatables}. Además, provee facilidades para exportar diferentes tipos de archivo como CSV, PDF, XLS e incluso imprimir el contenido de la tabla \cite{Datatables}.
 
 \section{Bootstrap}
 
 \textit{Framework} de código abierto para desarrollar rápidamente
-aplicaciones, tanto web como móviles, utilizando HTML, CSS y JavaScript.
+aplicaciones, tanto web como móviles, utilizando HTML, CSS y JavaScript \cite{Bootstrap}.
 También usa variables y \textit{mixins} de Sass, tiene un sistema de cuadrícula
 (\textit{grid}) \textit{responsive}, gran cantidad de componentes pre-fabricados y poderosos plugins construidos con jQuery \cite{Bootstrap}.
