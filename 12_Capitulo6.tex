@@ -37,9 +37,9 @@ El módulo de Estadísticas debe proveer el cálculo del total de auditorías, c
 
 El módulo de Reportes ofrece la posibilidad de generar archivos sobre los listados en diversos formatos (CSV y PDF) y personalizar su apariencia con opciones como modificar los márgenes, espacios, incluir el nombre y logo del sistema, entre otros. Adicionalmente, la librería debe ser mantenible, eficiente, simple, confiable, escalable y fácil de integrar y configurar.\\
 
-Por otro lado, es indispensable que se instalen automáticamente las dependencias de la librería en el sistema que la utilice para facilitar su uso y evitar errores. También, se requiere que la librería se actualice mediante el uso de una herramienta de integración contínua. \\
+Por otro lado, es indispensable que se instalen automáticamente las dependencias de la librería en el sistema que la utilice para facilitar su uso y evitar errores. También, se requiere que la librería se actualice mediante el uso de una herramienta de integración continua. \\
 
-En esta pasantía se abarcarán las funcionalidades correspondientes a la selección del modelo auditable, registro de traza de auditoría y listados (sin filtros ni ordenamiento) del módulo \textit{Core} y completamente el módulo de Estadísticas con sus respectivas pruebas automatizadas. También se incluye la instalación y configuración del sistema de integración contínua. El módulo de Reportes está fuera del alcance.
+En esta pasantía se abarcarán las funcionalidades correspondientes a la selección del modelo auditable, registro de traza de auditoría y listados (sin filtros ni ordenamiento) del módulo \textit{Core} y completamente el módulo de Estadísticas con sus respectivas pruebas automatizadas. También se incluye la instalación y configuración del sistema de integración continua. El módulo de Reportes está fuera del alcance.
 
 \subsection{Adaptación de la metodología a la pasantía}
 
@@ -90,17 +90,17 @@ No obstante, la arquitectura mostrada en la figura 6.1 sufrió modificaciones du
 \label{fig:figure6.2}
 \end{figure}
 
-En la figura 6.2 se muestran las tecnologías a utilizar en el proyecto. Como se mencionó anteriormente, se utilizará Django para el desarrollo. Como herramienta de control de versiones se utilizará Git y para automatizar la integración contínua se usará Jenkins. El sistema “Host” será un proyecto de la empresa que utilizará como servidor Web, Apache y una base de datos relacional.
+En la figura 6.2 se muestran las tecnologías a utilizar en el proyecto. Como se mencionó anteriormente, se utilizará Django para el desarrollo. Como herramienta de control de versiones se utilizará Git y para automatizar la integración continua se usará Jenkins. El sistema “Host” será un proyecto de la empresa que utilizará como servidor Web, Apache y una base de datos relacional.
 
-\section{Diseño del módulo \textit{Core}}
+\subsection{Diseño del módulo \textit{Core}}
 
 Uno de los problemas más significativos que la empresa encuentra en otras extensiones de Django disponibles, es el hecho de que el registro de auditoría se guarda a nivel de la vista y es responsabilidad del programador colocar el código para esta funcionalidad. Esto da cabida a que se olvide colocar en alguna de las vistas correspondientes a algún modelo, por lo que podría no guardarse todos los tipos de operaciones. \\
 
 La librería Auditorías Turpial pretende evitar este problema guardando el registro de auditoría cada vez que ocurre alguna operación sobre el modelo a través del uso de las \textit{signals} que ofrece el \textit{framework} . Éstas, necesariamente deben distinguir entre un modelo auditable y uno que no lo es. Para esto, se contempló el uso de un \textit{mixin} que pueda ser heredado por cualquier modelo y así proveer todas las funcionalidades mencionadas. \\
 
-Por otro lado, se desea incluir en las auditorías el usuario que realizó la acción. La solución mencionada anteriormente no es suficiente para lograr esto, puesto que a nivel de modelos no se posee información sobre el \textit{request} y no se puede saber qué usuario está en sesión. Por esta razón, se planteó agregar otro \textit{mixin} a nivel de vistas que completara la información antes de guardarla en la base de datos. Sería responsabilidad del programador heredarlo en todas las vistas cuyos modelos mantienen un historial de transacciones.
+Por otro lado, se desea incluir en las auditorías el usuario que realizó la acción. La solución mencionada anteriormente no es suficiente para lograr esto, puesto que a nivel de modelos no se posee información sobre el \textit{request} y no se puede saber qué usuario está en sesión. Por esta razón, se planteó agregar otro \textit{mixin} a nivel de vistas que completara la información antes de guardarla en la base de datos. Sería responsabilidad del programador heredarlo en todas las vistas cuyos modelos mantienen un historial de transacciones.\\
 
-Django posee mecanismos para traducir los modelos a otro formato con una estructura bien definida, más conocidos como \textit{serializers}. En particular, posee maneras de convertirlos a JSON, por lo que se decidió utilizar dicha funcionalidad para cumplir con el requisito de mostrar los cambios en los valores de los campos del modelo auditable en este formato.
+Django posee mecanismos para traducir los modelos a otro formato con una estructura bien definida, más conocidos como \textit{serializers}. En particular, posee maneras de convertirlos a JSON, por lo que se decidió utilizar dicha funcionalidad para cumplir con el requisito de mostrar los cambios en los valores de los campos del modelo auditable en este formato.\\
 
 En cuanto a los listados, se acordó utilizar Datatables para mostrarlos como una tabla que se pueda ordenar y filtrar fácilmente. Este \textit{plugin} puede manejar aproximadamente 10000 filas en sus tablas procesándolas del lado del cliente. Sin embargo, las auditorías serán potencialmente millones de registros, es por esta razón se debe realizar el procesamiento del lado del servidor. \\
 
@@ -160,9 +160,98 @@ Se planificaron ocho \textit{Sprints} con una duración de dos semanas laborales
 
 Una vez culminada la fase de concepción, se procedió con la instalación del ambiente de desarrollo e implementación de los módulos que abarca la pasantía. También, se incluyen las pruebas pertinentes para cada funcionalidad desarrollada según indica el Plan de Pruebas.
 
-\subsection{Módulo \textit{Core}}
+\subsection{Construcción del módulo \textit{Core}}
 
 En esta sección se describe el proceso para desarrollar cada HU relacionada con el módulo \textit{Core}, los problemas encontrados y sus soluciones. También se explica el nuevo diseño de la arquitectura y las pruebas efectuadas.
+
+\subsubsection{Preparación del ambiente de desarrollo}
+
+Antes de iniciar con la implementación de la librería, se instalaron y configuraron todas las herramientas necesarias para esto. En primer lugar, se instaló Python 2.7 y luego PIP. Se instaló el \textit{plugin} de Python, Virtualenv, el cual permitió configurar el ambiente virtual. Este, se utilizó para instalar los requerimientos de la librería, en particular, Django 1.10 y Pytest 3.2. Estos, se registraron en el archivo “requirements.txt” para facilitar futuras instalaciones y determinar las dependencias de la librería. Luego, se procedió a crear la aplicación de Django y la estructura del módulo \textit{Core}.
+
+\subsubsection{Estructura de la tabla de auditorías}
+
+Para registrar apropiadamente la información de la auditoría como fue establecida en la fase anterior, se creó un modelo en Django cuyo nombre es "AuditableAction". Este se agregará como una tabla adicional en la base de datos del sistema "Host" y posee los siguientes campos:\\
+
+\input{Tablas/modelo_accion_auditable}
+
+En cuanto a los campos tipo JSON, se utilizó la \textit{plugin} de Django, Jsonfield, que provee todos los validadores necesarios para que el campo de sea considerado un JSON, y así, mantener la integridad de la base de datos. Adicionalmente, este \textit{plugin} puede hacer uso del campo JSON que posee nativamente PostgreSQL; en el resto de los manejadores, se representa como un campo de texto.
+
+\subsubsection{Selección de un  modelo auditable}
+
+Para que un programador pueda escoger qué modelo es auditable y cuál no, se creó un \textit{mixin} a nivel de modelos, llamado "AuditableMixin". Este permite heredar el comportamiento necesario para registrar las auditorías en la base de datos.\\
+
+\textbf{Relación muchos a muchos} Django cuenta con la facilidad de, a nivel de modelos, crear relaciones muchos-a -muchos sin necesidad de que el programador explícitamente genere la tabla intermedia que los conecta; a través del campo "ManyToManyField". Los cambios ocurridos en ellos, activan una señal llamada “m2m\_changed”, la cual se utilizó para llevar control de los cambios de apuntadores (llaves primaria) hechos. No obstante, fue descartado debido a que el comportamiento natural del \textit{framework} cuando se crea por primera vez el registro, es guardar la instancia sin los cambios en estos campos y luego guardarlos nuevamente.\\
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{Estudiante-Materia.png}
+\caption{Modelo Entidad-Relación del ejemplo.}
+\label{fig:figura6.3}
+\end{figure}
+
+Por ejemplo, si se tiene un tabla Estudiante, que tiene una relación muchos-a-muchos con Materias como muestra la figura 6.3, al intentar guardar una instancia de Estudiante con algunas Materias, se sigue el siguiente flujo:\\
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Signals.png}
+\caption{Gráfico de flujo del orden en el que se activan las señales para guardar un cambio en los campos “ManyToManyField”.}
+\label{fig:figura6.4}
+\end{figure}
+
+Debido al orden en que se activan la señales (figura 6.4), se almacena el objeto en base de datos y luego, cuando cambia el campo "materias", se guarda nuevamente, por lo que era imposible obtener en un sólo registro de auditoría todos los cambios.\\
+
+El pasante propuso al cliente dos opciones: la primera es permitir que se generen dos registros de auditoría, el primero con acción CREATE y el segundo con UPDATE, puesto que en realidad es una actualización. La segunda, es excluir esta relación de la auditoría, es decir, no utilizar “m2m\_changed”.\\
+
+Esta última, fue la escogida por el cliente y se documentó apropiadamente. Si el programador desea llevar auditorías de los cambios ocurridos en casos como estos, puede escribir su propia tabla intermedia para relacionar ambos modelos y utilizar la opción "through" provista por “ManyToManyField” como indica la documentación de Django. Si, esta tabla, hereda el “AuditableMixin” se replica el comportamiento buscado inicialmente al incluir los campos muchos-a-muchos\\
+
+\textbf{\textit{Serializers}}  Como se diseñó en la fase de concepción, se utilizaron los \textit{serializers} provistos por el \textit{framework} para almacenar la estructura completa de la instancia en cuestión, con el formato JSON. Los \textit{serializers} incluyen la clave primaria del objeto, el nombre del modelo y los campos que este contiene.\\
+
+Automáticamente, Django incluye la representación de los campos “ManyToManyField” y al decidir no rastrear los cambios en estos, fue necesario excluirlos explícitamente para evitar inconsistencias y confusiones.\\
+
+\textbf{Inclusión del usuario en la traza de auditoría}  Lo explicado anteriormente funciona perfectamente para registrar la auditoría y verificar los cambios, sin embargo no es suficiente para obtener el usuario, puesto que a nivel de modelos no se cuenta con esta información. Para solucionar esto, se creó otro \textit{mixin} llamado "AuditableMixinView", que inyecta la información del usuario en un campo oculto incluido en el "AuditableMixin". De esta manera, en las \textit{signals} se puede poseer la información del usuario en sesión y todo lo relacionado con él.
+
+\subsection{Instalación de la librería utilizando PIP}
+
+Una vez se obtenida una versión suficientemente sólida de la librería, se prosiguió a satisfacer uno de los requerimientos más importantes: que la librería sea capaz de instalarse  utilizando PIP. El pasante debió documentarse al respecto, debido a que existía gran desconocimiento en todo el equipo. En la página web oficial de Django se encuentra un tutorial bastante detallado para construir extensiones el cual sirvió de guía para el proceso. \\
+
+Lo primero que se hizo fue construir un archivo llamado "setup.py", que contiene la información de la librería, el nombre, la versión, los autores, la licencia y los paquetes que requiere, entre otros. En el caso de Auditorías Turpial, el paquete requerido fue Jsonfield.\\
+
+Luego, se creó el archivo "MANIFEST.in" para incluir aquellos archivos que no son detectados automáticamente por el "setup.py" como las plantillas de Django, los estáticos (javascript, css), la licencia, entre otros. \\
+
+Por último, en la cónsola, posicionados en la carpeta en la que se encuentra el achivo “setup.py”, se procede a empaquetar la librería. Una vez culminado este proceso, se tiene un archivo comprimido que se puede utilizar para instalar la librería con PIP.\\
+
+El pasante documentó con gran detalle este proceso para que el resto de los miembros del equipo pudiesen seguir los pasos. Esta documentación está disponible para la empresa, en caso de que deseen crear una nueva librería o actualizar Auditorías Turpial.
+
+\subsubsection{Listados de auditoría}
+
+Culminada toda la construcción de los \textit{mixins}, \textit{signals} e instaladores de la librería, se procedió a implementar la funcionalidad de listados de todas las auditorías registradas en base de datos. Para esta funcionalidad se decidió utilizar el \textit{plugin} de JavaScript, Datatables, que permite integrar de forma fácil y sencilla una tabla a la plantilla. Los listados son procesados en el servidor y tienen paginación, puesto que las auditorías pueden poseer millones de registros. Con esta decisión se evitan dos aspectos relevantes, sobrecargar el navegador de altos volúmenes de contenidos e incrementar el tiempo de espera del usuario para el cargado de los listados.\\
+
+Al usuario presionar alguno de los botones en la plantilla del listado, se realiza una solicitud GET de dicha página utilizando AJAX. De esta manera, se refresca ese componente sin necesidad de recargar completamente la página, lo que mejora la experiencia de usuario.
+
+\subsubsection{Reestructuración de la arquitectura}
+
+Antes de iniciar con la elaboración de los otros módulos de la librería, se notó que la funcionalidad de generar reportes está íntimamente relacionada con los listados de auditoría. Los filtros y el ordenamiento aplicados a los listados, deben aparecer en los CSV y PDF generados. Es por esta razón que, al finalizar el desarrollo de esta HU, el equipo se replanteó la estructura establecida en la fase de concepción.\\
+
+En lugar de crear tres aplicaciones en Django, una para cada módulo, se decidió crear sólo dos, como muestra la figura 6.5. La primera de ellas sería el backend de Auditorías Turpial, que mantiene toda la lógica para registrar las auditorías, explicada en los puntos anteriores; mientras que la segunda tendría los módulos de Reportes y Estadísticas. A esta última  la llamaremos Auditorías Turpial UI (User Interface) y contendrá todo el frontend del proyecto. Las funcionalidades de los listados fueron colocadas en el módulo de Reportes para facilitar la generación de PDF y CSV.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{Diagrama_Arquitectura2.png}
+\caption{Arquitectura final de la librería.}
+\label{fig:figura6.5}
+\end{figure}
+
+Esta reestructuración permite separar la captura de información de la manera en la que se muestra, sin que se vean afectados los beneficios que ofrecen los microservicios. Aunque los módulos de Estadísticas y Reportes se encuentren dentro de la misma aplicación, el programador puede elegir no instalar alguno de ellos en su sistema si lo excluye de las “INSTALLED\_APPS” (aplicaciones instaladas) de Django.\\
+
+En este punto del desarrollo, se dispone de un módulo Core que cumple todas las funcionalidades planteadas según la nueva arquitectura. En la figura 6.10 se muestra la estructura de este módulo dentro del patrón MVT.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{Core.png}
+\caption{Estructura del módulo \textit{Core} en el patrón MVT (creación propia).}
+\label{fig:figura6.6}
+\end{figure}
+
 
 \section{Fase de construcción del módulo de Estadísticas}
 \section{Fase de transición}

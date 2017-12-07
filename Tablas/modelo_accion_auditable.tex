@@ -1,0 +1,15 @@
+\begin{table}[h]
+\centering
+\begin{tabular}{| p{0.20\textwidth} | p{0.25\textwidth} | p{0.45\textwidth} |}
+\hline
+\textbf{Nombre del campo} & \textbf{Tipo de dato}                               & \textbf{Descripción}                                                                                                                                                                   \\ \hline
+ID                        & INT (Entero)                                        & Identificador del registro auditable.                                                                                                                                                  \\ \hline
+author                    & VARCHAR                                             & Referencia al usuario que realizó la acción.                                                                                                                                           \\ \hline
+action                    & ENUM. Estas acciones son: CREATED, UPDATED, DELETED. & El tipo de acción efectuada sobre un modelo auditable.                                                                                                                                 \\ \hline
+model\_json\_old          & VARCHAR                                             & Antiguo valor. Un JSON que representa el valor que tenía el registro que se ve afectado por la operación. En caso de que la acción sea "creado", el JSON representará el objeto vacío. \\ \hline
+model\_json\_new          & VARCHAR                                             & Nuevo valor. Un JSON que representa el valor que tiene el registro que se ve afectado por la operación. En caso de que la acción sea "eliminado", el JSON representará el objeto vacío \\ \hline
+\end{tabular}
+
+\caption{Modelo de datos de la tabla "AuditableAction"}
+\label{tabla:1.3}
+\end{table}
