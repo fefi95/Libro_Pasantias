@@ -20,6 +20,7 @@
 \usepackage{blindtext}
 \usepackage{url}
 \usepackage{longtable}
+\usepackage{caption}
 \graphicspath{ {Imagenes/} }
 %------------------------------------------------------------------------------%
 
@@ -30,12 +31,13 @@
 %                                                                              %
 %------------------------------------------------------------------------------%
 
+\captionsetup[table]{skip=5pt}
 \geometry{
   reset,
   letterpaper,
   left=3cm,
   right=2cm,
-  top=2cm, 
+  top=2cm,
   bottom=2cm
 }
 
@@ -133,7 +135,7 @@
 \appendix
 
 \include{ApendiceA} % Appendix A: Title of the appendix
-\include{ApendiceB} % Appendix A: Title of the appendix           
+\include{ApendiceB} % Appendix A: Title of the appendix
 \include{ApendiceC} % Appendix A: Title of the appendix
 %                                                                     %
 %----------------------------------------------------------------------------------------%

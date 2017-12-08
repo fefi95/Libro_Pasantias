@@ -170,7 +170,7 @@ Antes de iniciar con la implementación de la librería, se instalaron y configu
 
 \subsubsection{Estructura de la tabla de auditorías}
 
-Para registrar apropiadamente la información de la auditoría como fue establecida en la fase anterior, se creó un modelo en Django cuyo nombre es "AuditableAction". Este se agregará como una tabla adicional en la base de datos del sistema "Host" y posee los siguientes campos:\\
+Para registrar apropiadamente la información de la auditoría como fue establecida en la fase anterior, se creó un modelo en Django cuyo nombre es “AuditableAction". Este se agregará como una tabla adicional en la base de datos del sistema “Host" y posee los siguientes campos:\\
 
 \input{Tablas/modelo_accion_auditable}
 
@@ -178,7 +178,22 @@ En cuanto a los campos tipo JSON, se utilizó la \textit{plugin} de Django, Json
 
 \subsubsection{Selección de un  modelo auditable}
 
-Para que un programador pueda escoger qué modelo es auditable y cuál no, se creó un \textit{mixin} a nivel de modelos, llamado "AuditableMixin". Este permite heredar el comportamiento necesario para registrar las auditorías en la base de datos.\\
+Para que un programador pueda escoger qué modelo es auditable y cuál no, se creó un \textit{mixin} a nivel de modelos, llamado "AuditableMixin". Este permite heredar el comportamiento necesario para registrar las auditorías en la base de datos.
+
+\subsubsection{Registro de una acción auditable}
+
+Como bien se ha dicho antes, Django posee \textit{signals} que son detonadas por diferentes eventos; dos de ellos están relacionados con la creación y actualización de objetos, “pre\_save” y “post\_save”. Estas señales se activan antes de guardar un objeto en la base de datos y después, respectivamente; bien sea para crearlo o actualizarlo. Cada una de ellas posee información sobre la instancia que será guardada en la base de datos y el modelo que envía la señal (\textit{sender}). El \textit{sender} es de gran utilidad puesto que permite determinar cuál es su clase, y así auditar solo los modelos que sean una subclase del "AuditableMixin" definido anteriormente.\\
+
+En principio, se optó por hacer un manejador para la señal “pre\_save” debido a que, antes de guardar en base de datos, se puede obtener tanto el valor actual de la instancia como el que tendrá. Desafortunadamente, esta solución no asegura que se almacene la instancia a auditar en la base de datos, pero sí la traza de auditoría. Podría ocurrir algún error justo en medio de estas dos operaciones lo que generaría problemas de consistencia.\\
+
+Utilizar la señal “post\_save” tampoco fue una opción, ya que no se podía obtener el valor del registro anterior, lo cual es de suma importancia para comparar los cambios ocurridos. \\
+
+Motivado por esto, se decidió sobreescribir el método “save()”, con lo que se puede realizar el procesamiento para capturar el valor anterior, guardar el objeto auditable y generar la auditoría. Se distingue el tipo de acción si la instancia posee o no una clave primaria; si no la posee se está creando.\\
+
+El primer inconveniente encontrado con esta solución es el hecho de que, al cargar la base de datos con un \textit{Fixture}, el \textit{framework} no utiliza “save()”. Asume que los datos dentro del archivo son íntegros y los inserta, activando las señales correspondiente. El segundo, es que este comportamiento se replica con las inserciones y actualizaciones masivas, “bulk\_create” “bulk\_update”. Los mencionados métodos se traducen directamente a sentencias de SQL, por lo que tampoco activan \textit{signals}.  En la documentación de la librería se explican estos problemas y esperan ser corregidos en una próxima versión.\\
+
+Con respecto a la acción DELETE, no hubo mayores contratiempos, se utilizó la señal “post\_save”, la cual se activa luego de que se elimina una instancia, dado que no se requiere registrar el valor posterior.\\
+
 
 \textbf{Relación muchos a muchos} Django cuenta con la facilidad de, a nivel de modelos, crear relaciones muchos-a -muchos sin necesidad de que el programador explícitamente genere la tabla intermedia que los conecta; a través del campo "ManyToManyField". Los cambios ocurridos en ellos, activan una señal llamada “m2m\_changed”, la cual se utilizó para llevar control de los cambios de apuntadores (llaves primaria) hechos. No obstante, fue descartado debido a que el comportamiento natural del \textit{framework} cuando se crea por primera vez el registro, es guardar la instancia sin los cambios en estos campos y luego guardarlos nuevamente.\\
 
@@ -210,7 +225,7 @@ Automáticamente, Django incluye la representación de los campos “ManyToManyF
 
 \textbf{Inclusión del usuario en la traza de auditoría}  Lo explicado anteriormente funciona perfectamente para registrar la auditoría y verificar los cambios, sin embargo no es suficiente para obtener el usuario, puesto que a nivel de modelos no se cuenta con esta información. Para solucionar esto, se creó otro \textit{mixin} llamado "AuditableMixinView", que inyecta la información del usuario en un campo oculto incluido en el "AuditableMixin". De esta manera, en las \textit{signals} se puede poseer la información del usuario en sesión y todo lo relacionado con él.
 
-\subsection{Instalación de la librería utilizando PIP}
+\subsubsection{Instalación de la librería utilizando PIP}
 
 Una vez se obtenida una versión suficientemente sólida de la librería, se prosiguió a satisfacer uno de los requerimientos más importantes: que la librería sea capaz de instalarse  utilizando PIP. El pasante debió documentarse al respecto, debido a que existía gran desconocimiento en todo el equipo. En la página web oficial de Django se encuentra un tutorial bastante detallado para construir extensiones el cual sirvió de guía para el proceso. \\
 
@@ -252,6 +267,276 @@ En este punto del desarrollo, se dispone de un módulo Core que cumple todas las
 \label{fig:figura6.6}
 \end{figure}
 
+\subsubsection{Integración continua}
 
-\section{Fase de construcción del módulo de Estadísticas}
+Luego de haber terminado gran parte del módulo \textit{Core}, se prosiguió a instalar Jenkins. Para esto, se ingresó al terminal de la computadora, se agregó el repositorio de la herramienta y se instaló.\\
+
+Una vez realizado esto, el pasante ingresó, mediante la interfaz gráfica, al sistema de integración continua para configurar el repositorio del proyecto, ejecutando los siguientes pasos:
+
+\begin{enumerate}
+    \item Instalar el \textit{plugin} de Git en Jenkins.
+    \item Agregar las credenciales de Git del pasante (usuario y contraseña) en el sitio administrador. De esta manera quedan almacenadas dentro de Jenkins para futuras acciones que las requieran.
+    \item Incluir una “nueva tarea” para crear un nuevo proyecto.
+    \item Clonar el repositorio, ingresando a la sección de  “Configuración” del proyecto creado y se proporcionó el enlace HTTPS. La herramienta permite seleccionar una rama específica de la cual hacer \textit{pull}; se escogió la rama "develop".
+    \item En la configuración del proyecto, agregar la ejecución de un \textit{script} de shell luego de hacer \textit{pull} del repositorio para desplegar el proyecto.
+\end{enumerate}
+
+El pasante creó un \textit{script} que permite instalar el ambiente virtual y los \textit{plugins} necesarios para que el proyecto pueda ejecutarse, migrar la base de datos y ejecutar las pruebas. Esto es lo mínimo requerido por la HU. Adicionalmente, construyó otro \textit{script} que automatiza el empaquetamiento de la librería, el cual podría incluirse en el despliegue de la librería. \\
+
+Por último, se probó la configuración de Jenkins mediante la interfaz. El pasante utilizó el botón de “build” y comprobó en la consola de la herramienta que se había descargado la información más reciente de la rama "develop" y que se había ejecutado el \textit{script} exitosamente. \\
+
+Con el uso de Jenkins, se puede llevar el control de los despliegues de la librería y, en caso de que alguno falle, se puede detectar rápidamente verificando el estado del "build". De esta manera, gran parte del tiempo, la librería está disponible para la empresa y pueden verificar que sea estable sin necesidad de descargarla y probarla. \\
+
+El comportamiento logrado con el \textit{script} mencionado anteriormente, no evita que en el repositorio exista una versión inestable, puesto que el “build” se efectúa luego de que los cambios han sido incluidos en el repositorio. Es por esta razón que el pasante decidió investigar sobre posibilidad de evitar que se incluya código que no pase las pruebas. \\
+
+Dado que se utilizó Gitlab, se investigó sobre la configuración de Jenkins con este y se encontró que existe un \textit{plugin} que permite la integración de ambos sistemas. El pasante procedió a instalarlo, realizando las siguientes configuraciones sobre ambos sistemas:
+
+\begin{itemize}
+    \item En Gitlab, fue necesario generar un identificador único llamado “Gitlab API Token” creado para cada usuario. Adicionalmente, se debe crear un “Webhook” con el URL en el que está instalado Jenkins que incluye el proyecto en cuestión.
+    \item En Jenkins, se utiliza el “Gitlab API Token” como credencial para conectarse con Gitlab. Luego, se procede a configurar el proyecto. En la sección de “Configuración”, el \textit{plugin}, agrega una nueva opción para accionar el empaquetamiento cuando ocurra un evento en Gitlab. En particular, el evento de \textit{push}.
+\end{itemize}
+
+
+Para crear el “Webhook”, era indispensable instalar Jenkins en un servidor de la empresa, para que el URL mencionado pueda accederse desde Gitlab. No obstante, el líder técnico consideró que no era necesario el comportamiento adicional descrito, así que se descartó.\\
+
+El pasante dejó una documentación detallada acerca del proceso llevado a cabo para referencias futuras de algún otro miembro de la empresa, así como de la integración con Gitlab. Con esto, se pueden replicar fácilmente los pasos e instalar Jenkins en un servidor de la compañía e incluir otros proyectos, además de esta pasantía.
+
+\subsubsection{Pruebas del módulo \textit{Core}}
+
+Para el módulo Core, se generaron veintidós (22) casos de prueba automatizadas utilizando Pytest (ver Apéndice F). Dentro de estas pruebas, Once (11) consistían en validar el funcionamiento del "AuditableMixin", verificando que se guardara apropiadamente todos los campos la traza de auditoría. \\
+
+Dentro del módulo de pruebas de la librería se agregaron cuatro (4) modelos con las relaciones mostradas en la figura 6.6, que sólo existen cuando se crean las pruebas. Al inicializar la ejecución de los casos, se efectúa una migración de la base de datos, que permite a estos modelos ser incluidos en el esquema. Estos, poseen relaciones suficientemente complejas para poder realizar casos de pruebas con uno-a-uno, uno-a-muchos y muchos-a-muchos.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{Test_ER.png}
+\caption{Modelo Entidad-Relación de la base de datos de prueba (creación propia).}
+\label{fig:figura6.8}
+\end{figure}
+
+
+Antes de que comiencen a ejecutarse las pruebas, se precargan los registros con un \textit{Fixture} que utiliza el formato JSON.  Estos están escritos siguiendo la estructura de los \textit{serializers}; contienen la clave primaria, el modelo al que pertenece y el valor de cada campo como muestra la figura 6.9. Luego, se configuró Pytest para que utilizara el comando de Django “loaddata” y así, cargar el \textit{Fixture}. La base de datos es desechada al finalizar la ejecución.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{Fixture.png}
+\caption{Ejemplo del formato JSON para cargar un \textit{Fixture} (creación propia).}
+\label{fig:figura6.8}
+\end{figure}
+
+De estos casos de prueba, se encontró que fallaron dos, debido a que el \textit{serializer} no excluía los campos “ManyToManyField”. Se corrigió el código según lo explicado en la sección sobre \textit{serializers}, y se obtuvo que todas las pruebas fueron exitosas.\\
+
+Once de los casos de pruebas están dedicados a probar el "AuditableMixinView" para verificar que el usuario se agregue correctamente. Se configuró "RequestFactory" para simular un \textit{request} que solicitara un URL particular. De esta manera, se pueden probar las vista como se haría con cualquier otra función; con una entrada fija y una salida esperada, sin inspeccionar el contexto de la petición.\\
+
+Todas estas pruebas resultaron exitosas exceptuando el caso C04-P06 (ver Apéndice F) puesto que al eliminar un modelo no-auditable con una referencia a otro que sí lo es, no se realiza la llamada a la función de la vista del modelo auditable. Por esta razón, no se almacena el usuario en estos registros. Esto fue documentado y se aceptó este pequeño error puesto que se conserva la integridad del sistema de auditorías.\\
+
+Una vez terminada las pruebas unitarias y de integración, el módulo \textit{Core} cumple todos los requisitos del cliente, incluyendo el servidor de Integración Continua. De esta manera, se alcanzan los objetivos planteados.
+
+\subsubsection{Permisología}
+
+Con relación a la permisología de las auditorías, la HU C11 (ver Apéndice B) especifica que se desea contar con un sistema de autenticación (login) y que cada usuario autenticado posea un conjunto de permisos asociados. Estos, permitirán restringir ciertas acciones dentro de las auditorías, en particular visualizar listados. \\
+
+Para crear el sistema de autenticación, se quería crear un modelo de usuarios para la librería. No obstante, al pasante investigar sobre esto, encontró que la documentación de Django indica que los \textit{plugins} no deben crear su propio modelo de usuarios. Debido a que podría generar conflictos con la aplicación que lo instale. Por consiguiente, se descartó la HU relacionada con la autenticación (C11.1). \\
+
+Tomando en cuenta esto, se sugirió realizar un módulo de Permisología que incluyera, tanto las restricciones de los listados, como los de generación de reportes (PDF y CSV).\\
+
+Dado que la implementación de este módulo no se encontraba en el objetivo de la pasantía, se decidió no incluirlo para esta versión de la librería. Sin embargo, el pasante decidió realizar el diseño del mismo con la intención de que sirva de referencia. \\
+
+Este módulo también sería un microservicio, como Estadísticas y Reportes, que incluya permisos básicos y le brinde facilidades para generar nuevos permisos. Para restringir una funcionalidad específica, se utilizaría el mismo patrón de desarrollo del resto de la librería; ofrecer un \textit{mixin} que encapsule el comportamiento. Para obtener mayor detalle sobre el módulo de Permisología.
+
+\subsubsection{Análisis de desempeño}
+
+\subsubsection{Prototipo de tabla de auditorías descentralizada}
+
+\subsection{Construcción del módulo Estadísticas}
+
+En esta sección, se explica el desarrollo de módulo de Estadísticas; cómo se generaron los filtros, cálculos y gráficos necesarios, para presentar al usuario final la información recopilada por el módulo \textit{Core}.
+
+\subsubsection{Creación del  formulario de filtros}
+
+Para cumplir con las HU que se refieren al filtrado de los registros de auditoría, se procedió a crear un formulario. Inicialmente, se incluyeron aquellos campos relacionados con el rango de tiempo. De esta manera se puede construir el flujo de datos, básico, sin preocuparse por el resto de los filtros. Es importante destacar que ninguno de los campos es requerido y si no se selecciona, se obtiene toda la información.\\
+
+Para crear los campos fecha de inicio, hora de inicio, fecha de fin y hora de fin; se aprovecharon los tipos “DateField” y “TimeField” de Django. Estos manejan la validación del formato de los valores ingresados y, en caso de ser correctos, procede a convertirlos en un objeto "datetime" de Python para facilitar su manipulación. Aunque Django posee un campo "DateTimeField", en el que se puede obtener tanto la fecha como la hora, se decidió mantener estos campos separados, para tener completo control sobre los validadores y rellenar la información no requerida. \\
+
+El método “clean()” del formulario fue sobreescrito para manejar la lógica de los validadores y evitar el envío de un formulario incorrecto que pueda generar una excepción. Este método se encarga de:
+
+\begin{itemize}
+    \item Validar que la fecha de inicio no sea mayor que la de fin, tomando en cuenta la hora.
+    \item Validar que la fecha de fin no sea mayor a la actual, tomando en cuenta la hora.
+    \item Arrojar un error en el formulario cuando se coloca la hora (de fin o inicio) pero no la fecha relacionada. Este caso es muy importante puesto que no se puede filtrar únicamente con las horas porque generaría un error en el \textit{query}.
+    \item En caso de que no sea ingresado, rellenar el campo de la hora de inicio con el valor 00:00.
+    \item En caso de que no sea ingresado, rellenar el campo de la hora de inicio con el valor 23:59.
+\end{itemize}
+
+
+Una vez estructurado el formulario con el rango de tiempo, se prosiguió a armar el \textit{query} asociado. Para esto, se utilizó la vista prefabricada del \textit{framework} "ListView", que maneja toda la lógica de listar objetos utilizando un \textit{queryset} particular. La vista resultante se denominó "StatisticsView". Este \textit{queryset}  se configuró para que obtuviese todos los resultados de la tabla de auditorías, no obstante, el programador puede cambiar este atributo.\\
+
+El formulario se incluye en una vista adicional llamada "FilterView" que hereda "StatisticsView". De esta manera, en el código se distingue fácilmente la lógica relacionada a los filtros y la relacionada con los gráficos. En "FilterView", se colocó el formulario en el contexto y si el mismo es válido, se procede a llamar a la función "build\_filters". Esta función, añade nuevos filtros al \textit{queryset} inicial, según los valores enviados en el formulario a través del método POST. \\
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{form_filtros.png}
+\caption{Estructura del formulario de filtros (creación propia).}
+\label{fig:figura6.9}
+\end{figure}
+
+
+Es importante destacar que el \textit{framework} maneja los \textit{queries} de manera "lazy", lo que quiere decir que no serán evaluadas hasta que realmente sean necesarias. Este comportamiento permite filtrar el \textit{queryset} inicial tantas veces como indique el formulario, sin necesidad de cargar todos los objetos en memoria ni aumentar el tiempo de respuesta del usuario.\\
+
+También se agregaron tres botones que permiten agilizar el envío del formulario cuando se desea filtrar por la fecha, mes o año actual. Estos botones rellenan los campos de fecha según sea el caso, haciendo uso de funciones de JavaScript.\\
+
+Una vez creada la estructura que permite filtrar por rango de tiempo, se procedió a agregar al formulario, los campos “action”, “model” y “author” para filtrar por tipo de acción, modelo y autor respectivamente. Con cada uno de ellos, se repitió el proceso descrito anteriormente.
+
+\subsubsection{Cálculos estadísticos}
+
+Luego de obtener el \textit{queryset} filtrado, se procedió a construir los cálculos estadísticos indicados por los requerimientos: el promedio, máximo, mínimo y total de elementos. Para esto, se procesa el \textit{queryset} creando un diccionario, llamado "stats",  cuya clave es el día en que fue realizada la operación y su valor es la cantidad de transacciones en ese día.\\
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{stats.png}
+\caption{Ejemplo de “stats” (creación propia).}
+\label{fig:figura6.10}
+\end{figure}
+
+En el formulario, se creó la función "days\_elapsed" para obtener la cantidad de días transcurridos entre la fecha de inicio y la de fin. Este valor se utiliza para calcular el promedio apropiadamente, dividiendo el total de operaciones entre la cantidad de días transcurridos. Si no se provee fecha de inicio, se toma la fecha del primer objeto en la tabla de auditorías para calcular la diferencia de fechas.\\
+
+Para calcular el porcentaje de crecimiento, en "build\_filters" se determina la cantidad de registros que ocurrieron antes de la fecha de inicio ingresada en el formulario. Este valor, denominado "offset", se utiliza para conocer cuántas auditorías se registraron en el periodo anterior. El porcentaje de crecimiento se calcula restando el valor de periodo anterior con el actual, y dividiéndolos entre la cantidad total de modelos.\\
+
+En cuanto a la cantidad de modelos auditables, se utilizó la función "get\_models" de Django que retorna una lista de todos los modelos de la aplicación. Cada modelo es representado por un objeto que incluye su clase, con el cual se puede contar cuántos heredan el "AuditableMixin". Siguiendo este mismo procedimiento se puede determinar el porcentaje de cobertura de la librería, dividiendo la cantidad de modelos auditables entre el total de modelos.\\
+
+Todos los cálculos de estadísticas se colocan en el contexto de la vista "StatisticsView" para que puedan ser utilizados en las plantillas.
+
+\subsubsection{Construcción de gráficos}
+
+Antes de procesar los datos necesarios para crear un gráfico, se investigó en profundidad las funcionalidades que provee Amcharts. Este \textit{plugin}, requiere crear un elemento en HTML con la etiqueta "<div>", que posea un identificador único (atributo id) con el que se pueda referenciar para construir el gráfico con JavaScript. Para esto, se utiliza la función "Amcharts.makeChart" pasando como parámetros el identificador y un objeto con las opciones para crearlo.\\
+
+Los gráficos de Amcharts son altamente configurables, pues cuentan con una gran cantidad de opciones que permiten crear comportamientos complejos. Entre estas opciones se destacan:
+
+\begin{itemize}
+    \item dataProvider: datos para mostrar el gráfico en formato JSON. Puede contener cualquier cantidad de campos y se puede utilizar cualquier.
+    \item type: tipo de gráfico. Los posibles valores de esta opción son: “serial", “pie", “xy", “radar", “funnel", “gauge", “map", “gantt" y “stock".
+    \item theme: tema o estilo del gráfico. Amcharts posee unos temas propios creados en JavaScript, algunos de estos son "chalk" "black" "light".
+    \item balloon: crea los mensajes que aparece al posicionar el cursor sobre los ítems del gráfico. Amcharts crea automáticamente la información que aparece, sólo se necesita ajustar la apariencia.
+    \item graphs: crea la visualización de los datos en los siguientes subtipos de gráfico: “line”, “column”, “step line”, “smoothed line”, “olhc” y “candlestick”. Cuenta con varias opciones de personalización, incluyendo la posibilidad de modificar la información mostrada en el “balloon”
+    \item legend: leyenda del gráfico en cuestión.
+    \item export: habilita un menú que permite exportar los datos en diferentes formatos.
+    \item responsive: ajusta el tamaño del gráfico dependiendo de la pantalla.
+\end{itemize}
+
+
+Para construir los gráficos con Amcharts, se creó una clase llamada "ChartData" que encapsula toda la lógica necesaria para obtener la información relacionada con él. La clase cuenta con atributos como el identificador, tipo, tema, y los datos. Este último, denominado "data", se inicializa con el resultado de procesar "stats", y convertirlo en un objeto JSON. De esta manera, puede ser utilizado como "dataProvider". La mencionada clase puede ser heredada por el programador y ampliada para ajustarlo a sus necesidades.\\
+
+La clase "ChartData" es usada para crear una variable en el contexto de la vista "StatisticsView" que posea toda la información, y así, pueda ser utilizada en la plantilla. En la vista se incluyen seis gráficos:
+
+\begin{itemize}
+    \item Gráfico de línea con la evolución de las auditoría.
+    \item Gráficos de torta con la comparación entre cantidad de operaciones por autor, por modelo y por acción.
+    \item Gráfico de columnas apiladas con la comparación de cada operación realizada por cada usuario.
+    \item Gráfico de columnas apiladas con la comparación de cada operación realizada sobre cada modelo.
+\end{itemize}
+
+
+\subsection{Plantillas del módulo Estadísticas}
+
+Dado que el sistema en cuestión es una librería, es sumamente importante que las plantillas generadas sean fáciles de utilizar y personalizar por el programador que las utilice. Por esta razón, se crearon varias plantillas que pueden agregarse en el sistema "Host" haciendo uso de la etiqueta  "include". Esta etiqueta permite a Django, cargar y mostrar un plantilla utilizando el contexto e incluso se puede pasar parámetros para incluir nuevos valores de variable en el contexto.\\
+
+Entre las plantillas creadas, la principal es "turpial\_statistics.html" que incluye varios componentes:
+
+\begin{itemize}
+    \item El formulario del filtro.
+    \item Todos los cálculos estadísticos.
+    \item Gráfico de línea con la evolución de las auditoría.
+    \item Gráficos de torta con la comparación entre cantidad de operaciones por autor, por modelo y por acción.
+    \item Gráfico de columnas apiladas con la comparación de cada operación realizada por cada usuario.
+    \item Gráfico de columnas apiladas con la comparación de cada operación realizada sobre cada modelo.
+\end{itemize}
+
+Si el programador desea una plantilla con toda la información relacionada con las estadísticas puede incluir esta plantilla en las propias.\\
+
+En cuanto a los gráficos, se observó que la creación de cada uno era similar; por lo que se decidió fabricar una plantilla reutilizable que recibe como parámetro el objeto de la clase "ChartData". Con esto, se le ofrece al programador una manera sencilla de crear gráficos de Amcharts. Además, es utilizado en "turpial\_statistics.html" para generar los gráficos que ofrece. \\
+
+Esta idea fue aplicada a los cálculos estadísticos con las plantillas "turpial\_cards.html" y "turpia\_card\_stats.html". La primera presenta la información general relacionada con la librería, como la cantidad de modelos auditables, porcentaje de cobertura y de crecimiento. La segunda, muestra las estadísticas relacionada con la cantidad de registros auditables (promedio, máximo, mínimo, total). El programador puede utilizar cada plantilla para presentar la información como mejor le convenga en caso "turpial\_statistics.html" no se ajusta a sus necesidades.\\
+
+Todas las plantillas utilizan Bootstrap para mostrar la información, dado que la empresa posee como estándar de desarrollo, este \textit{framework}.\\
+
+Adicionalmente, se creó un tema propio para los gráficos ("turpial.js"), aprovechando las facilidades que ofrece Amcharts. En este tema, se configuraron los colores de los gráficos, el estilo de las leyendas, el tamaño de las letras entre otros.\\
+
+El programador también puede crear su propio tema, utilizando el atributo del "StatisticsView" llamado "chart\_theme". Este  requiere un diccionario con el nombre del tema y su ubicación en el proyecto (dirección). La dirección fue incluida dado que el tema debe cargarse después que el JavaScript principal de Amcharts pero antes de generar el gráfico o no estará disponible. El valor de la variable "chart\_theme" se utiliza en el atributo del tema en la clase "ChartData".\\
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{StatisticsView.png}
+\caption{ Definición de “StatisticsView”  incluyendo el campo “charts\_theme” (creación propia).}
+\label{fig:figura6.11}
+\end{figure}
+
+
+Para el resto de los estilos, el programador tiene completa libertad de sobreescribirlo al cambiar el estilo de Bootstrap como lo indican.\\
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{Estadisticas.png}
+\caption{ Estructura del módulo de Estadísticas (creación propia).}
+\label{fig:figura6.11}
+\end{figure}
+
+Luego de culminar las plantillas, se posee un módulo de Estadísticas que cumple con todos los requerimientos establecidos. En la figura 6.11 se muestra la estructura final del módulo de Estadísticas y en dónde se ubica cada función del mismo.
+
+\subsubsection{Pruebas del módulo Estadísticas}
+
+Para el módulo de estadísticas se escribieron 106 casos de prueba, utilizando los mismos modelos que en el módulo \textit{Core} y el mismo \textit{Fixture}. De estos casos, 73 corresponden al formulario de filtros y 33 a los cálculos estadísticos en la vista “StatisticsView". \\
+
+Las pruebas del formulario se enfocan en determinar si es válido, y si lo es, proceder a filtrar el queryset inicial según los valores provistos. Para comparar que los resultados obtenidos en el \textit{queryset} son los esperados, se utilizó la función “filter" de Python sobre la lista de todos los elementos de la tabla. También, se incluyeron los casos de pruebas en el que el formulario es inválido, en ellos se verifica que ocurra una excepción que incluya un mensaje de error que notifique al usuario. Esto permite asegurar que los filtros funcionan correctamente. Al ejecutar estas pruebas, se obtuvo que todas fueron exitosas.\\
+
+Para los cálculos estadísticos se deben probar las funciones que entregan estos resultados, haciendo una solicitud POST al URL que llama a la vista “FilterView". Para esto, se utilizó “Client()" una clase de Django que permite enviar la petición, simulando el navegador. De esta manera se puede inspeccionar el contexto e incluso el HTML de la respuesta, y así constatar que los valores son los esperados. \\
+
+Al ejecutar estas pruebas fallaban todas, excepto las que obtenían los resultados sin filtrar. Esto sucedió debido a que no se enviaban correctamente los datos del formulario que están relacionados con el tiempo. Para corregir el error, todos los valores fueron convertidos en \textit{string}. \\
+
+Luego, fallaron las relacionadas con el filtro de “acción". No se estaba calculando el “offset" en este caso, por lo que el porcentaje de crecimiento era incorrecto. Se corrigió el código y las pruebas fueron exitosas.\\
+
+Otro problema que surgió fue que, como el promedio cambia a medida que pasan los días, cuando no se envía la fecha de fin las pruebas comenzaron a fallar a medida que avanzaron los días. Para lidiar con esto, se creó una función, en lugar de colocar un valor fijo con el cual comparar el promedio como se estaba haciendo con el resto de las estadísticas. Esta función divide la cantidad de registros esperados entre días transcurridos para calcular el promedio. Los días transcurridos fueron obtenidos con la función “days\_elapsed". Luego se obtuvo que las pruebas fueron exitosas.\\
+
+Finalmente, se crearon casos de pruebas en los que se genera un modelo al momento de ejecutar el caso en particular. Con la intención de validar que se calculan correctamente la cantidad de modelos auditables y el porcentaje de cobertura. Estas pruebas resultaron exitosas.
+
 \section{Fase de transición}
+
+En esta sección se explica el proceso de integración de la librería en el proyecto Turpial Calendar, los errores encontrados y sus correcciones. Así como, la puesta en producción de ese sistema. Este proceso duró una semana.
+
+\subsection{Integración de la librería con Turpial Calendar}
+
+Antes de iniciar el proceso de integración, se descargó el proyecto Turpial Calendar y se instalaron los paquetes de los cual depende. Este proyecto utiliza Django 1.11 y MySQL. \\
+
+A continuación, se instaló la librería Auditorías Turpial (turpial\_auditor); utilizando la facilidad que ofrece PIP para esto, a través del enlace de un repositorio. Este proceso se repitió para Auditorías Turpial UI (turpial\_auditor\_ui).\\
+
+Con respecto a la configuración de las librerías, se siguió paso a paso la documentación correspondiente. En primer lugar, se incluyeron en “INSTALLED\_APPS" los módulos necesarios para registrar las auditorías y para visualizar las estadísticas. Luego, agregaron modelos auditables utilizando el \textit{mixin} para esto. Los modelos que presentan auditorías son: Eventos, Proyectos, Empleado y Categoría (de un calendario).\\
+
+De estos modelos, se ubicaron las vistas que permiten crear y eliminarlos y se incluyó el \textit{mixin} para agregar el usuario en la traza de auditorías, “AuditableMixinView".\\
+
+Después, se incluyó un URL en Turpial Calendar que llamase al “FilterView” y que permitiera ver la plantilla de estadísticas. Se repitió este proceso para crear otra plantilla que utilice los estilos de Turpial Calendar y se reorganice la información de otra manera para probar esta funcionalidad.\\
+
+\textbf{Errores encontrados}  Se ejecutó el proyecto y se intentó crear un evento en el calendario para verificar que las auditorías se estaban realizando. Sin embargo, al tratar de enviar el formulario ocurrió una excepción relacionada con el campo “ForeignKey”. Django incluye en los modelos, un campo oculto para realizar una referencia “hacia atrás” para obtener el modelo que guarda una relación con este. Al excluir los campos muchos-a-muchos en el serializer se utiliza una función que permite determinar cuales son y se accede al nombre de dicho atributo. Este campo oculto, no posee la función que accede al nombre y esto ocasionaba la falla.\\
+
+Una vez detectado el error, se corrigió y se constató que el \textit{Core} funcionaba como se esperaba. Luego, se escribieron tres nuevas pruebas para validar que este error fue solventado. Para esto, se agregaron dos nuevas tablas en la base de datos de prueba: Compañía y Persona, como se muestra en la figura 6.13. Estas pruebas fueron exitosas.\\
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{New_Test_ER.png}
+\caption{ Diagrama Entidad-Relación de los nuevos modelos en las pruebas (creación propia).}
+\label{fig:figura6.13}
+\end{figure}
+
+
+En el módulo de Estadísticas se encontró un pequeño error en el cálculo de la cantidad de días transcurridos entre la fecha de inicio y la de fin. Cuando no se envía la fecha de inicio en el formulario, se escogía la fecha del primero objeto auditable. Sin embargo, si este es borrado de la base de datos, no se obtenía ninguna fecha para realizar el cálculo. Esto se solucionó utilizando el mismo \textit{queryset} ya filtrado y obteniendo el primer registro que posee.
+
+\subsection{Puesta en producción}
+
+Finalizado el proceso de integración, se prosiguió a poner el proyecto Turpial Calendar en el servidor de Turpial Development, Webfaction. Para esto, se ingresó a este sistema y se creó un sitio web, agregando el dominio en el que estaría disponible el proyecto. Después, se configuró el tipo de aplicación (Django), se creó la base de datos con su respectivo usuario y contraseña y se migró. \\
+
+Para clonar el repositorio de Turpial Calendar, se ingresó mediante el protocolo SSH al servidor y luego se creó el ambiente virtual del proyecto. Se instalaron las dependencias y las librerías turpial\_auditor y turpial\_auditor\_ui desde su respectivos repositorios.\\
+
+A continuación, se configuró el servidor web, Apache. Se agregó un nombre de servidor, un alias y una tarea para activar el servidor (\textit{daemon}). \\
+
+Finalmente, se comprobó que el sistema funcionara correctamente, incluyendo las librerías y todas las funciones relacionadas con ellas.
