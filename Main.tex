@@ -21,6 +21,7 @@
 \usepackage{url}
 \usepackage{longtable}
 \usepackage{caption}
+\usepackage{pdfpages}
 \graphicspath{ {Imagenes/} }
 %------------------------------------------------------------------------------%
 
@@ -81,8 +82,8 @@
 
 \newpage
 \addcontentsline{toc}{chapter}{\textbf{LISTA DE SÍMBOLOS}}
-\include{09_ListaSimbolos}
-\newpage
+% \include{09_ListaSimbolos}
+% \newpage
 \addcontentsline{toc}{chapter}{\textbf{LISTA DE ABREVIACIONES}}
 \include{10_ListaAbreviaciones}
 \addcontentsline{toc}{chapter}{\textbf{GLOSARIO}}
@@ -134,9 +135,32 @@
 % \cleardoublepage
 \appendix
 
+% A - Manifiesto Ágil
+% B- TAUP
+% C- Release Plan
+% D- Plan de Pruebas
+% E- Resultado de las pruebas
+% F-Resultado de las pruebas de desempeño
+% G-Manual de uso de la librería Auditorías Turpial (Core)
+% H-Manual de uso de la librería Auditorías Turpial (UI)
+% I-Manual de Jenkins
+% J-Manual de creación de una librería
+% K-Prototipo de tablas descentralizadas
+% L-Módulo de Permisología.
+
 \include{ApendiceA} % Appendix A: Title of the appendix
 \include{ApendiceB} % Appendix A: Title of the appendix
-\include{ApendiceC} % Appendix A: Title of the appendix
+\includepdf[pages=-]{../PDF/Release_Plan.pdf}
+\includepdf[pages=-]{../PDF/Plan_Pruebas.pdf}
+\includepdf[pages=-]{../PDF/Resultado_Pruebas.pdf}
+\includepdf[pages=-]{../PDF/Resultado_Pruebas_Desempeño.pdf}
+\includepdf[pages=-]{../PDF/Manual_Auditorias_Turpial.pdf}
+\includepdf[pages=-]{../PDF/Manual_Auditorias_Turpial_UI.pdf}
+\includepdf[pages=-]{../PDF/Manual_Jenkins.pdf}
+\includepdf[pages=-]{../PDF/Manual_Libreria.pdf}
+\includepdf[pages=-]{../PDF/Prototipo_tablas_descentralizadas.pdf}
+\includepdf[pages=-]{../PDF/Modulo_Permisologia.pdf}
+
 %                                                                     %
 %----------------------------------------------------------------------------------------%
 \end{document}
