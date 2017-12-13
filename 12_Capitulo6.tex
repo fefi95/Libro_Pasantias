@@ -1,4 +1,4 @@
-\chapter{\textbf{Desarrollo}}
+las señales\chapter{\textbf{Desarrollo}}
 
 \thispagestyle{empty}
 
@@ -221,7 +221,7 @@ Automáticamente, Django incluye la representación de los campos “ManyToManyF
 
 \textbf{Inclusión del usuario en la traza de auditoría}  Lo explicado anteriormente funciona perfectamente para registrar la auditoría y verificar los cambios, sin embargo no es suficiente para obtener el usuario, puesto que a nivel de modelos no se cuenta con esta información. Para solucionar esto, se creó otro \textit{mixin} llamado “AuditableMixinView", que inyecta la información del usuario en un campo oculto incluido en el “AuditableMixin". De esta manera, en las señales y en el método “save()” se  puede poseer la información del usuario en sesión y todo lo relacionado con él.
 
-El pasante se aseguró de que el nombre de este campo fuese suficientemente específico para evitar conflictos con el modelo a auditar, porque si poseen el mismo nombre podría ocurrir algún error en el sistema “Host". Se utilizó el nombre “\_turpial\_user" y está documentado en la librería para alertar al programador que la use.
+El pasante se aseguró de que el nombre de este campo fuese suficientemente específico para evitar conflictos con el modelo a auditar, porque si poseen el mismo nombre podría ocurrir algún error en el sistema “Host". Se utilizó el nombre “_turpial_user" y está documentado en la librería para alertar al programador que la use.
 
 \subsubsection{Instalación de la librería utilizando PIP}
 
@@ -258,7 +258,7 @@ Esta reestructuración permite separar la captura de información, de la manera 
 
 De aquí en adelante nos referiremos a la librería completa como Auditorías Turpial, y a las aplicaciones originada de estas, las llamaremos Auditorías Turpial Core y Auditorías Turpial UI, para el backend y frontend, respectivamente.\\
 
-Para Auditorías Turpial UI, se realizó el procedimiento descrito en la sección de instalación con PIP, utilizando el nombre “turpial\_auditor\_ui” y colocando como dependencia “datatables-view” utilizada en el módulo Reportes.\\
+Para Auditorías Turpial UI, se realizó el procedimiento descrito en la sección de instalación con PIP, utilizando el nombre “turpial_auditor_ui” y colocando como dependencia “datatables-view” utilizada en el módulo Reportes.\\
 
 En este punto del desarrollo, se dispone de un módulo \textit{Core} que cumple todas las funcionalidades planteadas según la nueva arquitectura, exceptuando los permisos. En la figura 6.6 se muestra la estructura de este módulo dentro del patrón MVT.
 
@@ -423,7 +423,7 @@ Todos los cálculos de estadísticas se colocan en el contexto de la vista “St
 
 \subsubsection{Construcción de gráficos}
 
-Antes de procesar los datos necesarios para crear un gráfico, se investigó en profundidad las funcionalidades que provee Amcharts. Este \textit{plugin}, requiere crear un elemento en HTML con la etiqueta “$<$div$>$", que posea un identificador único (atributo id) con el que se pueda referenciar para construir el gráfico con JavaScript. Para esto, se utiliza la función “Amcharts.makeChart" pasando como parámetros el identificador y un objeto con las opciones para crearlo.\\
+Antes de procesar los datos necesarios para crear un gráfico, se investigó en profundidad las funcionalidades que provee Amcharts. Este \textit{plugin}, requiere crear un elemento en HTML con la etiqueta “<div>", que posea un identificador único (atributo id) con el que se pueda referenciar para construir el gráfico con JavaScript. Para esto, se utiliza la función “Amcharts.makeChart" pasando como parámetros el identificador y un objeto con las opciones para crearlo.\\
 
 Los gráficos de Amcharts son altamente configurables, pues cuentan con una gran cantidad de opciones que permiten crear comportamientos complejos. Entre estas opciones se destacan:
 
