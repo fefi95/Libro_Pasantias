@@ -3,13 +3,13 @@
 
 \thispagestyle{empty}
 
-Brindar soluciones oportunas a la medida de sus clientes, constituyen parte de la misión de Turpial Development, es por ello que inició el desarrollo de una librería para la gestión de auditorías. Esta librería se realizó en Django y es capaz de registrar las operaciones efectuadas sobre la base de datos y mostrarlas a través de estadísticas.
+Brindar soluciones oportunas a la medida de sus clientes, constituyen parte de la misión de Turpial Development, es por ello que inició el desarrollo de una librería para la gestión de auditorías. Esta librería se realizó en Django y es capaz de registrar las operaciones efectuadas sobre la base de datos y mostrarlas a través de estadísticas.\\
 
-La librería Auditorías Turpial, se desarrolló bajo la arquitectura de microservicio, con lo cual se fomenta su escalabilidad. En su módulo \textit{Core} es posible seleccionar los modelos auditables de manera sencilla mediante el uso de los mixins que provee, y generar las auditorías correspondientes según las acciones ejecutadas sobre los mismos, lo que permite llevar la trazabilidad de la información sensible.
+La librería Auditorías Turpial, se desarrolló bajo la arquitectura de microservicio, con lo cual se fomenta su escalabilidad. En su módulo \textit{Core} es posible seleccionar los modelos auditables de manera sencilla mediante el uso de los \textit{mixins} que provee, y generar las auditorías correspondientes según las acciones ejecutadas sobre los mismos, lo que permite llevar la trazabilidad de la información sensible.\\
 
-El análisis de la información y toma de decisiones por parte del cliente es posible con el uso de esta librería, pues cuenta con un módulo que proporciona resultados estadísticos y facilita la visualización de los resultados capturados por el \textit{Core}, a través de gráficos. El módulo Estadísticas posee plantillas que son fáciles de utilizar por los programadores en cualquier proyecto que use estas tecnologías.
+El análisis de la información y toma de decisiones por parte del cliente es posible con el uso de esta librería, pues cuenta con un módulo que proporciona resultados estadísticos y facilita la visualización de los resultados capturados por el \textit{Core}, a través de gráficos. El módulo Estadísticas posee plantillas que son fáciles de utilizar por los programadores en cualquier proyecto que use estas tecnologías.\\
 
-La implantación de un servidor de integración contínua fue beneficioso para el desarrollo de este proyecto, puesto que permite unificar las diferentes versiones que poseen los programadores y detectar errores en ellas. También, facilita la automatización de tareas como el despliegue y actualización de la librería, a través de un \textit{script}.
+La implantación de un servidor de integración continua fue beneficioso para el desarrollo de este proyecto, puesto que permite unificar las diferentes versiones que poseen los programadores y detectar errores en ellas. También, facilita la automatización de tareas como el despliegue y actualización de la librería, a través de un \textit{script}.\\
 
 El conjunto de objetivos establecidos para este proyecto de pasantía, fueron alcanzados  exitosamente, cumpliendo los estándares, expectativas y lineamientos de la empresa.\\
 
@@ -22,7 +22,7 @@ Las Historias de Usuario relacionadas con la permisología no fueron llevadas a 
 Además de los resultados obtenidos, se proponen sugerencias y nuevas ideas a ser consideradas por la empresa para mejorar el sistema:
 
 \begin{itemize}
-    \item Cambiar el identificador numérico del registro de auditoría por un, Identificador Único Universal (UUID, por sus siglas en inglés Universally Unique Identifier). De esta manera, se incrementa la cantidad de claves primarias que se pueden direccionar ($16^32$), actualmente es de $2^32$ . Con esto, se evita tener que respaldar la información tan frecuentemente.
+    \item Cambiar el identificador numérico del registro de auditoría por un, Identificador Único Universal (UUID, por sus siglas en inglés \textit{Universally Unique Identifier}). De esta manera, se incrementa la cantidad de claves primarias que se pueden direccionar ($16^32$), actualmente es de $2^32$ . Con esto, se evita tener que respaldar la información tan frecuentemente.
     \item Ampliar las posibles acciones auditables del sistema, incluyendo otras como CREATE TABLE, ALTER TABLE, DROP TABLE para tener un mayor alcance en las auditorías.
     \item Implementar el módulo de Permisología para restringir funcionalidades de la librería a ciertos usuarios.
     \item Comparar el desempeño del prototipo de tablas de auditorías descentralizado, con el que está actualmente implementado en la librería.
