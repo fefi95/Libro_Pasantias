@@ -1,40 +1,15 @@
-\chapter{Backlog del proyecto}
+\chapter{Comparación de Librería Auditorías Turpial con otras}
 
-\section*{Núcleo}
-
-\begin{longtable}{| c | p{8cm} | c |c | c |}
+\begin{table}[h]
+\centering
+\begin{tabular}{| p{0.15\textwidth} | p{0.175\textwidth} | p{0.175\textwidth}| p{0.175\textwidth} | p{0.175\textwidth} |}
 \hline
-Código & Historia de usuario                                                                                                                                                                                & Prioridad & Riesgo & Story Points \\ \hline
-C01    & Como programador, quiero indicar cuáles elementos de mi base de datos quiero auditar para poder indicar a la librería cuales modelos debe llevarle seguimiento.                                    & Alta      & Alta   & 5            \\ \hline
-C02    & Como programador, quiero poder almacenar cuando un elemento auditable fue creado así podré saber cuándo, quién y qué fue ingresado en el sistema.                                                  & Alta      & Alta   & 5            \\ \hline
-C03    & Como programador, quiero poder almacenar cuando un elemento auditable fue editado así podré saber cuándo, quién y cómo fue alterada la información en el sistema.                                  & Alta      & Alta   & 5            \\ \hline
-C04    & Como programador, quiero poder almacenar cuando un elemento auditable fue eliminado así podré saber cuándo, quién y cuál la información fue borrada en el sistema.                                 & Alta      & Alta   & 5            \\ \hline
-C05    & Como usuario, quiero disponer de listas de cada elemento auditable para poder observar el comportamiento de mi información.                                                                        & Alta      & Baja   & 2            \\ \hline
-C06    & Como usuario, quiero que las listas de mis auditorías puedan ordenarse según autor, fecha de creación, acción efectuada sobre la data                                                              & Alta      & Baja   & 1            \\ \hline
-C07    & Como usuario, quiero que las listas de mis auditorías puedan filtrarse según autor, fecha de creación, acción efectuada sobre la data; para así facilitar la búsqueda de auditorías en específico. & Alta      & Baja   & 1            \\ \hline
-C08    & Como programador, quiero poder configurar el orden en que se desplegarán las columnas de mis listados, así mantener los patrones de experiencia de usuario de mi sistema.                          & Media     & Media  & 2            \\ \hline
-C09    & Como programador, quiero contar con etiquetas personalizadas que me permitan incluir cualquier listado de las auditorías en mi sistema                                                             & Alta      & Media  & 3            \\ \hline
-C10    & Como programador, quiero contar con un medio para personalizar el Look and Feel de mis listados de auditorías para ajustarlos al estilo de mi sistema.                                             & Media     & Alta   & 5            \\ \hline
-C11    & Como usuario, quiero contar con un control de acceso a los listados de las auditorías y así solo brindar a un conjunto de usuarios las auditorías(Dividida en C11.1, C11.2 y C11.3)                & Media     & Baja   & 8            \\ \hline
-C11.1  & Como usuario, quiero contar con un login para restringir el acceso a usuarios no autorizados a mis auditorías.                                                                                     & Media     & Baja   & 2            \\ \hline
-C11.2  & Como usuario, quiero poder autorizar/desautorizar usuarios al acceso de auditorías.                                                                                                                & Media     & Baja   & 5            \\ \hline
-C11.3  & Como usuario, quiero poder listar a todos los usuarios autorizados a acceder a las auditorías.                                                                                                     & Media     & Baja   & 1            \\ \hline
-C12    & Como usuario, quiero que el sistema se actualice con la última versión de la librería por medio de integración continua para garantizar el soporte al sistema en donde se instale la librería.     & Alta      & Alta   & 5            \\ \hline
-C13    & Como desarrollador quiero que se instalen automáticamente las dependencias necesarias en el sistema que se instale la librería.                                                                    & Alta      & Media  & 3            \\ \hline
-\end{longtable}
-
-
-\section*{Estadísticas}
-
-\begin{longtable}{| c | p{8cm} | c |c | c |}
-\hline
-Código & Historia de usuario                                                                                                                 & Prioridad & Riesgo & Story Points \\ \hline
-E01    & Como usuario quiero ver las estadísticas globales entre todas las acciones auditables a lo largo de un rango de tiempo.             & Alta      & Media  & 2            \\ \hline
-E02    & Como usuario quiero disponer de gráficas con las estadísticas globales.                                                             & Media     & Media  & 2            \\ \hline
-E03    & Como usuario quiero ver las estadísticas por acción auditable a lo largo de un rango de tiempo.                                     & Alta      & Media  & 2            \\ \hline
-E04    & Como usuario quiero disponer de gráficas con las estadísticas por acción auditable.                                                 & Media     & Media  & 2            \\ \hline
-E05    & Como usuario quiero ver las estadísticas por autor a lo largo de un rango de tiempo.                                                & Alta      & Media  & 2            \\ \hline
-E06    & Como usuario quiero disponer de gráficas con las estadísticas por autor.                                                            & Media     & Media  & 1            \\ \hline
-E07    & Como usuario quiero ver las estadísticas de una tabla de auditoría específica de la base de datos a lo largo de un rango de tiempo. & Alta      & Media  & 3            \\ \hline
-E08    & Como usuario quiero disponer de gráficas con las estadísticas de una tabla de auditoría específica.                                 & Media     & Media  & 1            \\ \hline
-\end{longtable}
+\textbf{Nombre de paquete}           & \textbf{Django- reversion}                                                    & \textbf{Django- auditor}                                                                                                  & \textbf{Django-simple- history}                                                                                     & \textbf{turpial-auditor (Pasantía)}           \\ \hline
+\textbf{Descripción}                 & Es una extensión de Django que provee control de versiones para los modelos. & Una aplicación de Django que guarda logs con los cambios hechos a los objetos de una manera simple y granular. & Almacena el historial de un modelo. Permite observar y revertir los cambios desde el sitio administrador de Django. &   Una extensión de Django que mantiene un historial de operaciones realizadas sobre ciertos modelos.                             \\ \hline
+\textbf{Estado}                      & Producción/ Estable                                                           & Estable                                                                                                                  & Producción/ Estable                                                                                                 & Desarrollo                                    \\ \hline
+\textbf{Mecanismo de Trigger}        & Middleware/ Decorador/ Manejo de contexto                                  & No posee. Se debe colocar el código en cada vista.                                                                       & Señales (Save).                                                                                                      & Sobreescribiendo el método save() y con señales \\ \hline
+\textbf{Soporte de Rollback/ Revert} & Si.                                                                          & No.                                                                                                                      & Si.                                                                                                                & No está contemplado.                         \\ \hline
+\textbf{Almacenamiento de historial} & Otro modelo.                                                                 & Otro modelo.                                                                                                             & Misma tabla.                                                                                                       & Otro modelo.                                  \\ \hline
+\textbf{Rastreo de relaciones}       & Si.                                                                          & No.                                                                                                                      & No especifica.                                                                                                     & Clave foránea                                 \\ \hline
+\end{tabular}
+\end{table}
