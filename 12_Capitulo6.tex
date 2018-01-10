@@ -72,7 +72,7 @@ Asimismo, se amplió la \textit{Definition of Done} para agregar las pruebas aut
 
 El planteamiento inicial (figura 6.1) consistía en desarrollar cada módulo de la librería en una aplicación de Django distinta, las cuales se instalarían por separado en el sistema, este será referido como “Host” para simplificar la notación. Los módulos de Estadística y Reportes serían ofrecidos como microservicios dependientes del módulo \textit{Core} pero independientes entre ellos, de manera que si alguno falla, el otro no sea afectado.\\
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Diagrama_Arquitectura.png}
 \caption{Arquitectura de la librería Auditorías Turpial}
@@ -83,7 +83,7 @@ Se decidió que el módulo \textit{Core} agregaría una nueva tabla en la base d
 
 No obstante, la arquitectura mostrada en la figura 6.1 sufrió modificaciones durante el desarrollo del proyecto para simplificarla. En lugar de crear tres aplicaciones, una para cada módulo, se separó Auditorías Turpial en dos: \textit{backend} y \textit{frontend}. En la sección que explica la fase de construcción se ofrecerán mayores detalles de estos cambios y sus razones. \\
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Diagrama_Tecnologias.png}
 \caption{Arquitectura de tecnologías a utilizar}
@@ -265,7 +265,7 @@ En este punto del desarrollo, se dispone de un módulo \textit{Core} que cumple 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.7\textwidth]{Core.png}
-\caption{Estructura del módulo \textit{Core} en el patrón MVT (creación propia).}
+\caption{Estructura del módulo \textit{Core} en el patrón MVT.}
 \label{fig:figura6.6}
 \end{figure}
 
@@ -312,7 +312,7 @@ Dentro del módulo de pruebas de la librería se agregaron cuatro (4) modelos co
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.7\textwidth]{Test_ER.png}
-\caption{Modelo Entidad-Relación de la base de datos de prueba (creación propia).}
+\caption{Modelo Entidad-Relación de la base de datos de prueba.}
 \label{fig:figura6.8}
 \end{figure}
 
@@ -322,7 +322,7 @@ Antes de que comiencen a ejecutarse las pruebas, se precargan los registros con 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{Fixture.png}
-\caption{Ejemplo del formato JSON para cargar un \textit{Fixture} (creación propia).}
+\caption{Ejemplo del formato JSON para cargar un \textit{Fixture}.}
 \label{fig:figura6.9}
 \end{figure}
 
@@ -398,7 +398,7 @@ Una vez creada la estructura que permite filtrar por rango de tiempo, se procedi
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{form_filtros.png}
-    \caption{Estructura del formulario de filtros (creación propia).}
+    \caption{Estructura del formulario de filtros.}
     \label{fig:figura6.10}
 \end{figure}
 
@@ -409,7 +409,7 @@ Luego de obtener el \textit{queryset} filtrado, se procedió a construir los cá
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{stats.png}
-\caption{Ejemplo de “stats” (creación propia).}
+\caption{Ejemplo de “stats”.}
 \label{fig:figura6.11}
 \end{figure}
 
@@ -481,7 +481,7 @@ El programador también puede crear su propio tema de Amcharts y utilizar el atr
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{StatisticsView.png}
-\caption{ Definición de “StatisticsView”  incluyendo el campo “charts\_theme” (creación propia).}
+\caption{ Definición de “StatisticsView”  incluyendo el campo “charts\_theme”.}
 \label{fig:figura6.12}
 \end{figure}
 
@@ -492,7 +492,7 @@ Luego de culminar las plantillas, se posee un módulo Estadísticas que cumple c
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.7\textwidth]{Estadisticas.png}
-    \caption{ Estructura del módulo Estadísticas (creación propia).}
+    \caption{ Estructura del módulo Estadísticas.}
     \label{fig:figura6.13}
 \end{figure}
 
@@ -502,7 +502,7 @@ Para el módulo Estadísticas se escribieron 106 casos de prueba, utilizando los
 
 Las pruebas del formulario se enfocan en determinar si es válido, y si lo es, proceder a filtrar el \textit{queryset} inicial según los valores provistos. Para comparar que los resultados obtenidos en el \textit{queryset} son los esperados, se utilizó la función “filter" de Python sobre la lista de todos los elementos de la tabla. También, se incluyeron los casos de pruebas en el que el formulario es inválido, en ellos se verifica que ocurra una excepción que incluya un mensaje de error que notifique al usuario. Esto permite asegurar que los filtros funcionan correctamente. Al ejecutar estas pruebas, se obtuvo que todas fueron exitosas.\\
 
-Para los cálculos estadísticos se deben probar las funciones que entregan estos resultados, haciendo una solicitud POST al URL que llama a la vista “FilterView". Para esto, se utilizó “Client()" una clase de Django que permite enviar la petición, simulando el navegador. De esta manera se puede inspeccionar el contexto e incluso el HTML de la respuesta, y así constatar que los valores son los esperados.
+Para los cálculos estadísticos se deben probar las funciones que entregan estos resultados, haciendo una solicitud POST al URL que llama a la vista “FilterView". Para esto, se utilizó “Client()" una clase de Django que permite enviar la petición, simulando el navegador. De esta manera se puede inspeccionar el contexto e incluso el HTML de la respuesta, y así constatar que los valores son los esperados.\\
 
 Al ejecutar estas pruebas fallaban todas, excepto aquellas que obtenían los resultados sin filtrar. Esto sucedió debido a que, en el “Client()”, no se enviaban correctamente los datos del formulario que están relacionados con el tiempo. Para corregir el error, todos los valores fueron convertidos a \textit{string}. \\
 
@@ -535,7 +535,7 @@ Una vez detectado el error, se corrigió y se constató que el \textit{Core} fun
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.6\textwidth]{New_Test_ER.png}
-\caption{ Diagrama Entidad-Relación de los nuevos modelos en las pruebas (creación propia).}
+\caption{ Diagrama Entidad-Relación de los nuevos modelos en las pruebas.}
 \label{fig:figura6.14}
 \end{figure}
 

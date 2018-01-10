@@ -20,7 +20,7 @@ Adicionalmente, al realizar las pruebas de desempeño se pudo comprobar que, agr
 
 Dada las facilidades que ofrece Python para crear clases de manera dinámica, se implementó un un prototipo que mostró que es posible generar tablas por modelo auditable, y con ello, descentralizar las tablas de auditorías con la intención de evitar la sobrecarga que tiene el uso de una tabla centralizada.\\
 
-Las Historias de Usuario relacionadas con la permisología no fueron llevadas a cabo, sin embargo, se realizó el diseño de un módulo capaz de manejar los privilegios sobre el uso del sistema, el cual puede servir como referencia para la creación del mismo en una versión futura de la librería.\\
+Las Historias de Usuario relacionadas con la permisología no fueron llevadas a cabo, sin embargo, se realizó el diseño de un módulo capaz de manejar los privilegios sobre el uso del sistema, el cual puede servir como referencia para la creación del mismo en una versión futura de la librería.
 
 \addcontentsline{toc}{section}{\textbf{Recomendaciones}}
 \section*{Recomendaciones}
@@ -32,5 +32,5 @@ Además de los resultados obtenidos, se proponen sugerencias y nuevas ideas a se
     \item Ampliar las posibles acciones auditables del sistema, incluyendo otras como CREATE TABLE, ALTER TABLE, DROP TABLE para tener un mayor alcance en las auditorías.
     \item Implementar el módulo de Permisología para restringir funcionalidades de la librería a ciertos usuarios.
     \item Comparar el desempeño del prototipo de tablas de auditorías descentralizado, con el que está actualmente implementado en la librería.
-    \item Registrar auditorías al crear o actualizar datos a través de “bulk\_create” o “bulk\_update”
+    \item Registrar auditorías al crear, actualizar o eliminar datos a través de “bulk\_create”, “bulk\_update” o “bulk\_delete” respectivamente.
 \end{itemize}
