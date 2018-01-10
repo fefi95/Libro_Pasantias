@@ -90,13 +90,13 @@ No obstante, la arquitectura mostrada en la figura 6.1 sufrió modificaciones du
 \label{fig:figure6.2}
 \end{figure}
 
-En la figura 6.2 se muestran las tecnologías a utilizar en el proyecto. Como se mencionó anteriormente, se utilizará Django para el desarrollo. Como herramienta de control de versiones se utilizará Git y para automatizar la integración continua se usará Jenkins. El sistema “Host” será un proyecto de la empresa que utilizará como servidor Web, Apache y una base de datos relacional.
+En la figura 6.2 se muestran las tecnologías a utilizar en el proyecto. Como se mencionó anteriormente, se utilizará Django para el desarrollo. Como herramienta de control de versiones se utilizará Git y para automatizar la integración continua se usará Jenkins. El sistema “Host” será un proyecto de la empresa que utilizará como servidor web, Apache y una base de datos relacional.
 
 \subsection{Diseño del módulo \textit{Core}}
 
 Uno de los problemas más significativos que la empresa encuentra en otros \textit{plugin} de Django disponibles, es el hecho de que el registro de auditoría se guarda a nivel de la vista y es responsabilidad del programador colocar el código para esta funcionalidad. Esto da cabida a que se olvide colocar en alguna de las vistas correspondientes a algún modelo, por lo que podría no guardarse todos los tipos de operaciones. \\
 
-La librería Auditorías Turpial pretende evitar este problema guardando el registro de auditoría cada vez que ocurre alguna operación sobre el modelo, a través del uso de las señales que ofrece el \textit{framework} . Éstas, necesariamente deben distinguir entre un modelo auditable y uno que no lo es; se contempló el uso de un \textit{mixin} que pueda ser heredado por cualquier modelo y así proveer todas las funcionalidades mencionadas. \\
+La librería Auditorías Turpial pretende evitar este problema guardando el registro de auditoría cada vez que ocurre alguna operación sobre el modelo, a través del uso de las señales que ofrece el \textit{framework}. Éstas, necesariamente deben distinguir entre un modelo auditable y uno que no lo es; se contempló el uso de un \textit{mixin} que pueda ser heredado por cualquier modelo y así proveer todas las funcionalidades mencionadas. \\
 
 Por otro lado, se desea incluir en las auditorías el usuario que realizó la acción. La solución mencionada anteriormente no es suficiente para lograr esto, puesto que a nivel de modelos no se posee información sobre el \textit{request} y no se puede saber qué usuario está en sesión. Por esta razón, se planteó agregar otro \textit{mixin} a nivel de vistas, que completara la información antes de guardarla en la base de datos. Sería responsabilidad del programador heredarlo en todas las vistas cuyos modelos mantienen un historial de transacciones.\\
 
@@ -129,7 +129,7 @@ Dado que en la empresa no existe precedente sobre el uso de una herramienta auto
 Considerando las características que posee cada herramienta, se decidió
 utilizar Jenkins, puesto que se pueden ejecutar \textit{scripts} de manera
 programada, generar reportes, observar el estado del despliegue de varios
-proyectos e incluso integrarlo con Gitlab. Gitlab es un servicio Web de control de versiones y desarrollo de \textit{software} colaborativo basado en Git, que es utilizado por la empresa.\\
+proyectos e incluso integrarlo con Gitlab. Gitlab es un servicio web de control de versiones y desarrollo de \textit{software} colaborativo basado en Git, que es utilizado por la empresa.\\
 
 Si bien Fabric es más simple, no es realmente un servidor de integración continua, se asemeja más a \textit{scripts} que permiten automatizar tareas, y se requiere de una herramienta suficientemente general que pueda ser usado tanto en la pasantía como en otros proyectos de la empresa.
 
@@ -191,7 +191,7 @@ El primer inconveniente encontrado con esta solución es el hecho de que, al car
 Con respecto a la acción DELETE, no hubo mayores contratiempos, se utilizó la señal “post\_save”, la cual se activa luego de que se elimina una instancia, dado que no se requiere registrar el valor posterior.\\
 
 
-\textbf{Relación muchos-a-muchos} Django cuenta con la facilidad de, a nivel de modelos, crear relaciones muchos-a -muchos sin necesidad de que el programador explícitamente genere la tabla intermedia que los conecta; a través del campo “ManyToManyField". Los cambios ocurridos en ellos, activan una señal llamada “m2m\_changed”, la cual se utilizó para llevar control de los cambios de apuntadores (llaves primaria) hechos. No obstante, fue descartado debido a que el comportamiento natural del \textit{framework} cuando se crea por primera vez el registro, es guardar la instancia sin los cambios en estos campos y luego guardarlos nuevamente.\\
+\textbf{Relación muchos-a-muchos} Django cuenta con la facilidad de, a nivel de modelos, crear relaciones muchos-a-muchos sin necesidad de que el programador explícitamente genere la tabla intermedia que los conecta; a través del campo “ManyToManyField". Los cambios ocurridos en ellos, activan una señal llamada “m2m\_changed”, la cual se utilizó para llevar control de los cambios de apuntadores (llaves primaria) hechos. No obstante, fue descartado debido a que el comportamiento natural del \textit{framework} cuando se crea por primera vez el registro, es guardar la instancia sin los cambios en estos campos y luego guardarlos nuevamente.\\
 
 \begin{figure}[h]
 \centering
@@ -305,7 +305,7 @@ El pasante dejó una documentación detallada acerca del proceso llevado a cabo 
 
 \subsubsection{Pruebas del módulo \textit{Core}}
 
-Para el módulo Core, se generaron veintidós (22) casos de prueba automatizados utilizando Pytest (ver Apéndice E). Dentro de estas pruebas, Once (11) consistían en validar el funcionamiento del “AuditableMixin", verificando que se guardara apropiadamente todos los campos en la traza de auditoría. \\
+Para el módulo Core, se generaron veintidós (22) casos de prueba automatizados utilizando Pytest (ver Apéndice E). Dentro de estas pruebas, once (11) consistían en validar el funcionamiento del “AuditableMixin", verificando que se guardara apropiadamente todos los campos en la traza de auditoría. \\
 
 Dentro del módulo de pruebas de la librería se agregaron cuatro (4) modelos con las relaciones mostradas en la figura 6.8, que sólo existen cuando se crean las pruebas. Al inicializar la ejecución de los casos, se efectúa una migración de la base de datos, que permite a estos modelos ser incluidos en el esquema. Estos, poseen relaciones suficientemente complejas para poder realizar casos de pruebas con uno-a-uno, uno-a-muchos y muchos-a-muchos.
 

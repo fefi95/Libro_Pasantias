@@ -3,6 +3,9 @@
 
 \thispagestyle{empty}
 
+\addcontentsline{toc}{section}{\textbf{Conclusiones}}
+\section*{Conclusiones}
+
 Brindar soluciones oportunas a la medida de sus clientes, constituyen parte de la misión de Turpial Development, es por ello que inició el desarrollo de una librería para la gestión de auditorías. Esta librería se realizó en Django y es capaz de registrar las operaciones efectuadas sobre la base de datos y mostrarlas a través de estadísticas.\\
 
 La librería Auditorías Turpial, se desarrolló bajo la arquitectura de microservicio, con lo cual se fomenta su escalabilidad. En su módulo \textit{Core} es posible seleccionar los modelos auditables de manera sencilla mediante el uso de los \textit{mixins} que provee, y generar las auditorías correspondientes según las acciones ejecutadas sobre los mismos, lo que permite llevar la trazabilidad de la información sensible.\\
@@ -19,11 +22,15 @@ Dada las facilidades que ofrece Python para crear clases de manera dinámica, se
 
 Las Historias de Usuario relacionadas con la permisología no fueron llevadas a cabo, sin embargo, se realizó el diseño de un módulo capaz de manejar los privilegios sobre el uso del sistema, el cual puede servir como referencia para la creación del mismo en una versión futura de la librería.\\
 
+\addcontentsline{toc}{section}{\textbf{Recomendaciones}}
+\section*{Recomendaciones}
+
 Además de los resultados obtenidos, se proponen sugerencias y nuevas ideas a ser consideradas por la empresa para mejorar el sistema:
 
 \begin{itemize}
-    \item Cambiar el identificador numérico del registro de auditoría por un, Identificador Único Universal (UUID, por sus siglas en inglés \textit{Universally Unique Identifier}). De esta manera, se incrementa la cantidad de claves primarias que se pueden direccionar ($16^32$), actualmente es de $2^32$ . Con esto, se evita tener que respaldar la información tan frecuentemente.
+    \item Cambiar el identificador numérico del registro de auditoría por un, Identificador Único Universal (UUID, por sus siglas en inglés \textit{Universally Unique Identifier}). De esta manera, se incrementa la cantidad de claves primarias que se pueden direccionar ($16^{32}$), actualmente es de $2^{32}$ . Con esto, se evita tener que respaldar la información tan frecuentemente.
     \item Ampliar las posibles acciones auditables del sistema, incluyendo otras como CREATE TABLE, ALTER TABLE, DROP TABLE para tener un mayor alcance en las auditorías.
     \item Implementar el módulo de Permisología para restringir funcionalidades de la librería a ciertos usuarios.
     \item Comparar el desempeño del prototipo de tablas de auditorías descentralizado, con el que está actualmente implementado en la librería.
+    \item Registrar auditorías al crear o actualizar datos a través de “bulk\_create” o “bulk\_update”
 \end{itemize}
