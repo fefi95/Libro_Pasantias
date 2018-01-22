@@ -52,8 +52,10 @@
 % \pagevalues
 % \currentpage
 \include{01_Portada}
-
+\includepdf[]{../PDF/Acta_Evaluacion.pdf}
+\includepdf[pages=-]{../PDF/Acta_Informe.pdf}
 %------------------------------------------------------------------------------%
+\phantomsection
 \addcontentsline{toc}{chapter}{\textbf{RESUMEN}}
 \include{03_Resumen}
 
@@ -72,25 +74,26 @@
 %                                                                       %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+\phantomsection
 \addcontentsline{toc}{chapter}{\textbf{ÍNDICE}}
 \tableofcontents
 
 \listoftables
+\phantomsection
 \listoffigures
-
+\phantomsection
 
 \newpage
-\addcontentsline{toc}{chapter}{\textbf{LISTA DE SÍMBOLOS}}
-% \include{09_ListaSimbolos}
-% \newpage
+\phantomsection
 \addcontentsline{toc}{chapter}{\textbf{LISTA DE ABREVIACIONES}}
 \include{10_ListaAbreviaciones}
+\phantomsection
 \addcontentsline{toc}{chapter}{\textbf{GLOSARIO}}
 \include{10_Glosario}
 
 %----------------------------------------------------------------------------------------%
 \mainmatter
+\phantomsection
 \addcontentsline{toc}{chapter}{\textbf{Introducción}}
 \include{11_Introduccion}
 %----------------------------------------------------------------------------------------%
@@ -122,17 +125,13 @@
 %                                                                                        %
 %----------------------------------------------------------------------------------------%
 %----------------------------------------------------------------------------------------%
-% \addcontentsline{toc}{chapter}{\textbf{Referencias}}
-% \pagestyle{fancy}
-% \begin{singlespace}
-% \bibliographystyle{apalike}
-% \bibliographystyle{apacite}
+\phantomsection
+\addcontentsline{toc}{chapter}{\textbf{Referencias}}
 \bibliographystyle{plain}
 \renewcommand\bibname{REFERENCIAS}
 \bibliography{14_Referencias}
 % \end{singlespace}
 %----------------------------------------------------------------------------------------%
-% \cleardoublepage
 \appendix
 
 % A - Manifiesto Ágil

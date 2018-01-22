@@ -43,7 +43,7 @@
 %       \department{Mathematics}
 %       \division{Pure Mathematics}  (Sciences with an s!)
 %       \degree{Doctor of Philosophy}
-%       \date{}    
+%       \date{}
 %       \maketitle
 %
 % \dedication : Use for a dedication, copyright, or epigraph.
@@ -82,7 +82,7 @@
 %
 %  2. If you are having page break problems (which are much more
 %     likely in double spacing), use the \pagebreak[n] and
-%     \nopagebreak[n] commands to tell LaTeX good and bad 
+%     \nopagebreak[n] commands to tell LaTeX good and bad
 %     places for page breaks. n=1,2,3 for gradually more
 %     emphatic suggestion to LaTeX. n=4 is almost always
 %     break page or almost never break page.
@@ -141,9 +141,10 @@
 %                               PAQUETES                                %
 %                                                                       %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[utf8]{inputenc} 
+\usepackage[utf8]{inputenc}
 \usepackage{indentfirst}
 \usepackage{fancyhdr}
+\usepackage[bookmarks]{hyperref}
 % \usepackage{showframe}
 
 \RequirePackage{setspace}[1998/04/8]
@@ -226,7 +227,7 @@
 \LoadClass[\etptsize]{report}
 
 % RAND: Footnote modifications
-% Lengthen continuation rule line for footnotes 
+% Lengthen continuation rule line for footnotes
 \RequirePackage[splitrule]{footmisc}%
 % Add spacing between multiple footnotes, but make sure space isn't
 % added between rule and notes.  This is a bit of a kludge.
@@ -246,7 +247,7 @@
 % Adjust spacing of document
 
 \etspacing
-\setlength{\parindent}{15pt} 
+\setlength{\parindent}{15pt}
 \setlength{\parskip}{2pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -328,7 +329,7 @@
 % the chapter heads to small caps instead.
 
 \renewcommand{\chaptername}{CAPÍTULO}
-\newcommand{\etchapterheadstyle}[1]{\MakeUppercase{#1}}
+\newcommand{\etchapterheadstyle}[1]{\uppercase{#1}}
 
 % NUMBERED CHAPTERS
 
@@ -342,7 +343,7 @@
 }}
 
 % UNNUMBERED CHAPTERS
-\renewcommand{\@makeschapterhead}[1]{{ 
+\renewcommand{\@makeschapterhead}[1]{{
   \centering\bfseries
   \par\nobreak
   \interlinepenalty\@M
@@ -363,11 +364,11 @@
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
                                 {-3.25ex\@plus -1ex \@minus -.2ex}%
                                 {1.5ex \@plus .2ex}%
-                                {\normalfont\normalsize\bfseries}}                          
+                                {\normalfont\normalsize\bfseries}}
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
                                 {-3.25ex\@plus -1ex \@minus -.2ex}%
                                 {1.5ex \@plus .2ex}%
-                                {\normalfont\normalsize\bfseries}}                          
+                                {\normalfont\normalsize\bfseries}}
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
                                 {3.25ex \@plus -1ex \@minus -.2ex}%
                                 {-1em}%
@@ -390,7 +391,7 @@
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
     \setcounter{secnumdepth}{3}%
-    \setcounter{tocdepth}{3} %   
+    \setcounter{tocdepth}{3} %
     \addpenalty{-\@highpenalty}%
     \vskip .1cm \@plus \p@ %{the v-distance between the headings in the contents}
     \setlength\@tempdima{1.5em}% %{the distance between the number of the chapter and its title}
@@ -398,8 +399,8 @@
       \parindent\z@ \rightskip \@pnumwidth
       \parfillskip -\@pnumwidth
       \leavevmode
-      \advance \leftskip \@tempdima 
-      \hskip  -\leftskip 
+      \advance \leftskip \@tempdima
+      \hskip  -\leftskip
       \etchapterheadstyle{#1}\nobreak
 % % CCW: The following 3 lines add dots to the chapter TOC listings
       \leaders\hbox{$\m@th
@@ -412,8 +413,8 @@
 
 % \renewcommand\addchaptertocentry[2]{\addtocentrydefault{chapter}{}{#2}}
 % Add "CHAPTER"/"APPENDIX" headings to TOC before first of each.
-% If you want these words to be a bit bigger, remove "\normalsize" 
-% from the definition below.  If you want the words to be bold, 
+% If you want these words to be a bit bigger, remove "\normalsize"
+% from the definition below.  If you want the words to be bold,
 % remove "\mdseries". (CCW)
 
 
@@ -437,7 +438,8 @@
 \let\oldappendix = \appendix
 \renewcommand{\appendix}{
     % \clearpage
-    \addcontentsline{toc}{chapter}{\textbf{\appendixname s}}
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\textbf{\appendixname S}}
     \oldappendix
 }
 
@@ -461,22 +463,22 @@
 %   \begin{onehalfspace}
 %     % This works b/c multiple \newpage's are treated as one
 %     \newpage
-    
+
 %     \let\oldcaption = \caption
 %     \renewcommand{\caption}{
 %       % \addtocontents{lot}{\protect\addvspace{10\p@}}%
 %         \oldcaption
 %     }
 %     \addcontentsline{toc}{chapter}{\textbf{Lista de Tablas}}
-%     \oldlistoftables 
-    
+%     \oldlistoftables
+
 %   \end{onehalfspace}
 % }
 
 \let\oldlistoftables = \listoftables
 \renewcommand{\listoftables}{
     \addcontentsline{toc}{chapter}{\textbf{Lista de Tablas}}
-    \oldlistoftables 
+    \oldlistoftables
 }
 
 \renewcommand{\tablename}{Tabla}
@@ -487,7 +489,7 @@
 %                                                                       %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\renewcommand{\listfigurename}{LISTA DE FIGURAS} 
+\renewcommand{\listfigurename}{LISTA DE FIGURAS}
 
 \let\oldlistoffigures = \listoffigures
 \renewcommand{\listoffigures}{
@@ -503,11 +505,11 @@
 % }
 
     \addcontentsline{toc}{chapter}{\textbf{Lista de Figuras}}
-    \oldlistoffigures 
+    \oldlistoffigures
 %   \end{singlespace}
 }
 \renewcommand{\figurename}{Figura}
- 
+
 % Change names of appendix
 \renewcommand\appendixname{APÉNDICE}
 
