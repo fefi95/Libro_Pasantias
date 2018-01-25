@@ -1,22 +1,16 @@
 \documentclass[onehalfspace]{USB}
 \usepackage{paralist}
-% \usepackage{natbib}
-% \usepackage{apacite}
-% \usepackage[figuresright]{rotating}
 \usepackage{lscape}
 \usepackage{graphicx}
 \usepackage{longtable}
 \usepackage{calc}
-% \usepackage{slashbox}
 \usepackage{adjustbox}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-% \usepackage{setspace}
 \usepackage{color}
 \usepackage{geometry}
 \usepackage[none]{hyphenat}
-% \usepackage{layouts}
 \usepackage{blindtext}
 \usepackage{url}
 \usepackage{longtable}
@@ -47,10 +41,6 @@
 \frontmatter
 %------------------------------------------------------------------------------%
 
-% \drawdimensionstrue
-% \printinunitsof{cm}
-% \pagevalues
-% \currentpage
 \include{01_Portada}
 \includepdf[]{../PDF/Acta_Evaluacion.pdf}
 \includepdf[pages=-]{../PDF/Acta_Informe.pdf}
@@ -60,11 +50,9 @@
 \include{03_Resumen}
 
 %------------------------------------------------------------------------------%
-% \addcontentsline{toc}{chapter}{\textbf{DEDICATORIA}}
 \include{04_Dedicatoria}
 
 %------------------------------------------------------------------------------%
-% \addcontentsline{toc}{chapter}{\textbf{RECONOCIMIENTOS Y AGRADECIMIENTOS}}
 \include{05_AgradecimientoReconocimientos}
 %------------------------------------------------------------------------------%
 
@@ -102,35 +90,33 @@
 % must be added before each \include {chapter}                                           %
 %----------------------------------------------------------------------------------------%
 \addtocontents{toc}{\addvspace{.5cm}}
-\include{12_Capitulo1}  % Chpater 1: Title of the chapter                                    %
+\include{12_Capitulo1}                                    %
 \addtocontents{toc}{\addvspace{.5cm}}
-\include{12_Capitulo2}  % Chapter 2: Title of the chapter                                    %
+\include{12_Capitulo2}
 \addtocontents{toc}{\addvspace{.5cm}}
-\include{12_Capitulo3}  % Chapter 3: Title of the chapter                                    %
+\include{12_Capitulo3}
 \addtocontents{toc}{\addvspace{.5cm}}
-\include{12_Capitulo4}  % Chapter 4: Title of the chapter
+\include{12_Capitulo4}
 
 \addtocontents{toc}{\addvspace{.5cm}}
-\include{12_Capitulo5}  % Chapter 4: Title of the chapter
+\include{12_Capitulo5}
 
 \addtocontents{toc}{\addvspace{.5cm}}
-\include{12_Capitulo6}  % Chapter 4: Title of the chapter
+\include{12_Capitulo6}
 %----------------------------------------------------------------------------------------%
 
 \addtocontents{toc}{\addvspace{.5cm}}
 \include{13_ConclusionesRecomendaciones}
 
-%
-%----------------------------Additional chapters may be added ---------------------------%
 %                                                                                        %
 %----------------------------------------------------------------------------------------%
 %----------------------------------------------------------------------------------------%
 \phantomsection
 \addcontentsline{toc}{chapter}{\textbf{Referencias}}
-\bibliographystyle{plain}
+\bibliographystyle{ieeetr}
 \renewcommand\bibname{REFERENCIAS}
 \bibliography{14_Referencias}
-% \end{singlespace}
+
 %----------------------------------------------------------------------------------------%
 \appendix
 
@@ -183,7 +169,7 @@
 \chapter{Módulo Permisología}
 \includepdf[pages=-, pagecommand={}]{../PDF/Modulo_Permisologia.pdf}
 
-\include{ApendiceC} % Appendix A: Title of the appendix
+\include{ApendiceC}
 %                                                                    %
 %----------------------------------------------------------------------------------------%
 \end{document}
